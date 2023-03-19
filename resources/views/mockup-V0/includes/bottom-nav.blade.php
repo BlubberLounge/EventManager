@@ -1,16 +1,21 @@
-<nav id="botNav" class="navbar position-absolute bottom-0 ">
+<nav id="botNav" class="navbar position-fixed bottom-0 w-100">
     <div class="container">
         <div class="row">
             <div class="col">
                 <a href="{{ route('mv0-index') }}" class="{{ request()->routeIs('mv0-index') ? 'active' : '' }}">
-                    <i class="fa-solid fa-house"></i>
+                    <i class="fa-solid fa-house hasNotification"></i>
                     Home
                 </a>
             </div>
             <div class="col">
                 <a href="{{ route('mv0-tickets') }}" class="{{ request()->routeIs('mv0-tickets') ? 'active' : '' }}">
-                    <i class="fa-solid fa-ticket"></i>
+                    <i class="fa-solid fa-ticket hasNotification"></i>
                     Tickets
+                </a>
+            </div>
+            <div class="col" style="{{ request()->routeIs('mv0-tickets') ? '' : 'display: none' }}">
+                <a href="{{ route('mv0-tickets') }}" style="margin-top: -10px">
+                    <i class="fa-solid fa-plus p-2 addTicketBtn"></i>
                 </a>
             </div>
             <div class="col">

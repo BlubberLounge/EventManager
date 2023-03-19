@@ -12,6 +12,7 @@
             @yield('mockup-V0.content')
         </main>
 
+        @include('mockup-V0.includes.ticket-nav')
         @include('mockup-V0.includes.bottom-nav')
     </div>
 </body>

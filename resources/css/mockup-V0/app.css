@@ -19,6 +19,11 @@
 
 body {
     background-color: var(--clr-background);
+    padding-bottom: 200px;
+}
+
+i {
+    position: relative;
 }
 
 #topNav {
@@ -52,9 +57,11 @@ body {
 #botNav {
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
     padding-top: 1rem;
+    background-color: var(--clr-background);
 }
 
-#botNav .row {
+#botNav .row,
+#ticketNavContianer .row {
     width: 100vw;
     flex-direction: row;
     align-items: center;
@@ -66,7 +73,7 @@ body {
     font-size: .75rem;
     color: var(--clr-gray-70);
     text-decoration: none;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
@@ -78,4 +85,74 @@ body {
 
 #botNav a.active {
     color: var(--clr-secondary);
+}
+
+#botNav .addTicketBtn {
+    top: -.1em;
+    border-radius: 50%;
+    border: .125em solid var(--clr-gray-70);
+    animation: fadein .75s ease-in-out;
+}
+
+#botNav .hasNotification::after {
+    --diameter: 6px;
+    position: absolute;
+    content: '';
+    top: -2px;
+    right: 0;
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: 50%;
+    background-color: rgb(211, 29, 29);
+    outline: 2px solid var(--clr-background);
+}
+
+#ticketNavContianer {
+    background-color: var(--clr-primary);
+    padding: 1.25em 0;
+}
+
+#ticketNavContianer a {
+    color: var(--clr-gray-10);
+    font-size: 2rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#ticketNavContianer .hasNotification::after {
+    --diameter: 9px;
+    position: absolute;
+    content: '';
+    top: -2px;
+    right: 0;
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: 50%;
+    background-color: rgb(211, 29, 29);
+    outline: 4px solid var(--clr-primary);
+}
+
+@keyframes fadein {
+    from { opacity: .2}
+    to   { opacity: 1}
+}
+
+/* ================================================================
+ *
+ *      Temporary - Delte later !
+ *
+ * ================================================================
+ */
+
+.glide__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider__bullets {
+    bottom: -2em !important;
 }
