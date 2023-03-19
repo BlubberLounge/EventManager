@@ -18,7 +18,17 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('/mockupV0', 'mockup-V0.index');
+
+/* ==============================
+ * Mockup Views
+ * ============================== */
+Route::prefix('mockupV0')->group(function () {
+    Route::view('', 'mockup-V0.index')->name('mv0-index');
+    Route::view('/tickets', 'mockup-V0.ticket.index')->name('mv0-tickets');
+    Route::view('/calendar', 'mockup-V0.calendar.index')->name('mv0-calendar');
+    Route::view('/profile', 'mockup-V0.profile.index')->name('mv0-profile');
+});
+
 
 // Auth::routes(['verify' => true]);
 
