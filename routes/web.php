@@ -27,6 +27,10 @@ Route::prefix('mockupV0')->group(function () {
     Route::view('/tickets', 'mockup-V0.ticket.index')->name('mv0-tickets');
     Route::view('/calendar', 'mockup-V0.calendar.index')->name('mv0-calendar');
     Route::view('/profile', 'mockup-V0.profile.index')->name('mv0-profile');
+
+    Route::view('/tickets/done', 'mockup-V0.ticket.done')->name('mv0-tickets.done');
+    Route::view('/tickets/open', 'mockup-V0.ticket.open')->name('mv0-tickets.open');
+    Route::view('/tickets/send', 'mockup-V0.ticket.send')->name('mv0-tickets.send');
 });
 
 
