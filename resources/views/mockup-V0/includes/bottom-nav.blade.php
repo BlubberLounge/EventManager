@@ -13,7 +13,7 @@
                     Tickets
                 </a>
             </div>
-            <div class="col" style="{{ request()->routeIs('mv0-tickets.*') ? '' : 'display: none' }}">
+            <div class="col" style="{{ request()->routeIs('mv0-tickets.*') || request()->routeIs('mv0-tickets') ? '' : 'display: none' }}">
                 <a href="{{ route('mv0-tickets') }}" style="margin-top: -10px;">
                     <i class="fa-solid fa-plus p-2 addTicketBtn"></i>
                 </a>

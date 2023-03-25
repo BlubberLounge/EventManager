@@ -7,6 +7,7 @@ var glide = new Glide('#glide', {
     perView: 1,
     focusAt: 'center',
     touchAngle: 30,
+    swipeThreshold: 40,
     breakpoints: {
       800: {
         perView: 2
