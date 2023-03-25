@@ -1,0 +1,214 @@
+:root {
+    --clr-primary: #1e2f34;
+    --clr-secondary: #287ada;
+    --clr-background: #dddddd;
+    --clr-black: #000;
+    --clr-gray-90: #1a1a1a;
+    --clr-gray-80: #333;
+    --clr-gray-70: #4d4d4d;
+    --clr-gray-60: #666;
+    --clr-gray-50: #808080;
+    --clr-gray-40: #999;
+    --clr-gray-30: #b3b3b3;
+    --clr-gray-20: #ccc;
+    --clr-gray-10: #e6e6e6;
+    --clr-gray-7p5: #ececec;
+    --clr-gray-5: #f2f2f2;
+    --clr-white: #fff;
+}
+
+body {
+    background-color: var(--clr-background);
+    padding-bottom: 200px;
+}
+
+i {
+    position: relative;
+}
+
+#topNav {
+    background-color: var(--clr-primary);
+    justify-content: center;
+    padding: 1rem .2rem;
+    color: var(--clr-gray-10);
+}
+
+#topNav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#topNav a i {
+    font-size: 1.7em;
+}
+
+#topNav .col:last-child {
+    width: auto;
+}
+
+.burger {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--clr-gray-7p5);
+    margin: 2px 0;
+}
+
+#botNav {
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
+    padding-top: 1rem;
+    background-color: var(--clr-background);
+}
+
+#botNav .row,
+#ticketNavContainer .row {
+    width: 100vw;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#botNav a {
+
+    font-size: .75rem;
+    color: var(--clr-gray-70);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#botNav i {
+    font-size: 1.3rem;
+}
+
+#botNav a.active {
+    color: var(--clr-secondary);
+}
+
+#botNav .addTicketBtn {
+    top: -.1em;
+    border-radius: 50%;
+    border: .125em solid var(--clr-gray-70);
+    animation: fadein .75s ease-in-out;
+}
+
+#botNav .hasNotification::after {
+    --diameter: 6px;
+    position: absolute;
+    content: '';
+    top: -2px;
+    right: 0;
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: 50%;
+    background-color: rgb(211, 29, 29);
+    outline: 2px solid var(--clr-background);
+}
+
+#ticketNavContainer {
+    background-color: var(--clr-primary);
+    padding: 1.25em 0;
+}
+
+#ticketNavContainer a {
+    color: var(--clr-gray-10);
+    font-size: 2rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#ticketNavContainer .col ~ .col::before {
+    --clr-vert-lines: #649cae;
+    content: '';
+    position: absolute;
+    height: 35px;
+    top: 50%;
+    margin-left: calc(var(--bs-gutter-x) * -0.5);
+    transform: translateY(-50%);
+    border-left: 2px solid var(--clr-vert-lines);
+    opacity: .5;
+}
+
+#ticketNavContainer div.active::before {
+    content: "";
+    position: absolute;
+
+    background-color: transparent;
+    width: 30px;
+    height: 10px;
+    left: -30px;
+    bottom: 0;
+    border-bottom-right-radius: 8px;
+    box-shadow: 11px 0 0 0 var(--clr-primary);
+}
+
+#ticketNavContainer div.active {
+    top: -40px;
+    position: absolute;
+    width: 70%;
+    height: 23px;
+    background-color: var(--clr-primary);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    color: var(--clr-gray-10);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+}
+
+#ticketNavContainer div.active::after {
+    content: "";
+    position: absolute;
+
+    background-color: transparent;
+    width: 30px;
+    height: 10px;
+    right: -30px;
+    bottom: 0;
+    border-bottom-left-radius: 8px;
+    box-shadow: -11px 0 0 0 var(--clr-primary);
+}
+
+#ticketNavContainer .hasNotification::after {
+    --diameter: 9px;
+    position: absolute;
+    content: '';
+    top: -2px;
+    right: 0;
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: 50%;
+    background-color: rgb(211, 29, 29);
+    outline: 4px solid var(--clr-primary);
+}
+
+@keyframes fadein {
+    from { opacity: .2}
+    to   { opacity: 1}
+}
+
+/* ================================================================
+ *
+ *      Temporary - Delte later !
+ *
+ * ================================================================
+ */
+
+.glide__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider__bullets {
+    bottom: -1em !important;
+}
+
+.glide__bullets {
+    z-index: -1 !important;
+}
