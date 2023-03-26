@@ -9,21 +9,20 @@
 
     <!-- Styles -->
     @include('includes.head.style')
-    <link href="{{ mix('css/mockup-V0/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/mockup-V0/glide.core.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mockup-V0/glide.theme.min.css') }}">
+    <link href="{{ mix('css/auth.css') }}" rel="stylesheet">
     @stack('styles')   {{-- get all styles that got pushed to the stack --}}
 </head>
 <body>
-    <div id="app">
-
-        @include('mockup-V0.includes.top-nav')
+    <div id="app" class="p-4 w-100">
+        <div class="d-flex justify-content-center position-relative" style="padding: 3.5rem 0;">
+            <img src="http://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white.svg" id="brandLogo" alt="BlubberLounge EventManager Logo" width="200px">
+            <span id="subText">Events</span>
+        </div>
 
         <main class="py-1">
-            @yield('mockup-V0.content')
+            @yield('content')
         </main>
 
-        @include('mockup-V0.includes.bottom-nav')
     </div>
 </body>
 </html>

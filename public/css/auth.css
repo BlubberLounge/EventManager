@@ -1,0 +1,72 @@
+body {
+    color: var(--clr-gray-5);
+    background-color: var(--clr-gray-90);
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90vw;
+    height: 50vh;
+    background-image: url('/img/blubber2.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: .03;
+    z-index: -1;
+}
+
+#subText {
+    position: absolute;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    background-color: var(--clr-brand);
+    color: var(--clr-gray-80);
+    padding: .3em .8em;
+    border-radius: .5rem;
+    bottom: 2em;
+    right: calc(50vw - 140px);
+    transform: rotate(-16deg);
+    box-shadow: 2px 2px 0 1px rgba(255,132,0,.75);
+}
+
+#subText::before,
+#subText::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 11px;
+    background-color: var(--clr-gray-90);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#subText::before {
+    left: -7px;
+}
+
+#subText::after {
+    right: -7px;
+}
+
+input ~ i {
+    color: var(--clr-gray-50);
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.btn-login {
+    --btn-login-bg: ;
+    background: rgb(255,182,0);
+    background: linear-gradient(130deg, rgba(255,182,0,1) 0%, rgba(255,132,0,1) 80%);
+    box-shadow: 0 0 7px 2px rgba(255,132,0,.45);
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: .2em 1em;
+}
+
