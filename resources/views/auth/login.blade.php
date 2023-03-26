@@ -8,7 +8,7 @@
             @csrf
 
             <div class="row mb-3">
-                <label for="username" class="col-md-4 col-form-label text-md-end">Username Or Email</label>
+                <label for="username" class="col-md-4 col-form-label text-md-end">Username or Email</label>
 
                 <div class="col-md-6 position-relative">
                     <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required  autofocus>

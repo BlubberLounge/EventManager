@@ -37,7 +37,7 @@ i {
 
 #botNav {
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
-    padding-top: 1rem;
+    padding: .5em 0;
     background-color: var(--clr-background);
 }
 
@@ -50,8 +50,7 @@ i {
 }
 
 #botNav a {
-
-    font-size: .75rem;
+    font-size: .6rem;
     color: var(--clr-gray-70);
     text-decoration: none;
     display: flex;
@@ -66,13 +65,6 @@ i {
 
 #botNav a.active {
     color: var(--clr-secondary);
-}
-
-#botNav .addTicketBtn {
-    top: -.1em;
-    border-radius: 50%;
-    border: .125em solid var(--clr-gray-70);
-    animation: fadein .75s ease-in-out;
 }
 
 #botNav .hasNotification::after {
@@ -90,12 +82,12 @@ i {
 
 #ticketNavContainer {
     background-color: var(--clr-primary);
-    padding: 1.25em 0;
+    padding: .8em 0;
 }
 
 #ticketNavContainer a {
     color: var(--clr-gray-10);
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -118,7 +110,6 @@ i {
 #ticketNavContainer div.active::before {
     content: "";
     position: absolute;
-
     background-color: transparent;
     width: 30px;
     height: 10px;
@@ -129,7 +120,7 @@ i {
 }
 
 #ticketNavContainer div.active {
-    top: -40px;
+    top: -33px;
     position: absolute;
     width: 70%;
     height: 23px;
@@ -145,7 +136,6 @@ i {
 #ticketNavContainer div.active::after {
     content: "";
     position: absolute;
-
     background-color: transparent;
     width: 30px;
     height: 10px;
