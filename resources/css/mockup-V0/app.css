@@ -59,6 +59,21 @@ i {
     justify-content: space-around;
 }
 
+#botNav .col {
+    background-position: center;
+    transition: background .8s;
+}
+
+#botNav .col:hover {
+    background: var(--clr-gray-20) radial-gradient(circle, transparent 1%, var(--clr-background) 1%) center/15000%;
+}
+
+#botNav .col:active {
+    background-color: var(--clr-gray-20);
+    background-size: 100%;
+    transition: background 0s;
+  }
+
 #botNav i {
     font-size: 1.3rem;
 }
