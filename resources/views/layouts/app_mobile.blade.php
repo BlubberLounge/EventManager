@@ -20,7 +20,7 @@
         @include('mockup-V0.includes.top-nav')
 
         <main class="py-1">
-            @yield('mockup-V0.content')
+            @yield('content')
         </main>
 
         @include('mockup-V0.includes.bottom-nav')

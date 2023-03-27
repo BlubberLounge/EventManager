@@ -2,19 +2,18 @@
 
 @section('content')
 <div class="container">
-
     <div class="row justify-content-center">
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="row mb-3">
-                <label for="username" class="col-md-4 col-form-label text-md-end">Username or Email</label>
+                <label for="name" class="col-md-4 col-form-label text-md-end">Username or Email</label>
 
                 <div class="col-md-6 position-relative">
-                    <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required  autofocus>
+                    <input id="name" type="username" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required  autofocus>
                     <i class="fa-solid fa-user"></i>
 
-                    @error('username')
+                    @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -63,6 +62,13 @@
     <div class="row justify-content-center mt-4">
         [Anmelden mit Apfel] Platzhalter
     </div>
+
+    @if (Route::has('register'))
+        <div class="d-flex justify-content-center w-100 position-absolute bottom-0 start-0">
+            <span class="registerText"> Don't have an Account? </span>
+            <a href="{{ route('register') }}" class="display-inline ms-2"> Sign up </a>
+        </div>
+    @endif
 </div>
 @endsection
 

@@ -17,6 +17,11 @@ body::after {
     z-index: -1;
 }
 
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 #subText {
     position: absolute;
     font-family: 'Montserrat';
@@ -60,6 +65,10 @@ input ~ i {
 
 }
 
+input.is-invalid ~ i {
+    display: none;
+}
+
 .btn-login {
     --btn-login-bg: ;
     background: rgb(255,182,0);
@@ -68,4 +77,8 @@ input ~ i {
     font-weight: bold;
     font-size: 1.2rem;
     padding: .2em 1em;
+}
+
+.registerText {
+    color: var(--clr-gray-40);
 }
