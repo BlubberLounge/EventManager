@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,26 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('index');
+    //return view('index');
+    return redirect()->route('home');
 });
 
-
-/* ==============================
- * Mockup Views
- * ============================== */
-Route::prefix('mockupV0')->group(function () {
-    Route::view('', 'mockup-V0.index')->name('mv0-index');
-    Route::view('/tickets', 'mockup-V0.ticket.index')->name('mv0-tickets');
-    Route::view('/calendar', 'mockup-V0.calendar.index')->name('mv0-calendar');
-    Route::view('/profile', 'mockup-V0.profile.index')->name('mv0-profile');
-
-    Route::view('/tickets/done', 'mockup-V0.ticket.done')->name('mv0-tickets.done');
-    Route::view('/tickets/open', 'mockup-V0.ticket.open')->name('mv0-tickets.open');
-    Route::view('/tickets/send', 'mockup-V0.ticket.send')->name('mv0-tickets.send');
-});
-
-
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 /*
  * email verification routes
@@ -59,13 +47,22 @@ Route::prefix('mockupV0')->group(function () {
 /*
  * protected routes
  */
-/*Route::middleware(['auth', 'verified'])->group(function ()
+Route::middleware(['auth', 'verified'])->group(function ()
 {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/battery', [BatteryController::class, 'index'])->name('battery');
-    Route::get('/event', [EventController::class, 'index'])->name('event');
-    Route::get('/audit-log', [AuditLogController::class, 'index'])->name('audit-log');
 
-    Route::resource('/hookah', HookahController::class);
-    Route::resource('/user', UserController::class);
-});*/
+
+    /* ==============================
+    * Mockup Views
+    * ============================== */
+    Route::prefix('mockupV0')->group(function () {
+        Route::view('/home', 'mockup-V0.home.index')->name('mv0-index');
+        Route::view('/tickets', 'mockup-V0.ticket.index')->name('mv0-tickets');
+        Route::view('/calendar', 'mockup-V0.calendar.index')->name('mv0-calendar');
+        Route::view('/profile', 'mockup-V0.profile.index')->name('mv0-profile');
+
+        Route::view('/tickets/done', 'mockup-V0.ticket.done')->name('mv0-tickets.done');
+        Route::view('/tickets/open', 'mockup-V0.ticket.open')->name('mv0-tickets.open');
+        Route::view('/tickets/send', 'mockup-V0.ticket.send')->name('mv0-tickets.send');
+    });
+});

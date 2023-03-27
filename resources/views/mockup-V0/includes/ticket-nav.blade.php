@@ -1,4 +1,4 @@
-<div id="ticketNavContainer" class="position-fixed w-100" style="bottom: 60px;">
+<div id="ticketNavContainer" class="position-fixed w-100" style="bottom: 50px;">
     <div class="container">
         <div class="row">
             <div class="col position-relative">

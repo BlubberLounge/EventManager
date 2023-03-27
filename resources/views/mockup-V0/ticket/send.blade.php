@@ -1,4 +1,4 @@
-@extends('mockup-V0.layouts.app_mobile_ticket')
+@extends('mockup-V0.layouts.app_mobile')
 
 @section('mockup-V0.content')
 <div class="container">
