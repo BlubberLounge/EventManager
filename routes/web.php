@@ -18,8 +18,8 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/', function () {
-    //return view('index');
-    return redirect()->route('home');
+    return view('index');
+    //return redirect()->route('home');
 });
 
 Auth::routes(['verify' => true]);
