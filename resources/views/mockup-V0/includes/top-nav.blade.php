@@ -1,4 +1,4 @@
-<nav id="topNav" class="navbar shadow-sm">
+<nav id="topNav" class="navbar">
     <div class="container">
         <div class="row w-100 justify-content-between">
             <div class="col">
