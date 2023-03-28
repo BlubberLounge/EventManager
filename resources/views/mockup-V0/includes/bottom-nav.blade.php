@@ -25,9 +25,9 @@
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('mv0-profile') }}" class="{{ request()->routeIs('mv0-profile.*') || request()->routeIs('mv0-profile') ? 'active' : '' }}">
-                    <i class="fa-solid fa-user"></i>
-                    Profile
+                <a href="{{ route('mv0-settings') }}" class="{{ request()->routeIs('mv0-settings.*') || request()->routeIs('mv0-settings') ? 'active' : '' }}">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
                 </a>
             </div>
         </div>
