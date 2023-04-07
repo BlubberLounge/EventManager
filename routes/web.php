@@ -22,8 +22,11 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-Auth::routes(['verify' => true]);
-
+if (App::environment('local')) {
+    Auth::routes(['verify' => true]);
+} else {
+    Auth::routes(['verify' => true, 'register' => false]);
+}
 /*
  * email verification routes
  */
@@ -59,7 +62,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
         Route::view('/home', 'mockup-V0.home.index')->name('mv0-index');
         Route::view('/tickets', 'mockup-V0.ticket.index')->name('mv0-tickets');
         Route::view('/calendar', 'mockup-V0.calendar.index')->name('mv0-calendar');
-        Route::view('/profile', 'mockup-V0.profile.index')->name('mv0-profile');
+        Route::view('/settings', 'mockup-V0.settings.index')->name('mv0-settings');
 
         Route::view('/tickets/done', 'mockup-V0.ticket.done')->name('mv0-tickets.done');
         Route::view('/tickets/open', 'mockup-V0.ticket.open')->name('mv0-tickets.open');
