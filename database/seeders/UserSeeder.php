@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
 
-        // always create one root user
+        // always create one root user, that root user has always to be verified
         User::create([
             'name' => 'Admin',
             'firstname' => 'Blubber',
