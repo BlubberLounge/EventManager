@@ -10850,5 +10850,10 @@ textarea.form-control-lg {
     --clr-background-botNav: #ddd;
 
     --clr-section-h3: #5baabd;
+
+    --clr-rand-profile-1: var(--clr-green-soft);
+    --clr-rand-profile-2: var(--clr-red-soft);
+    --clr-rand-profile-3: var(--clr-brand);
+    --clr-rand-profile-4: var(--clr-secondary);
 }
 

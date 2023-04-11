@@ -19,7 +19,7 @@
     <section id="welcome">
         <div class="d-flex align-items-center justify-content-evenly">
             <h2 class="d-inline-block p-0 m-0">Welcome {{ Auth::user()->lastname }}, {{ Auth::user()->firstname }} </h2>
-            <img src="{{ asset('storage/avatar/dummyAvatar.png') }}" class="avatar" width="45px">
+            <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" width="45px" />
         </div>
     </section>
 
@@ -167,7 +167,7 @@
         <div class="section-content" {{-- style="max-height: 130px; overflow-y: scroll;" --}}>
             @foreach ($acquaintances['accepted'] as $acquaintancesAccepted)
                 <div class="d-flex align-items-center" style="margin-top:1em;padding-left: .5em;">
-                    <img src="{{ asset('storage/avatar/dummyAvatar.png') }}" class="avatar" width="30px">
+                    <img src="{{ Avatar::create($acquaintancesAccepted->firstname)->toBase64() }}" width="30px" />
                     <span style="margin-left: 20px;">{{ $acquaintancesAccepted->name }}</span>
                     <div class="acquaintances-actions d-flex">
                         <div>
@@ -190,7 +190,7 @@
         <div class="section-content" {{-- style="max-height: 130px; overflow-y: scroll;" --}}>
             @forelse ($acquaintances['pending'] as $acquaintancesPending)
                 <div class="d-flex align-items-center" style="margin-top:1em;padding-left: .5em;">
-                    <img src="{{ asset('storage/avatar/dummyAvatar.png') }}" class="avatar" width="30px">
+                    <img src="{{ Avatar::create($acquaintancesPending->firstname)->toBase64() }}" width="30px" />
                     <span style="margin-left: 20px;">{{ $acquaintancesPending->name }}</span>
                     <div class="acquaintances-actions d-flex">
                         <i class="fa-solid fa-square-check"></i>

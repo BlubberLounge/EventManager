@@ -3,16 +3,20 @@
 @section('mockup-V0.content')
 <div class="container p-0 py-3">
     <div class="profile-card">
-        <h6 class="fw-bold mb-3"> Konto </h5>
+        <h6 class="fw-bold mb-3"> Konto </h6>
+        <div class="d-flexjustify-content-centeralign-items-center"style="display:inline-block;background-color:var(clr-rand-profile-mt_rand(1,4) --}}); width:100px;height:100px;border-radius: 20px;">
+            {{-- <img src="{{ Auth::user()->img == '/storage/avatar/avatar-dummy.png' ? asset('img/blubber2.svg') : asset(Auth::user()->img) }}" width="50px"> --}}
+        </div>
+        <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" /> {{-- https://github.com/laravolt/avatar --}}
         <ul>
-            <li> @maxmewes </li>
+            <li> {{ '@'.Auth::user()->name }} </li>
             <li>
-                <span> Maximilian </span>
-                <span> Mewes </span>
+                <span> {{ Auth::user()->firstname }} </span>
+                <span> {{ Auth::user()->lastname }} </span>
             </li>
-            <li> admin@blubber-lounge.de </li>
-            <li> +49 152 33869318 </li>
-            <li> 02. November 1999 </li>
+            <li> {{ Auth::user()->email }} </li>
+            <li> {{ Auth::user()->telefon_mobil }} </li>
+            <li> {{ Auth::user()->dob }} </li>
         </ul>
     </div>
 

@@ -24,8 +24,9 @@ class UserFactory extends Factory
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
-            'dob' => fake()->boolean(80) ? fake()->dateTime() : null,
             'telefon_mobil' => fake()->unique()->e164PhoneNumber(),
+            'dob' => fake()->boolean(80) ? fake()->dateTime() : null,
+            'img' => '/storage/avatar/avatar-dummy.png',
             'email_verified_at' => fake()->boolean(55) ? now() : null,
             'password' => '$2a$10$T1FoiqONCMoK8JidUKKzcOwrR7GPpj8y0jU2uYyCTB8GOK/voxlve',  //blem-d3v3l0pment
                 //'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
