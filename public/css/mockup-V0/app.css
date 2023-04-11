@@ -1,17 +1,129 @@
 body {
+    color: var(--clr-gray-7p5);
     background-color: var(--clr-background);
     margin-bottom: 50px;
+    -webkit-font-smoothing: antialiased;
 }
 
 i {
     position: relative;
 }
 
+main .container-fluid {
+    padding: 0;
+}
+
+section {
+    padding: 2rem 1rem;
+}
+
+section ~ section {
+    border-top: 10px solid var(--clr-background-dark);
+}
+
+section h3 {
+    color: var(--clr-section-h3);
+    font-family: 'Montserrat';
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.acquaintances-actions {
+    margin-left: auto;
+}
+
+.acquaintances-actions i {
+    font-size: 1.2rem;
+    margin-left: 1.25em;
+    color: inherit;
+    cursor: pointer;
+}
+
+.acquaintances-actions input[type="checkbox"] {
+    display:none;
+}
+
+.acquaintances-actions input[type=checkbox]:checked + label {
+    color: var(--clr-green-soft);
+}
+
+section#timetable table {
+    text-align: center;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+section#timetable th {
+    padding: 1rem .5rem;
+    font-weight: 400;
+}
+
+section#timetable td {
+    font-weight: 900;
+    padding: .4em .5em;
+    border-radius: 2px;
+}
+
+section#timetable td.check,
+section#timetable td.unkown,
+section#timetable td.x {
+    font-family: "Font Awesome 6 free";
+}
+
+section#timetable td.check::before {
+    content: '\f00c';
+}
+
+section#timetable td.check {
+    background-color: var(--clr-green-soft);
+}
+
+section#timetable td.unkown::before {
+    content: '\3f';
+}
+
+section#timetable td.unkown {
+    color: #a57214;
+    background-color: #f1bf61;
+    font-size: 1.1em;
+}
+
+section#timetable td.x::before {
+    content: '\f00d';
+}
+
+section#timetable td.x {
+    background-color: var(--clr-red-soft);
+}
+
+section#timetable table tbody td.timeTableUser {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    text-align: left;
+    min-width: 130px;
+    background-color: var(--clr-background-light);/*rgba(255, 255, 255, 0.2);*/
+}
+
+section#timetable .isStuck {
+    color: var(--clr-gray-20);
+}
+
+section#timetable .isStuck ~ tr{
+    padding: 0;
+}
+
+section#timetable table .day {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
 #topNav {
     background-color: var(--clr-primary);
     justify-content: center;
-    padding: 1rem .2rem;
-    color: var(--clr-gray-10);
+    padding: .75rem .1rem;
+    color: var(--clr-gray-7p5);
+    z-index: 1000;
 }
 
 #topNav a {
@@ -20,11 +132,7 @@ i {
 }
 
 #topNav a i {
-    font-size: 1.7em;
-}
-
-#topNav .col:last-child {
-    width: auto;
+    font-size: 1.45em;
 }
 
 .burger {
@@ -37,8 +145,9 @@ i {
 
 #botNav {
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
-    padding: .5em 0;
-    background-color: var(--clr-background);
+    padding: .5em 0 .2em 0;
+    background-color: var(--clr-background-botNav);
+    z-index: 1000;
 }
 
 #botNav .row,
@@ -67,7 +176,7 @@ i {
 
 #botNav .col:hover,
 .settings-card .row:hover {
-    background: var(--clr-gray-20) radial-gradient(circle, transparent 1%, var(--clr-background) 1%) center/15000%;
+    background: var(--clr-gray-20) radial-gradient(circle, transparent 1%, var(--clr-background-botNav) 1%) center/15000%;
 }
 
 #botNav .col:active,
@@ -95,7 +204,7 @@ i {
     height: var(--diameter);
     border-radius: 50%;
     background-color: rgb(211, 29, 29);
-    outline: 2px solid var(--clr-background);
+    outline: 2px solid var(--clr-background-botNav);
 }
 
 #ticketNavContainer {

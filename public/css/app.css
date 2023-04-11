@@ -10822,7 +10822,11 @@ textarea.form-control-lg {
 :root {
     --clr-primary: #1e2f34;
     --clr-secondary: #287ada;
-    --clr-background: #dddddd;
+
+    --clr-background: #192326;
+    --clr-background-light: #344e57;
+    --clr-background-dark: #11171a;
+
     --clr-black: #000;
     --clr-gray-90: #1a1a1a;
     --clr-gray-80: #333;
@@ -10837,6 +10841,14 @@ textarea.form-control-lg {
     --clr-gray-5: #f2f2f2;
     --clr-white: #fff;
 
+    --clr-green-soft: #67ab24;
+    --clr-yellow-soft: #ebc23b;
+    --clr-red-soft: #bc1a1a;
+
     --clr-brand: #ffb600;
+
+    --clr-background-botNav: #ddd;
+
+    --clr-section-h3: #5baabd;
 }
 
