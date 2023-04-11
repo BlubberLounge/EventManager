@@ -59,7 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     * Mockup Views
     * ============================== */
     Route::prefix('mockupV0')->group(function () {
-        Route::view('/home', 'mockup-V0.home.index')->name('mv0-index');
+        Route::get('/home', [HomeController::class, 'index'])->name('mv0-index');
         Route::view('/tickets', 'mockup-V0.ticket.index')->name('mv0-tickets');
         Route::view('/calendar', 'mockup-V0.calendar.index')->name('mv0-calendar');
         Route::view('/settings', 'mockup-V0.settings.index')->name('mv0-settings');

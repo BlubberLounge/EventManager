@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix
     .js('resources/js/app.js', 'public/js')         // Main js file
+    .js('resources/js/timetable.js', 'public/js')   // Main js file
     .css('resources/css/app.css', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')  // Bootstrap Styles
     .css('resources/css/auth.css', 'public/css')   // auth

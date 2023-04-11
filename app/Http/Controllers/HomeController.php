@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = [];
+        $data['acquaintances']['pending'] = Auth::user()->pendingAcquaintances;
+        $data['acquaintances']['accepted'] = Auth::user()->acceptedAcquaintances;
+
+        $data['timeTable']['users'] = $data['acquaintances']['accepted'];
+        $data['timeTable']['users'][] = Auth::user();
+
+        return view('mockup-V0.home.index', $data);
     }
 }

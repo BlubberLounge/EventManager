@@ -1,9 +1,9 @@
-<nav id="botNav" class="navbar position-fixed bottom-0 w-100">
-    <div class="container">
+<nav id="botNav" class="navbar position-fixed bottom-0 vw-100">
+    <div class="container" style="max-width: 700px">
         <div class="row">
             <div class="col">
                 <a href="{{ route('mv0-index') }}" class="{{ request()->routeIs('mv0-index.*') || request()->routeIs('mv0-index') ? 'active' : '' }}">
-                    <i class="fa-solid fa-house hasNotification"></i>
+                    <i class="fa-solid fa-house"></i>
                     Home
                 </a>
             </div>
