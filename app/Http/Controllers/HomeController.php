@@ -31,6 +31,6 @@ class HomeController extends Controller
         $data['timeTable']['users'] = $data['acquaintances']['accepted'];
         $data['timeTable']['users'][] = Auth::user();
 
-        return view('mockup-V0.home.index', $data);
+        return view('home.index', $data);
     }
 }

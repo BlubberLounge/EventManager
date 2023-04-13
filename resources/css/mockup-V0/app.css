@@ -209,7 +209,7 @@ section#timetable table .day {
     --clr-vert-lines: #649cae;
     content: '';
     position: absolute;
-    height: 35px;
+    height: 20px;
     top: 50%;
     margin-left: calc(var(--bs-gutter-x) * -0.5);
     transform: translateY(-50%);
