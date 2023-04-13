@@ -5,10 +5,12 @@
 
     <!-- Scripts -->
     @include('includes.head.script')
+    <script src="{{ mix('js/menu.js') }}" defer></script>
     @stack('scripts')   {{-- get all scripts that got pushed to the stack --}}
 
     <!-- Styles -->
     @include('includes.head.style')
+    <link href="{{ mix('css/top-nav.css') }}" rel="stylesheet">
     <link href="{{ mix('css/mockup-V0/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/mockup-V0/glide.core.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mockup-V0/glide.theme.min.css') }}">
@@ -17,13 +19,17 @@
 <body>
     <div id="app">
 
-        @include('mockup-V0.includes.top-nav')
+        @include('includes.top-nav')
 
         <main class="py-1">
             @yield('content')
         </main>
 
-        @include('mockup-V0.includes.bottom-nav')
+        @if(request()->routeIs('tickets') || request()->routeIs('tickets.*'))
+            @include('includes.ticket-nav')
+        @endif
+
+        @include('includes.bottom-nav')
     </div>
 </body>
 </html>

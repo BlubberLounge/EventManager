@@ -1,10 +1,10 @@
-@extends('mockup-V0.layouts.app_mobile')
+@extends('layouts.app_mobile')
 
 @push('scripts')
     <script src="{{ mix('js/timetable.js') }}" defer></script>
 @endpush
 
-@section('mockup-V0.content')
+@section('content')
 <div class="container-fluid">
 
     {{--

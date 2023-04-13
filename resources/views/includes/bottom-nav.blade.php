@@ -2,30 +2,30 @@
     <div class="container" style="max-width: 700px">
         <div class="row">
             <div class="col">
-                <a href="{{ route('mv0-index') }}" class="{{ request()->routeIs('mv0-index.*') || request()->routeIs('mv0-index') ? 'active' : '' }}">
+                <a href="{{ route('home') }}" @class(['active' => request()->routeIs('home') || request()->routeIs('home.*')])>
                     <i class="fa-solid fa-house"></i>
                     Home
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('mv0-tickets') }}" class="{{ request()->routeIs('mv0-tickets.*') || request()->routeIs('mv0-tickets') ? 'active' : '' }}">
+                <a href="{{ route('tickets') }}" @class(['active' => request()->routeIs('tickets') || request()->routeIs('tickets.*')])>
                     <i class="fa-solid fa-ticket hasNotification"></i>
                     Tickets
                 </a>
             </div>
             <div class="col" >
-                <a href="{{ route('mv0-tickets') }}" class="{{-- request()->routeIs('mv0-tickets.*')||request()->routeIs('mv0-tickets')?'active':'' --}}">
+                <a href="{{ route('host') }}" @class(['active' => request()->routeIs('host') || request()->routeIs('host.*')])>
                     <i class="fa-solid fa-users-viewfinder" style="font-size: 1.75rem;"></i>
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('mv0-calendar') }}" class="{{ request()->routeIs('mv0-calendar.*') || request()->routeIs('mv0-calendar') ? 'active' : '' }}">
+                <a href="{{ route('calendar') }}" @class(['active' => request()->routeIs('calendar') || request()->routeIs('calendar.*')])>
                     <i class="fa-solid fa-calendar-days"></i>
                     Calendar
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('mv0-settings') }}" class="{{ request()->routeIs('mv0-settings.*') || request()->routeIs('mv0-settings') ? 'active' : '' }}">
+                <a href="{{ route('settings') }}" @class(['active' => request()->routeIs('settings') || request()->routeIs('settings.*')])>
                     <i class="fa-solid fa-gear"></i>
                     Settings
                 </a>
