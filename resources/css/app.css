@@ -3,8 +3,13 @@
     --clr-secondary: #287ada;
 
     --clr-background: #192326;
+
     --clr-background-light: #344e57;
+    --clr-background-light-hover: #50717c;
+    --clr-background-light-active: var(--clr-background-light-hover);
+
     --clr-background-dark: #11171a;
+
 
     --clr-black: #000;
     --clr-gray-90: #1a1a1a;
@@ -34,4 +39,8 @@
     --clr-rand-profile-2: var(--clr-red-soft);
     --clr-rand-profile-3: var(--clr-brand);
     --clr-rand-profile-4: var(--clr-secondary);
+
+    --clr-topNav-icon: #588b9a;
+
+    --br-burger-menu: 4px;
 }

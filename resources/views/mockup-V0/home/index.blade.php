@@ -19,7 +19,7 @@
     <section id="welcome">
         <div class="d-flex align-items-center justify-content-evenly">
             <h2 class="d-inline-block p-0 m-0">Welcome {{ Auth::user()->lastname }}, {{ Auth::user()->firstname }} </h2>
-            <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" width="45px" />
+            <img src="{{ asset('img/dummyAvatar.png') }}" width="45px" />
         </div>
     </section>
 

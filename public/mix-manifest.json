@@ -1,7 +1,9 @@
 {
-    "/js/app.js": "/js/app.js?id=793f8021e7290e32f2be699479599dda",
+    "/js/app.js": "/js/app.js?id=a129cba01ad31a5cd2eea20f94c8baa2",
     "/js/timetable.js": "/js/timetable.js?id=6cd0a4c9a083678707a562c558b2383e",
-    "/css/app.css": "/css/app.css?id=0b9e20aabb9501648fe7dd801487d79c",
-    "/css/mockup-V0/app.css": "/css/mockup-V0/app.css?id=d060f9bafd8ea8bb7f908b0ebd1d3b10",
+    "/js/menu.js": "/js/menu.js?id=e04db79aabf06ccdd1f075647c8cb28c",
+    "/css/app.css": "/css/app.css?id=9a4ce7a7afd4dcf5eee0d9d208aea4be",
+    "/css/mockup-V0/app.css": "/css/mockup-V0/app.css?id=186055c9d6c716b3c93e392d9ce0d3dc",
+    "/css/top-nav.css": "/css/top-nav.css?id=9313adbc9148ca15258198c47206fdb3",
     "/css/auth.css": "/css/auth.css?id=c2677604bae65ac755cc0157cdfbd1a3"
 }

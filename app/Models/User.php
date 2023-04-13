@@ -73,7 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get all pending Acquaintances user
      */
-    public function pendingAcquaintances()
+    public function pendingAcquaintances(): BelongsToMany
     {
         return $this->acquaintancesReceived()->wherePivot('status', Status::PENDING);
     }

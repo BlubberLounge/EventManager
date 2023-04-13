@@ -4,7 +4,7 @@
 <div class="container p-0 py-3">
     <div class="profile-card">
         <h6 class="fw-bold mb-3"> Konto </h6>
-        <div class="d-flexjustify-content-centeralign-items-center"style="display:inline-block;background-color:var(clr-rand-profile-mt_rand(1,4) --}}); width:100px;height:100px;border-radius: 20px;">
+        <div class="d-flexjustify-content-centeralign-items-center" style="display:inline-block;background-color:var(clr-rand-profile-mt_rand(1,4) --}}); width:100px;height:100px;border-radius: 20px;">
             {{-- <img src="{{ Auth::user()->img == '/storage/avatar/avatar-dummy.png' ? asset('img/blubber2.svg') : asset(Auth::user()->img) }}" width="50px"> --}}
         </div>
         <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" /> {{-- https://github.com/laravolt/avatar --}}
@@ -63,14 +63,6 @@
             </div>
         </a>
     </div>
-
-        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-        </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
     </div>
 </div>
 @endsection
