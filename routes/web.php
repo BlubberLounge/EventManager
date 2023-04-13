@@ -27,6 +27,7 @@ if (App::environment('local')) {
 } else {
     Auth::routes(['verify' => true, 'register' => false]);
 }
+
 /*
  * email verification routes
  */
@@ -53,19 +54,28 @@ if (App::environment('local')) {
 Route::middleware(['auth', 'verified'])->group(function ()
 {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::view('/tickets', 'ticket.index')->name('tickets');
+    Route::view('/host', 'host.index')->name('host');
+    Route::view('/calendar', 'calendar.index')->name('calendar');
+    Route::view('/settings', 'settings.index')->name('settings');
 
+    Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
+    Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');
+    Route::view('/tickets/done', 'ticket.done')->name('tickets.done');
 
     /* ==============================
     * Mockup Views
     * ============================== */
+    /*
     Route::prefix('mockupV0')->group(function () {
         Route::get('/home', [HomeController::class, 'index'])->name('mv0-index');
-        Route::view('/tickets', 'mockup-V0.ticket.index')->name('mv0-tickets');
-        Route::view('/calendar', 'mockup-V0.calendar.index')->name('mv0-calendar');
-        Route::view('/settings', 'mockup-V0.settings.index')->name('mv0-settings');
+        Route::view('/tickets', 'ticket.index')->name('mv0-tickets');
+        Route::view('/calendar', 'calendar.index')->name('mv0-calendar');
+        Route::view('/settings', 'settings.index')->name('mv0-settings');
 
-        Route::view('/tickets/done', 'mockup-V0.ticket.done')->name('mv0-tickets.done');
-        Route::view('/tickets/open', 'mockup-V0.ticket.open')->name('mv0-tickets.open');
-        Route::view('/tickets/send', 'mockup-V0.ticket.send')->name('mv0-tickets.send');
+        Route::view('/tickets/done', 'ticket.done')->name('mv0-tickets.done');
+        Route::view('/tickets/open', 'ticket.open')->name('mv0-tickets.open');
+        Route::view('/tickets/send', 'ticket.send')->name('mv0-tickets.send');
     });
+    */
 });

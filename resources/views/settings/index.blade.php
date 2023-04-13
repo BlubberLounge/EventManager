@@ -1,6 +1,6 @@
-@extends('mockup-V0.layouts.app_mobile')
+@extends('layouts.app_mobile')
 
-@section('mockup-V0.content')
+@section('content')
 <div class="container p-0 py-3">
     <div class="profile-card">
         <h6 class="fw-bold mb-3"> Konto </h6>
