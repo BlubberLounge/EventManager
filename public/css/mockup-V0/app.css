@@ -118,23 +118,6 @@ section#timetable table .day {
     font-weight: 600;
 }
 
-#topNav {
-    background-color: var(--clr-primary);
-    justify-content: center;
-    padding: .75rem .1rem;
-    color: var(--clr-gray-7p5);
-    z-index: 1000;
-}
-
-#topNav a {
-    text-decoration: none;
-    color: inherit;
-}
-
-#topNav a i {
-    font-size: 1.45em;
-}
-
 .burger {
     width: 5px;
     height: 5px;
