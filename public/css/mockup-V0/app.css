@@ -268,52 +268,91 @@ section#timetable table .day {
     outline: 4px solid var(--clr-primary);
 }
 
-.profile-card,
-.settings-card {
-    position: relative;
-    padding: 1rem 1.5rem;
-}
-
-.settings-card {
-    font-size: 1.2rem;
-}
-
-.profile-card::after {
-    content: '';
-    position: absolute;
-    background-color: var(--clr-gray-70);
-    left: 0;
-    bottom: 0;
-    height: 7px;
-    width: 100vw;
-}
-
-.settings-card a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.settings-card .row {
-    padding: .65rem 0;
-}
-
-.settings-card .row {
-    position: relative;
-}
-
-.settings-card .row::after {
-    content: '';
-    position: absolute;
-    left: 45px;
-    bottom: 0;
-    height: 1px;
-    width: calc(100% - 30px);
-    background-color: var(--clr-gray-30);
-}
-
 @keyframes fadein {
     from { opacity: .2}
     to   { opacity: 1}
+}
+
+section#reliability,
+section#account {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.reliability-meter {
+    border-radius: 6px;
+    height: 20px;
+    background-color: var(--clr-gray-70);
+}
+
+.reliability-meter-progress {
+    height: 100%;
+    width: 40%;
+    background-color: orange;
+    border-radius: 6px 0 0 6px;
+}
+
+#reliability .fa-circle-question {
+    color: var(--clr-background-light-accent);
+}
+
+.reliability-stats {
+    padding: 1rem 0 0 0;
+}
+
+.reliability-stats span {
+    display: block;
+}
+
+.reliability-stats span:first-of-type {
+    color: var(--clr-gray-50);
+    font-weight: bold;
+}
+
+.reliability-stats span:nth-of-type(2) {
+    padding: 0 0 0 1rem;
+}
+
+#account .row {
+    margin: .3rem 0;
+    align-items: center;
+}
+
+#account .col {
+    margin: 0 1rem;
+    padding: .7rem 0 .4rem 0;
+}
+
+#account .row ~ .row .col {
+    border-top: 2px solid var(--clr-background-dark);
+}
+
+#account .col-1:first-of-type {
+    max-width: 50px;
+}
+
+#account i {
+    color: var(--clr-gray-30);
+    font-size: 1.25em;
+    margin-right: 1rem;
+}
+
+#account-settings .row {
+    margin: .3rem 0;
+    align-items: center;
+}
+
+#account-settings .col {
+    margin: 0 1rem;
+    padding: .5rem 0;
+}
+
+#account-settings a ~ a .col {
+    border-top: 2px solid var(--clr-background-dark);
+}
+
+#account-settings .col-1:first-of-type {
+    max-width: 50px;
 }
 
 /* ================================================================
