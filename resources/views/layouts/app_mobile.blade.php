@@ -21,7 +21,7 @@
 
         @include('includes.top-nav')
 
-        <main class="py-1">
+        <main class="pt-1">
             @yield('content')
         </main>
 

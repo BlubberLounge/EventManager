@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <section id="reliability">
-        <h3> Zuverlässigkeit </h3>
+        <h3 style="font-size: 1rem"> Zuverlässigkeit </h3>
         <div class="row justify-content-center align-items-center">
             <div class="col">
                 <div class="reliability-meter">
@@ -58,7 +58,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header border-0">
-                        <h1 class="modal-title fs-5" id="help-modal-reliability-feedback-label"> <small>Feedback</small> <br> <b>Hilfsanzeige</b> </h1>
+                        <h1 class="modal-title fs-5" id="help-modal-reliability-feedback-label"> <small>Feedback</small> <br> <b>Hilfsanzeige:</b> Zuverlässigkeit </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -126,7 +126,18 @@
 
     <section id="account-settings">
         <h3> Settings </h3>
-        <a href="">
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="col">
+                    <span> Privatsphäre und Sicherheit </span>
+                </div>
+            </div>
+        </a>
+        <hr />
+        <a href="#">
             <div class="row">
                 <div class="col-1">
                     <i class="fa-solid fa-bell"></i>
@@ -136,7 +147,8 @@
                 </div>
             </div>
         </a>
-        <a href="">
+        <hr />
+        <a href="#">
             <div class="row">
                 <div class="col-1">
                     <i class="fa-solid fa-desktop"></i>
@@ -146,7 +158,8 @@
                 </div>
             </div>
         </a>
-        <a href="">
+        <hr />
+        <a href="#">
             <div class="row">
                 <div class="col-1">
                     <i class="fa-solid fa-sliders"></i>
@@ -156,7 +169,8 @@
                 </div>
             </div>
         </a>
-        <a href="">
+        <hr />
+        <a href="#">
             <div class="row">
                 <div class="col-1">
                     <i class="fa-solid fa-globe"></i>
@@ -166,6 +180,33 @@
                 </div>
             </div>
         </a>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-comment-dots"></i>
+                </div>
+                <div class="col">
+                    <span> EventManager FAQ </span>
+                </div>
+            </div>
+        </a>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <div class="col">
+                    <span> Feedback </span>
+                </div>
+            </div>
+        </a>
     </section>
+
+    <div class="d-flex flex-column align-items-center pt-4 pb-3" style="background-color:var(--clr-background-dark);">
+        <p class="m-0 small" style="color:var(--clr-gray-60);">EventManager v{{ env('APP_VERSION', 'invalid') }} | Systemtime: {{ now()->format('H:i:s d.m.y ') }} </p>
+        <p class="m-0 small" style="color:var(--clr-gray-70);"><i class="fa-regular fa-copyright fa-xs"></i> EventManager {{ now()->year }}. Some Rights Reserverd.</p>
+    </div>
 </div>
 @endsection

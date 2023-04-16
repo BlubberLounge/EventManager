@@ -25,7 +25,7 @@ section h3 {
     color: var(--clr-section-h3);
     font-family: 'Montserrat';
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: .9rem;
 }
 
 .acquaintances-actions {
@@ -116,14 +116,6 @@ section#timetable .isStuck ~ tr{
 section#timetable table .day {
     font-size: 1.5em;
     font-weight: 600;
-}
-
-.burger {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: var(--clr-gray-7p5);
-    margin: 2px 0;
 }
 
 #botNav {
@@ -314,7 +306,7 @@ section#account {
 }
 
 #account .row {
-    margin: .3rem 0;
+    margin: .2rem 0;
     align-items: center;
 }
 
@@ -327,32 +319,61 @@ section#account {
     border-top: 2px solid var(--clr-background-dark);
 }
 
-#account .col-1:first-of-type {
+#account .col-1:first-of-type,
+#account-settings .col-1:first-of-type {
     max-width: 50px;
 }
 
 #account i {
-    color: var(--clr-gray-30);
+    color: var(--clr-gray-60);
     font-size: 1.25em;
     margin-right: 1rem;
 }
 
+#account-settings {
+    font-size: 1.1rem;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
 #account-settings .row {
-    margin: .3rem 0;
+    padding: .3rem 1rem;
     align-items: center;
 }
 
 #account-settings .col {
+    position: relative;
     margin: 0 1rem;
     padding: .5rem 0;
 }
 
+/* kinda ugly alignment
 #account-settings a ~ a .col {
     border-top: 2px solid var(--clr-background-dark);
 }
+*/
 
-#account-settings .col-1:first-of-type {
-    max-width: 50px;
+#account-settings hr {
+    border-top: 2px solid var(--clr-background-dark);
+    margin: 0 3rem;
+    opacity: 1;
+}
+
+#account-settings a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#account-settings .row:hover,
+#account-settings .row:active {
+    background-color: var(--clr-background-light);
+}
+
+#account-settings i {
+    font-size: 1.2rem;
+}
+
+#account-settings span {
+    padding-left: .5rem;
 }
 
 /* ================================================================

@@ -44,6 +44,14 @@
     transition: background 1s;
 }
 
+.burger {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--clr-gray-7p5);
+    margin: 2px 0;
+}
+
 .burger-menu-item-group ~ .burger-menu-item-group {
     border-top: 5px solid var(--clr-background);
 }
