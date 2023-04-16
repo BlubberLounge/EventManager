@@ -1,68 +1,212 @@
 @extends('layouts.app_mobile')
 
 @section('content')
-<div class="container p-0 py-3">
-    <div class="profile-card">
-        <h6 class="fw-bold mb-3"> Konto </h6>
-        <div class="d-flexjustify-content-centeralign-items-center" style="display:inline-block;background-color:var(clr-rand-profile-mt_rand(1,4) --}}); width:100px;height:100px;border-radius: 20px;">
-            {{-- <img src="{{ Auth::user()->img == '/storage/avatar/avatar-dummy.png' ? asset('img/blubber2.svg') : asset(Auth::user()->img) }}" width="50px"> --}}
+<div class="container-fluid">
+    <section id="reliability">
+        <h3 style="font-size: 1rem"> Zuverlässigkeit </h3>
+        <div class="row justify-content-center align-items-center">
+            <div class="col">
+                <div class="reliability-meter">
+                    <div class="reliability-meter-progress"></div>
+                </div>
+            </div>
+            <div class="col-1">
+                <i class="fa-regular fa-circle-question" data-bs-toggle="modal" data-bs-target="#help-modal-reliability"></i>
+            </div>
         </div>
-        <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" /> {{-- https://github.com/laravolt/avatar --}}
-        <ul>
-            <li> {{ '@'.Auth::user()->name }} </li>
-            <li>
-                <span> {{ Auth::user()->firstname }} </span>
-                <span> {{ Auth::user()->lastname }} </span>
-            </li>
-            <li> {{ Auth::user()->email }} </li>
-            <li> {{ Auth::user()->telefon_mobil }} </li>
-            <li> {{ Auth::user()->dob }} </li>
-        </ul>
-    </div>
 
-    <div class="settings-card">
-        <h6 class="fw-bold mb-3"> Einstellungen </h5>
-            <a href="#" class="row">
-            <div class="col-1">
-                <i class="fa-solid fa-bell"></i>
+        <div class="row reliability-stats justify-content-around">
+            <div class="col">
+                <span> pünktlich </span>
+                <span class="d-"> 000007 </span>
             </div>
             <div class="col">
-                <span> Benachrichtigungen </span>
-            </div>
-        </a>
-        <a href="#" class="row">
-            <div class="col-1">
-                <i class="fa-solid fa-desktop"></i>
+                <span> zu spät </span>
+                <span> 000007 </span>
             </div>
             <div class="col">
-                Geräte
+                <span> nicht erschienen </span>
+                <span> 000007 </span>
             </div>
-        </a>
-        <a href="#" class="row">
-            <div class="col-1">
-                <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="modal fade" id="help-modal-reliability" tabindex="-1" aria-labelledby="help-modal-reliability-label" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h1 class="modal-title fs-5" id="help-modal-reliability-label"> <small>Hilfe</small> <br> <b>Zuverlässigkeitsanzeige</b> </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2> Die Zuverlässigkeitsanzeige </h2>
+                        <p> Zeigt an ob du ein absoluter Wixxer bist oder eben nicht :)</p>
+                        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <span class="pe-2"> Hilfreich? </span>
+                        <button type="button" class="btn btn-success px-3 py-2" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-thumbs-up fa-xl"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger px-3 py-2" data-bs-target="#help-modal-reliability-feedback" data-bs-toggle="modal">
+                            <i class="fa-solid fa-thumbs-down fa-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="help-modal-reliability-feedback" tabindex="-1" aria-labelledby="help-modal-reliability-feedback-label" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h1 class="modal-title fs-5" id="help-modal-reliability-feedback-label"> <small>Feedback</small> <br> <b>Hilfsanzeige:</b> Zuverlässigkeit </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="message-text" class="col-form-label">Nachricht:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Abschicken </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{--
+    <section id="profile-badge">
+        <h3> Errungenschaften </h3>
+    </section>
+    --}}
+
+    <section id="account">
+        <h3> Account </h3>
+        <div class="row">
+            <div class="col-1 d-flex justiy-content-center">
+                <i class="fa-solid fa-phone"></i>
             </div>
             <div class="col">
-                <span> Benachrichtigungen </span>
+                <span>{{ Auth::user()->telefon_mobil }}</span>
             </div>
-        </a>
-        <a href="#" class="row">
-            <div class="col-1">
-                <i class="fa-solid fa-sliders"></i>
-            </div>
-            <div class="col">
-                <span> Presets </span>
-            </div>
-        </a>
-        <a href="#" class="row">
-            <div class="col-1">
-                <i class="fa-solid fa-globe"></i>
+        </div>
+        <div class="row">
+            <div class="col-1 d-flex justiy-content-center">
+                <i class="fa-solid fa-cake-candles"></i>
             </div>
             <div class="col">
-                <span> Sprache </span>
+                <span>{{ date('d. F Y', strtotime(Auth::user()->dob)) }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 d-flex justiy-content-center">
+                <i class="fa-regular fa-id-card"></i>
+            </div>
+            <div class="col">
+                <span>Alter: {{ \Illuminate\Support\Carbon::parse(Auth::user()->dob)->age }} </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 d-flex justiy-content-center">
+                <i class="fa-solid fa-at"></i>
+            </div>
+            <div class="col">
+                <span>{{ Auth::user()->email }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 d-flex justiy-content-center">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="col">
+                <span>{{ Auth::user()->telefon_mobil }}</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="account-settings">
+        <h3> Settings </h3>
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="col">
+                    <span> Privatsphäre und Sicherheit </span>
+                </div>
             </div>
         </a>
-    </div>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div class="col">
+                    <span> Benachrichtigungen </span>
+                </div>
+            </div>
+        </a>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-desktop"></i>
+                </div>
+                <div class="col">
+                    <span> Geräte </span>
+                </div>
+            </div>
+        </a>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+                <div class="col">
+                    <span> Presets </span>
+                </div>
+            </div>
+        </a>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="col">
+                    <span> Sprache </span>
+                </div>
+            </div>
+        </a>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-comment-dots"></i>
+                </div>
+                <div class="col">
+                    <span> EventManager FAQ </span>
+                </div>
+            </div>
+        </a>
+        <hr />
+        <a href="#">
+            <div class="row">
+                <div class="col-1">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <div class="col">
+                    <span> Feedback </span>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <div class="d-flex flex-column align-items-center pt-4 pb-3" style="background-color:var(--clr-background-dark);">
+        <p class="m-0 small" style="color:var(--clr-gray-60);">EventManager v{{ env('APP_VERSION', 'invalid') }} | Systemtime: {{ now()->format('H:i:s d.m.y ') }} </p>
+        <p class="m-0 small" style="color:var(--clr-gray-70);"><i class="fa-regular fa-copyright fa-xs"></i> EventManager {{ now()->year }}. Some Rights Reserverd.</p>
     </div>
 </div>
 @endsection

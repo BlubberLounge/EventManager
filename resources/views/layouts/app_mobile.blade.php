@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
 <head>
     @include('includes.head.meta')
 
@@ -21,7 +21,7 @@
 
         @include('includes.top-nav')
 
-        <main class="py-1">
+        <main class="pt-1">
             @yield('content')
         </main>
 

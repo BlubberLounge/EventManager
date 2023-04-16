@@ -6,7 +6,14 @@
                     <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
                 </a>
             </div>
-            <div class="col-2 col-md-1 d-flex justify-content-center">
+            @if(request()->routeIs('settings'))
+                <div class="col-1 d-flex justify-content-center">
+                    <a href="#">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                </div>
+            @endif
+            <div class="col-2 d-flex justify-content-center">
                 <a href="#" class="d-flex align-items-center">
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
@@ -19,6 +26,24 @@
                 </div>
             </div>
         </div>
+        @if(request()->routeIs('settings'))
+            <div class="row pt-4 pb-1">
+                <div style="flex: 0 0 auto;max-width: 70px;">
+                    @if(Auth::user()->img)
+                        <img src="{{ Auth::user()->img }}" width="50px" style="border-radius:50%">
+                    @else
+                        {!! Avatar::create(Auth::user()->name)->setDimension(50)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
+                    @endif
+                </div>
+                <div class="col">
+                    <span class="h4"> {{ Auth::user()->firstname .' '. Auth::user()->lastname }} </span>
+                    <span class="d-block m-0 p-0" style="color: var(--clr-gray-50);"> {{ '@'.Auth::user()->name }} </span>
+                </div>
+            </div>
+            <div class="update-profileimage">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+        @endif
     </div>
 
     <div id="burger-menu" class="down">
