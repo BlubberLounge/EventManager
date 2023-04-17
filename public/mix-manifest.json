@@ -1,7 +1,10 @@
 {
-    "/js/app.js": "/js/app.js?id=fa7ae4a6fcc75a4c2c4a782004853d64",
+    "/js/app.js": "/js/app.js?id=05c0c3522fbb46c01cf62ccfc81c0933",
+    "/js/utils.js": "/js/utils.js?id=43260ba002e92b41c9ce5f81f94e82b1",
+    "/js/menu.js": "/js/menu.js?id=e04db79aabf06ccdd1f075647c8cb28c",
+    "/js/ticket.js": "/js/ticket.js?id=6ddf0c351fe212397a671ed60de777ec",
     "/js/timetable.js": "/js/timetable.js?id=6cd0a4c9a083678707a562c558b2383e",
-    "/js/menu.js": "/js/menu.js?id=4f692caa4af2c8fe891180b3a6ce2ac9",
+    "/js/settings.js": "/js/settings.js?id=343cf99b427e53c5a9071fc4fb1a4d3e",
     "/css/app.css": "/css/app.css?id=9390dee6c2f094110ef28b63d8e8e949",
     "/css/mockup-V0/app.css": "/css/mockup-V0/app.css?id=958bdc72e25f29e1f673dd9fb3db36f7",
     "/css/top-nav.css": "/css/top-nav.css?id=a1bcf3e5a9e784a8a4fe9c118985bb0b",

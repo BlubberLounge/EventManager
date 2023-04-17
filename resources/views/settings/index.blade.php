@@ -1,5 +1,9 @@
 @extends('layouts.app_mobile')
 
+@push('scripts')
+    <script src="{{ mix('js/settings.js') }}" defer></script>
+@endpush
+
 @section('content')
 <div class="container-fluid">
     <section id="reliability">
