@@ -28,7 +28,6 @@ $(function() {
 
     window.onscroll = function () {
         if(CONFIG.maxScroll > getYPos()) {
-            console.log(getYPos());
             let p = map(1, CONFIG.maxScroll, getYPos());
             CONFIG.el.css('left', lerp(CONFIG.endPosX, CONFIG.startPosX, p));
             CONFIG.el.css('top', lerp(CONFIG.endPosY, CONFIG.startPosY, p));
