@@ -1,5 +1,6 @@
 #topNav {
-    position: relative;
+    position: sticky;
+    top: 0;
     background-color: var(--clr-primary);
     justify-content: center;
     padding: .75rem .1rem;
@@ -21,9 +22,15 @@
     padding: .2rem 1rem;
     font-size: 1.45rem;
     background-color: var(--clr-section-h3);
-    border-radius: 5px;
-    right: calc(50vw - 42%);
+    border-radius: 4px;
+    right: 40px;
     bottom: -20px;
+    transform: scale(1);
+    transition: all 280ms ease-in-out;
+}
+
+.fa-qrcode {
+    transition: all 150ms ease-in-out;
 }
 
 #burger-menu {
@@ -128,6 +135,22 @@
         transform: translate3d(0, 0, 0);
     }
 }
+
+@keyframes custom_flipOutX {
+    from {
+      transform: perspective(400px);
+    }
+
+    30% {
+      transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      opacity: 1;
+    }
+
+    to {
+      transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      opacity: 0;
+    }
+  }
 
 .burger-menu-item:hover {
     background-color: var(--clr-background-light-hover);
