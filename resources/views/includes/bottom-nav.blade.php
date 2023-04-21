@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('settings') }}" @class(['active' => request()->routeIs('settings') || request()->routeIs('settings.*')])>
+                <a href="{{ route('user') }}" @class(['active' => request()->routeIs('user') || request()->routeIs('user.*')])>
                     <i class="fa-solid fa-gear"></i>
                     Settings
                 </a>

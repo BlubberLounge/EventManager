@@ -14,37 +14,48 @@ $(function() {
       startPosY: $('#moveMe2').offset().top,
       startFontSize: toRem($('#moveMe').css('font-size')),
       endPosX: 25, // px
-      endPosY: 64, // px
+      endPosY: 70, // px
       endFontSize: 1.2, // rem
-      maxScroll: 80 // px
+      maxScroll: $('.scrollBox').height() // px
     }
 
     init();
 
     window.onscroll = function () {
-        if(CONFIG.maxScroll > getYPos()) {
-            let p = map(1, CONFIG.maxScroll, getYPos());
-            CONFIG.el.css('left', lerp(CONFIG.endPosX, CONFIG.startPosX, p));
-            CONFIG.el.css('top', lerp(CONFIG.endPosY, CONFIG.startPosY, p));
-            //CONFIG.el.css('font-size', lerp(CONFIG.endFontSize, CONFIG.startFontSize, p)+'rem');
-            $('#moveMe img').css('width', lerp(45, 30, p));
-            $('#topNav').css('padding-bottom', lerp(5, .8, p) + 'rem');
-            $('#navBrand').css('width', lerp(75, 60, p));
-
-            $('.update-profileimage').css('transform', 'scale('+ (lerp(1, 0, p) > .35 ? 1 : 0) +')');
-            $('.fa-qrcode').css('transform', lerp(1, 0, p) > .75 ? 'perspective(400px)' : 'perspective(400px) rotate3d(1, 0, 0, 90deg)');
-        }
+        updateNavBar();
     };
 
     function init() {
         CONFIG.el.css('left', CONFIG.endPosX);
         CONFIG.el.css('top', CONFIG.endPosY);
-        $('#moveMe img').css('width', '45');
-        $('#topNav').css('padding-bottom', '5rem');
+    }
+
+    function updateNavBar() {
+        if(CONFIG.maxScroll <= getYPos()) {
+            CONFIG.el.css('left', CONFIG.startPosX);
+            CONFIG.el.css('top', CONFIG.startPosY);
+            //CONFIG.el.css('font-size', lerp(CONFIG.endFontSize, CONFIG.startFontSize, p)+'rem');
+            $('#moveMe img').css('width', 30);
+            $('#navBrand').css('width', 60);
+
+            $('.update-profileimage').css('transform', 'scale(0)');
+            $('.fa-qrcode').css('transform', 'perspective(400px) rotate3d(1, 0, 0, 90deg)');
+            return;
+        }
+
+        let p = map(1, CONFIG.maxScroll, getYPos());
+        CONFIG.el.css('left', lerp(CONFIG.endPosX, CONFIG.startPosX, p));
+        CONFIG.el.css('top', lerp(CONFIG.endPosY, CONFIG.startPosY, p));
+        //CONFIG.el.css('font-size', lerp(CONFIG.endFontSize, CONFIG.startFontSize, p)+'rem');
+        $('#moveMe img').css('width', lerp(45, 30, p));
+        $('#navBrand').css('width', lerp(75, 60, p));
+
+        $('.update-profileimage').css('transform', 'scale('+ (lerp(1, 0, p) > .35 ? 1 : 0) +')');
+        $('.fa-qrcode').css('transform', lerp(1, 0, p) > .75 ? 'perspective(400px)' : 'perspective(400px) rotate3d(1, 0, 0, 90deg)');
     }
 
     function getYPos(){
-        return document.documentElement.scrollTop || document.body.scrollTop;
+        return window.scrollY || window.pageYOffset;
     }
 
     function lerp(a, b, p) {

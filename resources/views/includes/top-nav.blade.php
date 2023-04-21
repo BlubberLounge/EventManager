@@ -1,17 +1,17 @@
 <nav id="topNav" class="navbar">
     <div class="container" style="max-width: 1200px">
-        <div @class([ 'col-auto' => request()->routeIs('settings'), 'col' => !request()->routeIs('settings') ])>
+        <div @class([ 'col-auto' => request()->routeIs('user'), 'col' => !request()->routeIs('user') ])>
             <a class="navbar-brand m-0" href="{{ url('/') }}">
                 <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
             </a>
         </div>
-        @if(request()->routeIs('settings'))
-            <div id="moveMe" class="col d-flex align-items-center ps-2" style="font-size:.75rem;">
+        @if(request()->routeIs('user'))
+            <div id="moveMe" class="col d-flex align-items-center ps-2" style="font-size:.8rem;">
                 <div class="me-2">
                     @if(Auth::user()->img)
-                        <img src="{{ Auth::user()->img }}" width="30px" style="border-radius:50%">
+                        <img src="{{ Auth::user()->img }}" width="45px" style="border-radius:50%">
                     @else
-                        {!! Avatar::create(Auth::user()->name)->setDimension(50)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
+                        {!! Avatar::create(Auth::user()->name)->setDimension(45)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
                     @endif
                 </div>
                 <div style="line-height: 1">
@@ -24,16 +24,13 @@
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
             </div>
-            <div class="col-1 d-flex justify-content-center">
-                <a href="#">
+            <div class="col-1 d-flex justify-content-center ">
+                <a href="#" class="d-flex align-items-center">
                     <i class="fa-solid fa-pencil"></i>
                 </a>
-                <div class="update-profileimage">
-                    <i class="fa-solid fa-camera"></i>
-                </div>
             </div>
         @endif
-        @if(!request()->routeIs('settings'))
+        @if(!request()->routeIs('user'))
             <div class="col-1 d-flex justify-content-center">
                 <a href="#" class="d-flex align-items-center">
                     <i class="fa-solid fa-qrcode"></i>
@@ -83,3 +80,11 @@
         </div>
     </div>
 </nav>
+
+<div class="scrollBox position-relative">
+    <div class="col-1 d-flex justify-content-center">
+        <div class="update-profileimage">
+            <i class="fa-solid fa-camera"></i>
+        </div>
+    </div>
+</div>
