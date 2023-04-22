@@ -1,5 +1,9 @@
 @extends('layouts.app_mobile')
 
+@push('scripts')
+    <script src="{{ mix('js/settings.js') }}" defer></script>
+@endpush
+
 @section('content')
 <div class="container-fluid">
     <section id="reliability">
@@ -87,7 +91,7 @@
                 <i class="fa-solid fa-phone"></i>
             </div>
             <div class="col">
-                <span>{{ Auth::user()->telefon_mobil }}</span>
+                <span>{{ $user->telefon_mobil }}</span>
             </div>
         </div>
         <div class="row">
@@ -95,7 +99,7 @@
                 <i class="fa-solid fa-cake-candles"></i>
             </div>
             <div class="col">
-                <span>{{ date('d. F Y', strtotime(Auth::user()->dob)) }}</span>
+                <span>{{ date('d. F Y', strtotime($user->dob)) }}</span>
             </div>
         </div>
         <div class="row">
@@ -103,7 +107,7 @@
                 <i class="fa-regular fa-id-card"></i>
             </div>
             <div class="col">
-                <span>Alter: {{ \Illuminate\Support\Carbon::parse(Auth::user()->dob)->age }} </span>
+                <span>Alter: {{ \Illuminate\Support\Carbon::parse($user->dob)->age }} </span>
             </div>
         </div>
         <div class="row">
@@ -111,7 +115,7 @@
                 <i class="fa-solid fa-at"></i>
             </div>
             <div class="col">
-                <span>{{ Auth::user()->email }}</span>
+                <span>{{ $user->email }}</span>
             </div>
         </div>
         <div class="row">
@@ -119,7 +123,7 @@
                 <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="col">
-                <span>{{ Auth::user()->telefon_mobil }}</span>
+                <span>{{ $user->telefon_mobil }}</span>
             </div>
         </div>
     </section>

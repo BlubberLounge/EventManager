@@ -1,4 +1,4 @@
-<nav id="botNav" class="navbar position-fixed bottom-0 vw-100">
+<nav id="botNav" class="navbar">
     <div class="container" style="max-width: 700px">
         <div class="row">
             <div class="col">
@@ -13,9 +13,12 @@
                     Tickets
                 </a>
             </div>
-            <div class="col" >
+            <div class="col-3" >
                 <a href="{{ route('host') }}" @class(['active' => request()->routeIs('host') || request()->routeIs('host.*')])>
-                    <i class="fa-solid fa-users-viewfinder" style="font-size: 1.75rem;"></i>
+                    <i class="fa-solid fa-users-rectangle" style="font-size: 1.5rem"></i>
+                    {{-- <i class="fa-solid fa-people-line" style="font-size: 1.75rem;"></i> --}}
+                    {{-- <i class="fa-solid fa-users-between-lines" style="font-size: 1.75rem;"></i> --}}
+                    Events
                 </a>
             </div>
             <div class="col">
@@ -25,9 +28,9 @@
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('settings') }}" @class(['active' => request()->routeIs('settings') || request()->routeIs('settings.*')])>
-                    <i class="fa-solid fa-gear"></i>
-                    Settings
+                <a href="{{ route('user.show') }}" @class(['active' => request()->routeIs('user.*')])>
+                    <i class="fa-solid fa-user"></i>
+                    Profile
                 </a>
             </div>
         </div>

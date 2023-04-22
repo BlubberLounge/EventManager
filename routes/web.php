@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::view('/tickets', 'ticket.index')->name('tickets');
     Route::view('/host', 'host.index')->name('host');
     Route::view('/calendar', 'calendar.index')->name('calendar');
-    Route::view('/settings', 'settings.index')->name('settings');
+    Route::singleton('user', UserController::class);
 
     Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
     Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');

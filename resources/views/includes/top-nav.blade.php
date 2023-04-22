@@ -1,49 +1,61 @@
 <nav id="topNav" class="navbar">
     <div class="container" style="max-width: 1200px">
-        <div class="row w-100 justify-content-between align-items-center">
-            <div class="col">
-                <a class="navbar-brand" href="{{ url('/') }}">
+        <div @class([ 'col-auto' => request()->routeIs('user.show') || request()->routeIs('user.edit'),
+                      'col' => !request()->routeIs('user.show') && !request()->routeIs('user.edit')])>
+            @if(request()->routeIs('user.edit'))
+                <a href="{{ url()->previous() }}" class="">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+            @else
+                <a class="navbar-brand m-0" href="{{ url('/') }}">
                     <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
                 </a>
-            </div>
-            @if(request()->routeIs('settings'))
-                <div class="col-1 d-flex justify-content-center">
-                    <a href="#">
-                        <i class="fa-solid fa-pencil"></i>
-                    </a>
-                </div>
             @endif
-            <div class="col-2 d-flex justify-content-center">
+        </div>
+        @if(request()->routeIs('user.edit'))
+            <div class="col ps-4">
+                <span style="font-size:1.25rem;font-weight: bold;"> Edit Profile </span>
+            </div>
+        @endif
+        @if(request()->routeIs('user.show'))
+            <div id="moveMe" class="col d-flex align-items-center ps-2" style="font-size:.8rem;">
+                <div class="me-2">
+                    @if(Auth::user()->img)
+                        <img src="{{ Auth::user()->img }}" width="45px" style="border-radius:50%">
+                    @else
+                        {!! Avatar::create(Auth::user()->name)->setDimension(45)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
+                    @endif
+                </div>
+                <div style="line-height: 1">
+                    <span class="h4 m-0"> {{ Auth::user()->firstname .' '. Auth::user()->lastname }} </span>
+                    <span class="d-block m-0 p-0" style="color: var(--clr-gray-50);"> {{ '@'.Auth::user()->name }} </span>
+                </div>
+            </div>
+            <div class="col-1">
+                <a href="#">
+                    <i class="fa-solid fa-qrcode"></i>
+                </a>
+            </div>
+            <div class="col-1">
+                <a href="{{ route('user.edit') }}">
+                    <i class="fa-solid fa-pencil"></i>
+                </a>
+            </div>
+        @endif
+        @if(!request()->routeIs('user.show'))
+            <div class="col-1 d-flex align-items-center">
                 <a href="#" class="d-flex align-items-center">
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
             </div>
-            <div class="col-1 d-flex justify-content-center" onclick="$('#burger-menu').toggle()">
-                <div class="burger-menu-toggler" style="cursor: pointer;padding:.1rem .5rem;">
-                    <div class="burger"></div>
-                    <div class="burger"></div>
-                    <div class="burger"></div>
-                </div>
+        @endif
+        <div class="col-1 d-flex justify-content-center" onclick="$('#burger-menu').toggle()">
+            <div class="burger-menu-toggler" style="cursor: pointer;padding:.1rem .5rem;">
+                <div class="burger"></div>
+                <div class="burger"></div>
+                <div class="burger"></div>
             </div>
         </div>
-        @if(request()->routeIs('settings'))
-            <div class="row pt-4 pb-1">
-                <div style="flex: 0 0 auto;max-width: 70px;">
-                    @if(Auth::user()->img)
-                        <img src="{{ Auth::user()->img }}" width="50px" style="border-radius:50%">
-                    @else
-                        {!! Avatar::create(Auth::user()->name)->setDimension(50)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
-                    @endif
-                </div>
-                <div class="col">
-                    <span class="h4"> {{ Auth::user()->firstname .' '. Auth::user()->lastname }} </span>
-                    <span class="d-block m-0 p-0" style="color: var(--clr-gray-50);"> {{ '@'.Auth::user()->name }} </span>
-                </div>
-            </div>
-            <div class="update-profileimage">
-                <i class="fa-solid fa-camera"></i>
-            </div>
-        @endif
     </div>
 
     <div id="burger-menu" class="down">
@@ -80,3 +92,12 @@
         </div>
     </div>
 </nav>
+@if(request()->routeIs('user.show'))
+    <div class="scrollBox position-relative">
+        <div class="col-1 d-flex justify-content-center">
+            <div class="update-profileimage">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+        </div>
+    </div>
+@endif

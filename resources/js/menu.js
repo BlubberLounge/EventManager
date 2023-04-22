@@ -9,6 +9,4 @@ $(function() {
     {
         $('#burger-menu').hide();
     });
-
-
 });

@@ -1,9 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=a129cba01ad31a5cd2eea20f94c8baa2",
+    "/js/app.js": "/js/app.js?id=05c0c3522fbb46c01cf62ccfc81c0933",
+    "/js/utils.js": "/js/utils.js?id=43260ba002e92b41c9ce5f81f94e82b1",
+    "/js/menu.js": "/js/menu.js?id=e04db79aabf06ccdd1f075647c8cb28c",
+    "/js/ticket.js": "/js/ticket.js?id=6ddf0c351fe212397a671ed60de777ec",
     "/js/timetable.js": "/js/timetable.js?id=6cd0a4c9a083678707a562c558b2383e",
-    "/js/menu.js": "/js/menu.js?id=db5ceec4fd9471d06a823339510efce7",
-    "/css/app.css": "/css/app.css?id=9390dee6c2f094110ef28b63d8e8e949",
-    "/css/mockup-V0/app.css": "/css/mockup-V0/app.css?id=958bdc72e25f29e1f673dd9fb3db36f7",
-    "/css/top-nav.css": "/css/top-nav.css?id=788cc410ad29ff4338ac9e297e37b97c",
+    "/js/settings.js": "/js/settings.js?id=061b7cde9cdefe7baf4933d696a28c12",
+    "/js/user-edit.js": "/js/user-edit.js?id=713a01c8fd64344d656420f0c6ae28ad",
+    "/css/app.css": "/css/app.css?id=382ff153faff46e3744bd1417d9f7df9",
+    "/css/mockup-V0/app.css": "/css/mockup-V0/app.css?id=95e25bfa592ebeeb13fcdce42c359c3d",
+    "/css/top-nav.css": "/css/top-nav.css?id=4c97047b8d508bb75658887dc4971f24",
     "/css/auth.css": "/css/auth.css?id=c2677604bae65ac755cc0157cdfbd1a3"
 }

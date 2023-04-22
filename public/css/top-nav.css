@@ -1,10 +1,12 @@
 #topNav {
     position: relative;
+    top: 0;
+    width: 100%;
     background-color: var(--clr-primary);
     justify-content: center;
     padding: .75rem .1rem;
     color: var(--clr-gray-7p5);
-    z-index: 1000;
+    z-index: 9000;
 }
 
 #topNav a {
@@ -12,7 +14,7 @@
     color: inherit;
 }
 
-#topNav .container a i {
+#topNav .container a {
     font-size: 1.45em;
 }
 
@@ -21,14 +23,20 @@
     padding: .2rem 1rem;
     font-size: 1.45rem;
     background-color: var(--clr-section-h3);
-    border-radius: 5px;
-    right: calc(50vw - 42%);
+    border-radius: 4px;
+    right: 40px;
     bottom: -20px;
+    transform: scale(1);
+    transition: all 280ms ease-in-out;
+    z-index: 1001;
+}
+
+.fa-qrcode {
+    transition: all 150ms ease-in-out;
 }
 
 #burger-menu {
     display: none;
-    z-index: 1001;
     position: absolute;
     top: 3px;
     right: 5px;
@@ -129,6 +137,22 @@
     }
 }
 
+@keyframes custom_flipOutX {
+    from {
+      transform: perspective(400px);
+    }
+
+    30% {
+      transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      opacity: 1;
+    }
+
+    to {
+      transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      opacity: 0;
+    }
+  }
+
 .burger-menu-item:hover {
     background-color: var(--clr-background-light-hover);
 }
@@ -165,5 +189,11 @@
     100% {
       transform: scaleY(1);
     }
+}
+
+.scrollBox {
+    background-color: var(--clr-primary);
+    height: 90px;
+    margin-top: 50px; /*height + topnavheight*/
 }
 
