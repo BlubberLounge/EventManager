@@ -20,92 +20,42 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(User::class, 'user');
+        // $this->authorizeResource(User::class, 'user');
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display the resource.
      */
-    public function index()
+    public function show()
     {
         $data['user'] = Auth::user();
-
         return view('user.index', $data);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreUserRequest  $request
-     * @return \Illuminate\Http\Response
+     * Show the form for editing the resource.
      */
-    public function store(StoreUserRequest $request)
+    public function edit()
     {
-        /*
-        $u = new User;
-        $u->name = $request->name;
-        $u->firstname = $request->firstname;
-        $u->lastname = $request->lastname;
-        $u->email = $request->email;
-        $u->password = Hash::make($request->password);
-        $u->role_id = $request->role;
-
-        $u->save();
-
-        return redirect()->route('user.index')
-            ->with('success','User has been created successfully');
-        */
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        /*
-        return view('user.show', $user);
-        */
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        $data['user'] = $user;
-        $data['roles'] = Role::orderBy('id','desc')->get();
-
+        $data['user'] = Auth::user();
         return view('user.edit', $data);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * Update the resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request)
     {
-        $u = User::find($user->id);
-        $u->name = $request->name;
-        $u->firstname = $request->firstname;
-        $u->lastname = $request->lastname;
-        $u->email = $request->email;
-        $u->password = $request->password ? Hash::make($request->password) : $user->password;
-        $u->role_id = $request->role;
+        $u = Auth::user();
+        $u->name = $request->name ?? $u->name;
+        $u->firstname = $request->firstname ?? $u->firstname;
+        $u->lastname = $request->lastname ?? $u->firstname;
+        $u->email = $request->email ?? $u->email;
+        $u->password = $request->password ? Hash::make($request->password) : $u->password;
 
         $u->save();
 
-        return redirect()->route('user.index')
+        return redirect()->route('user.show', ['user' => Auth::user()])
             ->with('success','User has been updated successfully');
     }
 }

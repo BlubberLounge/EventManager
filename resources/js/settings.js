@@ -7,6 +7,7 @@
 $(function() {
     let e2 = $('#moveMe').clone().attr('id', 'moveMe2').css('opacity', 0).insertAfter("#moveMe");
     $('#moveMe').css('position', 'absolute');
+    $('#topNav').css('position', 'fixed');
 
     const CONFIG = {
       el: $('#moveMe'),

@@ -18,6 +18,7 @@ mix
     .js('resources/js/ticket.js', 'public/js')          // Ticket js file
     .js('resources/js/timetable.js', 'public/js')       // Timetable js file
     .js('resources/js/settings.js', 'public/js')        // Top navigation js file
+    .js('resources/js/user-edit.js', 'public/js')        // Top navigation js file
     // Styles
     .css('resources/css/app.css', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')      // Bootstrap Styles

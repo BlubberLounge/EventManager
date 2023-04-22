@@ -1,33 +1,3 @@
-body {
-    color: var(--clr-gray-7p5);
-    background-color: var(--clr-background);
-    margin-bottom: 50px;
-    -webkit-font-smoothing: antialiased;
-}
-
-i {
-    position: relative;
-}
-
-main .container-fluid {
-    padding: 0;
-}
-
-section {
-    padding: 2rem 1rem;
-}
-
-section ~ section {
-    border-top: 10px solid var(--clr-background-dark);
-}
-
-section h3 {
-    color: var(--clr-section-h3);
-    font-family: 'Montserrat';
-    font-weight: 900;
-    font-size: .9rem;
-}
-
 .acquaintances-actions {
     margin-left: auto;
 }
@@ -119,8 +89,10 @@ section#timetable table .day {
 }
 
 #botNav {
+    position: fixed;
+    bottom: 0;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
-    padding: .5em 0 .2em 0;
+    padding: .6em 0 .3em 0;
     background-color: var(--clr-background-botNav);
     z-index: 1000;
 }
@@ -134,13 +106,15 @@ section#timetable table .day {
 }
 
 #botNav a {
-    font-size: .6rem;
-    color: var(--clr-gray-70);
+    font-size: .65rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    color: var(--clr-gray-60);
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 #botNav .col,

@@ -1,11 +1,23 @@
 <nav id="topNav" class="navbar">
     <div class="container" style="max-width: 1200px">
-        <div @class([ 'col-auto' => request()->routeIs('user'), 'col' => !request()->routeIs('user') ])>
-            <a class="navbar-brand m-0" href="{{ url('/') }}">
-                <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
-            </a>
+        <div @class([ 'col-auto' => request()->routeIs('user.show') || request()->routeIs('user.edit'),
+                      'col' => !request()->routeIs('user.show') && !request()->routeIs('user.edit')])>
+            @if(request()->routeIs('user.edit'))
+                <a href="{{ url()->previous() }}" class="">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+            @else
+                <a class="navbar-brand m-0" href="{{ url('/') }}">
+                    <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
+                </a>
+            @endif
         </div>
-        @if(request()->routeIs('user'))
+        @if(request()->routeIs('user.edit'))
+            <div class="col ps-4">
+                <span style="font-size:1.25rem;font-weight: bold;"> Edit Profile </span>
+            </div>
+        @endif
+        @if(request()->routeIs('user.show'))
             <div id="moveMe" class="col d-flex align-items-center ps-2" style="font-size:.8rem;">
                 <div class="me-2">
                     @if(Auth::user()->img)
@@ -19,19 +31,19 @@
                     <span class="d-block m-0 p-0" style="color: var(--clr-gray-50);"> {{ '@'.Auth::user()->name }} </span>
                 </div>
             </div>
-            <div class="col-1 d-flex justify-content-center ">
-                <a href="#" class="d-flex align-items-center">
+            <div class="col-1">
+                <a href="#">
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
             </div>
-            <div class="col-1 d-flex justify-content-center ">
-                <a href="#" class="d-flex align-items-center">
+            <div class="col-1">
+                <a href="{{ route('user.edit') }}">
                     <i class="fa-solid fa-pencil"></i>
                 </a>
             </div>
         @endif
-        @if(!request()->routeIs('user'))
-            <div class="col-1 d-flex justify-content-center">
+        @if(!request()->routeIs('user.show'))
+            <div class="col-1 d-flex align-items-center">
                 <a href="#" class="d-flex align-items-center">
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
@@ -80,11 +92,12 @@
         </div>
     </div>
 </nav>
-
-<div class="scrollBox position-relative">
-    <div class="col-1 d-flex justify-content-center">
-        <div class="update-profileimage">
-            <i class="fa-solid fa-camera"></i>
+@if(request()->routeIs('user.show'))
+    <div class="scrollBox position-relative">
+        <div class="col-1 d-flex justify-content-center">
+            <div class="update-profileimage">
+                <i class="fa-solid fa-camera"></i>
+            </div>
         </div>
     </div>
-</div>
+@endif

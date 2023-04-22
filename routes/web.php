@@ -58,7 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::view('/tickets', 'ticket.index')->name('tickets');
     Route::view('/host', 'host.index')->name('host');
     Route::view('/calendar', 'calendar.index')->name('calendar');
-    Route::get('/settings', [UserController::class, 'index'])->name('user');
+    Route::singleton('user', UserController::class);
 
     Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
     Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');

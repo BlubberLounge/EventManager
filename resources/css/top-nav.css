@@ -1,12 +1,12 @@
 #topNav {
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%;
     background-color: var(--clr-primary);
     justify-content: center;
     padding: .75rem .1rem;
     color: var(--clr-gray-7p5);
-    z-index: 1000;
+    z-index: 9000;
 }
 
 #topNav a {
@@ -14,7 +14,7 @@
     color: inherit;
 }
 
-#topNav .container a i {
+#topNav .container a {
     font-size: 1.45em;
 }
 
@@ -37,7 +37,6 @@
 
 #burger-menu {
     display: none;
-    z-index: 1001;
     position: absolute;
     top: 3px;
     right: 5px;
