@@ -58,4 +58,22 @@ class UserController extends Controller
         return redirect()->route('user.show', ['user' => Auth::user()])
             ->with('success','User has been updated successfully');
     }
+
+    /**
+     * Add new contact
+     */
+    public function acquaintanceAdd()
+    {
+        $data['user'] = Auth::user();
+        return view('user.acquaintanceAdd', $data);
+    }
+
+    /**
+     * Show User QRCode
+     */
+    public function qrCode()
+    {
+        $data['user'] = Auth::user();
+        return view('user.qrCode', $data);
+    }
 }

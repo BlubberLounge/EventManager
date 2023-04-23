@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-1">
-                <a href="#">
+                <a href="{{ route('user.qrCode') }}">
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
             </div>
@@ -44,7 +44,7 @@
         @endif
         @if(!request()->routeIs('user.show'))
             <div class="col-1 d-flex align-items-center">
-                <a href="#" class="d-flex align-items-center">
+                <a href="{{ route('user.qrCode') }}" class="d-flex align-items-center">
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
             </div>
