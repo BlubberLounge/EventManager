@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+
+use chillerlan\QRCode\{QRCode, QROptions};
 
 use App\Models\User;
 
@@ -73,7 +76,14 @@ class UserController extends Controller
      */
     public function qrCode()
     {
+        $options = new QROptions([
+            'version' => 7, // 7 not 5 because of bit length, may use a url shortener at a later point
+        ]);
+
         $data['user'] = Auth::user();
+        $data['url'] = URL::temporarySignedRoute('user.acquaintanceAdd', now()->addMinutes(30), ['u' => $data['user']->id]);
+        $data['qrcode'] = (new QRCode($options))->render($data['url']);
+
         return view('user.qrCode', $data);
     }
 }

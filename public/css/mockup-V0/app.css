@@ -91,6 +91,7 @@ section#timetable table .day {
 #botNav {
     position: fixed;
     bottom: 0;
+    width: 100%;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
     padding: .6em 0 .3em 0;
     background-color: var(--clr-background-botNav);
@@ -348,6 +349,17 @@ section#account {
 
 #account-settings span {
     padding-left: .5rem;
+}
+
+.qrcode-container {
+    background-color: var(--clr-primary);
+    border-radius: var(--br-primary);
+    padding: 3rem;
+}
+
+.qrcode {
+    background-color: var(--clr-white);
+    border-radius: var(--br-primary);
 }
 
 /* ================================================================
