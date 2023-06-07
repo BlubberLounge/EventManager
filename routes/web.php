@@ -62,7 +62,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::get('/user/QRCode', [UserController::class, 'qrCode'])->name('user.qrCode');
     Route::get('/user/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
         ->name('user.acquaintanceAdd')
-        ->middleware('signed');;
+        ->middleware('signed');
 
     Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
     Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');

@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $u->save();
 
-        return redirect()->route('user.show', ['user' => Auth::user()])
+        return redirect()->route('user.show')
             ->with('success','User has been updated successfully');
     }
 
@@ -80,9 +80,9 @@ class UserController extends Controller
             'version' => 7, // 7 not 5 because of bit length, may use a url shortener at a later point
         ]);
 
-        $data['user'] = Auth::user();
-        $data['url'] = URL::temporarySignedRoute('user.acquaintanceAdd', now()->addMinutes(30), ['u' => $data['user']->id]);
+        $data['url'] = Auth::user()->qrcode;
         $data['qrcode'] = (new QRCode($options))->render($data['url']);
+        $data['qrcode_expires_in'] = Auth::user()->qrCodeExpiresIn();
 
         return view('user.qrCode', $data);
     }

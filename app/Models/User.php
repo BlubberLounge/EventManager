@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+use Illuminate\Support\Facades\URL;
 use App\Classes\Status;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -28,7 +29,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'lastname',
         'email',
         'telefon_mobil',
+        'dob',
+        'img',
+        'qrcode',
+        'qrcode_created_at',
         'password',
+        'locked',
     ];
 
     /**
@@ -49,6 +55,74 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * QRCode Accessor
+     * When the expiration time has expired, the Qrcode is regenerated
+     */
+    protected function qrcode(): Attribute
+    {
+        return Attribute::make(
+            get: function (string $value) {
+                if(is_null($value) || !$this->needsNewQRCode())
+                    return $value;
+
+                $value = $this->generateQRCode();
+                $this->qrcode = $value;
+                $this->qrcode_created_at = now();
+                $this->save();
+
+                return $value;
+            }
+        );
+    }
+
+    /**
+     * Profile picture Accessor
+     */
+    protected function img(): Attribute
+    {
+        return Attribute::make(
+            get: function (string|null $value) {
+                if(is_null($value))
+                    return null;
+                    // return Avatar::create(Auth::user()->name)->setDimension(50)->setFontSize(28)->toBase64();
+                return $value;
+            }
+        );
+    }
+
+    /**
+     *
+     */
+    public function isLocked(): bool
+    {
+        return $this->locked;
+    }
+
+    /**
+     * returns remaining valid qrcode time in seconds
+     */
+    public function qrCodeExpiresIn(): String
+    {
+        return CarbonInterval::seconds(Carbon::parse($this->qrcode_created_at)->diffInSeconds(now()))->subMinutes(config('custom.QRCode.expiration'))->cascade()->forHumans();
+    }
+
+    /**
+     * returns true if the QRCode string has to be renewed
+     */
+    private function needsNewQRCode(): bool
+    {
+        return Carbon::parse($this->qrcode_created_at)->diffInSeconds(now()) >= (config('custom.QRCode.expiration') * 60);
+    }
+
+    /**
+     *
+     */
+    private function generateQRCode(): String
+    {
+        return URL::temporarySignedRoute('user.acquaintanceAdd', now()->addMinutes(config('custom.QRCode.expiration')), ['u' => $this->id]);
+    }
 
     /**
      * Get all of the acquaintances
