@@ -65,9 +65,9 @@ class UserController extends Controller
     /**
      * Add new contact
      */
-    public function acquaintanceAdd()
+    public function acquaintanceAdd(Request $request)
     {
-        $data['user'] = Auth::user();
+        $data['user'] = User::findOrFail($request->u);
         return view('user.acquaintanceAdd', $data);
     }
 

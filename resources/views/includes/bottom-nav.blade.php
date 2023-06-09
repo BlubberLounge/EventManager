@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('user.show') }}" @class(['active' => request()->routeIs('user.*')])>
+                <a href="{{ route('user.show') }}" @class(['active' => request()->routeIs('user.*') && !request()->routeIs('user.qrCode') ])>
                     <i class="fa-solid fa-user"></i>
                     Profile
                 </a>

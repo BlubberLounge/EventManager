@@ -140,7 +140,8 @@ section#timetable table .day {
     font-size: 1.3rem;
 }
 
-#botNav a.active {
+#botNav a.active,
+#topNav a.active {
     color: var(--clr-secondary);
 }
 

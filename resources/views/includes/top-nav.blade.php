@@ -45,7 +45,7 @@
         @endif
         @if(!request()->routeIs('user.show'))
             <div class="col-1 d-flex align-items-center">
-                <a href="{{ route('user.qrCode') }}" class="d-flex align-items-center">
+                <a href="{{ route('user.qrCode') }}" @class(['d-flex align-items-center','active' => request()->routeIs('user.qrCode') ])>
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
             </div>

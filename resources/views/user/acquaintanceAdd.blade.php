@@ -11,7 +11,7 @@
                     {!! Avatar::create(Auth::user()->name)->setDimension(50)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
                 @endif
             </div>
-            <div style="font-size: 1.1rem"> {{ Auth::user()->name }} </div>
+            <div style="font-size: 1.1rem"> {{ $user->name }} </div>
             <div class="position-relative mb-3" style="color: var(--clr-gray-40);font-size: .9rem;top:-6px;"> EventManager &#8212; WebApp </div>
         </div>
 
