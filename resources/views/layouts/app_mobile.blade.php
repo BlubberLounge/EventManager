@@ -21,6 +21,20 @@
 
         @include('includes.top-nav')
 
+        @if (session('status'))
+            <x-alert type="primary" message="{{ session('status') }}" />
+
+        @elseif (session('error'))
+            <x-alert type="danger" message="{{ session('error') }}" />
+
+        @elseif (session('success'))
+            <x-alert type="success" message="{{ session('success') }}" />
+
+        @elseif (session('info'))
+            <x-alert type="info" message="{{ session('info') }}" />
+
+        @endif
+
         <main class="pt-1">
             @yield('content')
         </main>

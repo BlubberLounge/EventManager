@@ -91,6 +91,7 @@ section#timetable table .day {
 #botNav {
     position: fixed;
     bottom: 0;
+    width: 100%;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
     padding: .6em 0 .3em 0;
     background-color: var(--clr-background-botNav);
@@ -139,7 +140,8 @@ section#timetable table .day {
     font-size: 1.3rem;
 }
 
-#botNav a.active {
+#botNav a.active,
+#topNav a.active {
     color: var(--clr-secondary);
 }
 
@@ -349,6 +351,23 @@ section#account {
 #account-settings span {
     padding-left: .5rem;
 }
+
+.qrcode-container,
+.acquaintanceAdd-container {
+    background-color: var(--clr-primary);
+    border-radius: var(--br-primary);
+    padding: 3rem;
+}
+
+.qrcode {
+    background-color: var(--clr-white);
+    border-radius: var(--br-primary);
+}
+
+.acquaintanceAdd-container {
+    padding: 3rem 3rem 1.6rem 3rem;
+}
+
 
 /* ================================================================
  *

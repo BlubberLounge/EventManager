@@ -2,14 +2,19 @@
 
 namespace Database\Factories;
 
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class UserFactory extends Factory
 {
+
+    private static $id = 1;
+
     /**
      * Define the model's default state.
      *
@@ -27,6 +32,8 @@ class UserFactory extends Factory
             'telefon_mobil' => fake()->unique()->e164PhoneNumber(),
             'dob' => fake()->boolean(80) ? fake()->dateTime() : null,
             'img' => '/storage/avatar/avatar-dummy.png',
+            'qrcode' => null,
+            'qrcode_created_at' => now(),
             'email_verified_at' => fake()->boolean(55) ? now() : null,
             'password' => '$2a$10$T1FoiqONCMoK8JidUKKzcOwrR7GPpj8y0jU2uYyCTB8GOK/voxlve',  //blem-d3v3l0pment
                 //'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

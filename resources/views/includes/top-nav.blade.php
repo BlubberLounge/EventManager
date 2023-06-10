@@ -1,4 +1,5 @@
-<nav id="topNav" class="navbar">
+<nav id="topNav" @class(['navbar',
+                        'no-bottom-padding' => request()->routeIs('user.qrCode') && App::environment(['local', 'development']) ])>
     <div class="container" style="max-width: 1200px">
         <div @class([ 'col-auto' => request()->routeIs('user.show') || request()->routeIs('user.edit'),
                       'col' => !request()->routeIs('user.show') && !request()->routeIs('user.edit')])>
@@ -44,7 +45,7 @@
         @endif
         @if(!request()->routeIs('user.show'))
             <div class="col-1 d-flex align-items-center">
-                <a href="{{ route('user.qrCode') }}" class="d-flex align-items-center">
+                <a href="{{ route('user.qrCode') }}" @class(['d-flex align-items-center','active' => request()->routeIs('user.qrCode') ])>
                     <i class="fa-solid fa-qrcode"></i>
                 </a>
             </div>
@@ -57,6 +58,16 @@
             </div>
         </div>
     </div>
+    @if(request()->routeIs('user.qrCode') && App::environment(['local', 'development']))
+        <div class="container text-center tab-container" id="topTabs" role="tablist">
+            <button id="code-myCode-tab" class="col active" data-bs-toggle="tab" data-bs-target="#code-myCode" type="button" role="tab" aria-controls="code-myCode" aria-selected="true">
+                Mein Code
+            </button>
+            <button id="code-scan-tab" class="col" data-bs-toggle="tab" data-bs-target="#code-scan" type="button" role="tab" aria-controls="code-scan" aria-selected="false">
+                Code scannen
+            </button>
+        </div>
+    @endif
 
     <div id="burger-menu" class="down">
         <div class="burger-menu-item-group">

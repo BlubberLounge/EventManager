@@ -9,12 +9,16 @@
     z-index: 9000;
 }
 
+#topNav.no-bottom-padding {
+    padding: .75rem .1rem 0 .1rem;
+}
+
 #topNav a {
     text-decoration: none;
     color: inherit;
 }
 
-#topNav .container a {
+#topNav .container a i {
     font-size: 1.45em;
 }
 
@@ -195,4 +199,21 @@
     background-color: var(--clr-primary);
     height: 90px;
     margin-top: 50px; /*height + topnavheight*/
+}
+
+#topTabs {
+    padding: 0;
+    padding-top: .5rem;
+}
+
+#topTabs button {
+    background-color: var(--clr-primary);
+}
+
+#topTabs .col {
+    padding: .5rem 0;
+}
+
+#topTabs .active{
+    border-bottom: 3px solid var(--clr-secondary);
 }

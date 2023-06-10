@@ -58,9 +58,15 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::view('/tickets', 'ticket.index')->name('tickets');
     Route::view('/host', 'host.index')->name('host');
     Route::view('/calendar', 'calendar.index')->name('calendar');
+
     Route::singleton('user', UserController::class);
-    Route::get('/user/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])->name('user.acquaintanceAdd');
     Route::get('/user/QRCode', [UserController::class, 'qrCode'])->name('user.qrCode');
+    Route::get('/user/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
+        ->name('user.acquaintanceAdd')
+        ->middleware('signed');
+    Route::put('/user/updateAcquaintances', [UserController::class, 'updateAcquaintances'])
+        ->name('user.updateAcquaintances')
+        ->middleware('signed');
 
     Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
     Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');
