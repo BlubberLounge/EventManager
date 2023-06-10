@@ -14,21 +14,21 @@ class Acquaintance extends Model
      *
      * @var array<int, string>
      */
-    // protected $fillable = [
-    //     'transmitter_user_id',
-    //     'receiver_user_id',
-    //     'status',
-    // ];
+    protected $fillable = [
+        'transmitter_user_id',
+        'receiver_user_id',
+        'status',
+    ];
 
     /**
      * The attributes that are not mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at'
-    ];
+    // protected $guarded = [
+    //     'id',
+    //     'created_at',
+    //     'updated_at'
+    // ];
 
 }

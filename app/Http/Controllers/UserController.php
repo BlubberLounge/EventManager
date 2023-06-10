@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\URL;
 
 use chillerlan\QRCode\{QRCode, QROptions};
 
+use App\Classes\Status;
 use App\Models\User;
+use App\Models\Acquaintance;
 
 class UserController extends Controller
 {
@@ -63,12 +65,42 @@ class UserController extends Controller
     }
 
     /**
-     * Add new contact
+     * Display the AcquaintanceAdd view
      */
     public function acquaintanceAdd(Request $request)
     {
         $data['user'] = User::findOrFail($request->u);
+        $data['isSignatureValid'] = $request->hasValidSignature();
+        $data['signedRoute'] = URL::temporarySignedRoute('user.updateAcquaintances', now()->addMinutes(3), ['u' => $request->u]);
+
         return view('user.acquaintanceAdd', $data);
+    }
+
+    /**
+     * Update the user acquaintances
+     */
+    public function updateAcquaintances(Request $request)
+    {
+        if(Auth::user()->id == $request->u) // ToDo: better exception handling
+        return redirect()->route('home')
+                ->with('error','Error: You cannot send/receive an acquaintance request from yourself');
+            // abort(400, 'User can\'t send/receive an acquaintance request from itself');
+
+        $acq = new Acquaintance;
+        $acq->transmitter_user_id = Auth::user()->id;
+        $acq->receiver_user_id = $request->u;
+        $acq->status = Status::PENDING;
+
+        // Error handling
+        return rescue(function () use ($acq) {
+            $acq->save();
+
+            return redirect()->route('home')
+                ->with('success', 'Acquaintances request send succesfully');
+        }, function() use ($request) {  // Exception
+            return redirect()->route('home')
+                ->with('error','Error: '.User::find($request->u)->name.' is already in your list');
+        });
     }
 
     /**
@@ -82,7 +114,7 @@ class UserController extends Controller
 
         $data['url'] = Auth::user()->qrcode;
         $data['qrcode'] = (new QRCode($options))->render($data['url']);
-        $data['qrcode_expires_in'] = Auth::user()->qrCodeExpiresIn();
+        $data['qrcode_expires_in'] = Auth::user()->qrCodeExpiresIn(true);
 
         return view('user.qrCode', $data);
     }

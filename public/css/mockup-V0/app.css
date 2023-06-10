@@ -352,7 +352,8 @@ section#account {
     padding-left: .5rem;
 }
 
-.qrcode-container {
+.qrcode-container,
+.acquaintanceAdd-container {
     background-color: var(--clr-primary);
     border-radius: var(--br-primary);
     padding: 3rem;
@@ -362,6 +363,11 @@ section#account {
     background-color: var(--clr-white);
     border-radius: var(--br-primary);
 }
+
+.acquaintanceAdd-container {
+    padding: 3rem 3rem 1.6rem 3rem;
+}
+
 
 /* ================================================================
  *

@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\URL;
 use App\Classes\Status;
+use Illuminate\Support\Facades\Auth;
+use App\Exceptions\UserCanNotReceiveAcquaintanceRequestFromThemselves;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -92,6 +94,16 @@ class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->dob)->diff(Carbon::now())->y;
+    }
+
     /**
      *
      */
@@ -103,9 +115,11 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * returns remaining valid qrcode time in seconds
      */
-    public function qrCodeExpiresIn(): String
+    public function qrCodeExpiresIn(bool $forHumans = false): String
     {
-        return CarbonInterval::seconds(Carbon::parse($this->qrcode_created_at)->diffInSeconds(now()))->subMinutes(config('custom.QRCode.expiration'))->cascade()->forHumans();
+        return $forHumans
+            ? CarbonInterval::seconds(Carbon::parse($this->qrcode_created_at)->diffInSeconds(now()))->subMinutes(config('custom.QRCode.expiration'))->cascade()->forHumans()
+            : Carbon::parse($this->qrcode_created_at)->diffInSeconds(now())->subMinutes(config('custom.QRCode.expiration'));
     }
 
     /**
