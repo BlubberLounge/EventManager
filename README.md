@@ -67,6 +67,10 @@ Detailed Description: TBD ❎
     php artisan serve
     ```
 
+## API Usage
+
+**OpenAPI/Swagger Api documentation:** /api/doc
+
 ---
 
 ## ✌️ Other
