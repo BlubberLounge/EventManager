@@ -14,7 +14,7 @@ use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\URL;
 use App\Classes\Status;
 use Illuminate\Support\Facades\Auth;
-use App\Exceptions\UserCanNotReceiveAcquaintanceRequestFromThemselves;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
