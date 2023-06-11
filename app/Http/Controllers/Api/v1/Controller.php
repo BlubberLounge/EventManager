@@ -33,6 +33,11 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  *
  * @OA\Tag(
+ *     name="Timetable",
+ *     description="Timetable Endpoints"
+ * )
+ *
+ * @OA\Tag(
  *     name="Utillities",
  *     description="Utillities Endpoints"
  * )

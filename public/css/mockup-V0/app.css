@@ -3,7 +3,7 @@
 }
 
 .acquaintances-actions i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-left: 1.25em;
     color: inherit;
     cursor: pointer;
@@ -23,12 +23,12 @@ section#timetable table {
     border-collapse: separate;
 }
 
-section#timetable th {
+section#timetable tr:not(:first-child) th:not(:first-child) {
     padding: 1rem .5rem;
     font-weight: 400;
 }
 
-section#timetable td {
+section#timetable td:not(:first-child) {
     font-weight: 900;
     padding: .4em .5em;
     border-radius: 2px;
@@ -71,7 +71,7 @@ section#timetable table tbody td.timeTableUser {
     left: 0;
     z-index: 1;
     text-align: left;
-    min-width: 130px;
+    min-width: 110px;
     background-color: var(--clr-background-light);/*rgba(255, 255, 255, 0.2);*/
 }
 

@@ -9,11 +9,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\URL;
-use App\Classes\Status;
 use Illuminate\Support\Facades\Auth;
+
+use App\Classes\AcquaintanceStatus;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -65,7 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function qrcode(): Attribute
     {
         return Attribute::make(
-            get: function (string $value) {
+            get: function (string|null $value) {
                 if(is_null($value) || !$this->needsNewQRCode())
                     return $value;
 
@@ -139,6 +141,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get all of the TimetableData
+     */
+    public function timetableData(): HasMany
+    {
+        return $this->hasMany(Timetable::class);
+    }
+
+    /**
      * Get all of the acquaintances
      */
     public function acquaintancesSend(): BelongsToMany
@@ -163,7 +173,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function pendingAcquaintances(): BelongsToMany
     {
-        return $this->acquaintancesReceived()->wherePivot('status', Status::PENDING);
+        return $this->acquaintancesReceived()->wherePivot('status', AcquaintanceStatus::PENDING);
     }
 
     /**
@@ -171,7 +181,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function acceptedAcquaintances(): BelongsToMany
     {
-        return $this->acquaintancesReceived()->wherePivot('status', Status::ACCEPTED);
+        return $this->acquaintancesReceived()->wherePivot('status', AcquaintanceStatus::ACCEPTED);
     }
 
     /**
@@ -179,7 +189,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function deniedAcquaintances(): BelongsToMany
     {
-        return $this->acquaintancesReceived()->wherePivot('status', Status::DENIED);
+        return $this->acquaintancesReceived()->wherePivot('status', AcquaintanceStatus::DENIED);
     }
 
     /**

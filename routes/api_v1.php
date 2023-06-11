@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\UtillityController;
+use App\Http\Controllers\Api\v1\TimetableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     // });
 
     // Route::apiResource('user', UserController::class);
+
+    Route::apiResource('timetable', TimetableController::class);
 });
