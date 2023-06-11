@@ -24,7 +24,7 @@ section#timetable table {
 }
 
 section#timetable tr:not(:first-child) th:not(:first-child) {
-    padding: 1rem .5rem;
+    padding: 0 .5rem 1rem .5rem;
     font-weight: 400;
 }
 
