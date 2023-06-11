@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\UserController;
+use App\Http\Controllers\Api\v1\UtillityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +19,14 @@ use App\Http\Controllers\Api\v1\UserController;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/ping', [UtillityController::class, 'ping']);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
-    Route::get('/u', function (Request $request) {
-        return $request->user();
-    });
+    // Route::get('/u', function (Request $request) {
+    //     return $request->user();
+    // });
 
-    Route::apiResource('user', UserController::class);
+    // Route::apiResource('user', UserController::class);
 });
