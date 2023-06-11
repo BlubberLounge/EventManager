@@ -1,0 +1,273 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "EventManager REST Api",
+        "description": "BlubberLounge EventManager REST Api",
+        "contact": {
+            "email": "admin@blubber-lounge.de"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://192.168.178.100/api/v1",
+            "description": "Current Server"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Get a Bearer Token",
+                "description": "Get a bearer token by login in with username and password",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Username",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Users password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Login"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Logout from current login",
+                "description": "Logout from current login",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get current User",
+                "description": "Get current User",
+                "operationId": "getUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/ping": {
+            "get": {
+                "tags": [
+                    "Utillities"
+                ],
+                "summary": "Ping the server",
+                "description": "Test if the server is reachable",
+                "operationId": "ping",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Login": {
+                "title": "Login",
+                "description": "Login model",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "access_token": {
+                        "title": "Access Token",
+                        "description": "Access Token (Bearer Token / Sanctum Token)",
+                        "type": "string",
+                        "example": "5|gtAK1319CZAFvsrpQibyWjHiM54hV3pfrkdJkwuB"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Login"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Username",
+                        "description": "Username",
+                        "type": "string",
+                        "example": "charley81"
+                    },
+                    "firstname": {
+                        "title": "Firstname",
+                        "description": "Firstname of the user",
+                        "type": "string",
+                        "example": "Eberhard"
+                    },
+                    "lastname": {
+                        "title": "Lastname",
+                        "description": "Lastname of the user",
+                        "type": "string",
+                        "example": "Müller"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "description": "Email of the user",
+                        "type": "string",
+                        "example": "admin+EventManager@blubber-lounge.de"
+                    },
+                    "telefon_mobil": {
+                        "title": "Telefon mobile",
+                        "description": "Mobil telefon number",
+                        "type": "string",
+                        "example": "+18 456439282"
+                    },
+                    "dob": {
+                        "title": "Date Of Birth",
+                        "description": "Date Of Birth",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "1999-11-02 06:33:21"
+                    },
+                    "img": {
+                        "title": "Img",
+                        "description": "Profile image path",
+                        "type": "string",
+                        "example": "/storage/avatar/avatar-dummy.png"
+                    },
+                    "qrcode": {
+                        "title": "QRCode",
+                        "description": "QRCode for contact adding",
+                        "type": "string",
+                        "example": "http::// ... some link"
+                    },
+                    "qrcode_created_at": {
+                        "title": "QRCode created at",
+                        "description": "QRCode created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "email_verified_at": {
+                        "title": "Email created at",
+                        "description": "Email created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "locked": {
+                        "title": "Locked",
+                        "description": "Flag if Account is Blocked/Locked",
+                        "type": "integer",
+                        "format": "boolean",
+                        "example": false
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Users",
+            "description": "User Endpoints"
+        },
+        {
+            "name": "Authentification",
+            "description": "Authentification Endpoints"
+        },
+        {
+            "name": "Utillities",
+            "description": "Utillities Endpoints"
+        }
+    ]
+}
