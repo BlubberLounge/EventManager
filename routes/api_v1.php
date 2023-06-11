@@ -31,5 +31,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 
     // Route::apiResource('user', UserController::class);
 
-    Route::apiResource('timetable', TimetableController::class);
+    Route::apiResource('timetable', TimetableController::class)
+        ->except(['destroy']);
 });

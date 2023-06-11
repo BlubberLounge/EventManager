@@ -34,13 +34,8 @@ class HomeController extends Controller
 
         $data['timeTable']['head'] = [];
         $data['timeTable']['monthCut'] = null;
-
         $data['timeTable']['body'] = [];
-
         $data['timeTable']['result'] = array_fill(0, $futureDays+1, 0);
-
-        // only one DB query request solution
-        // $timetableData = Auth::user()->timetableData->whereBetween('date', [now()->subDay(), now()->addDays($futureDays)]);
 
         for($i = 0; $i <= $futureDays; $i++)
         {
@@ -64,20 +59,25 @@ class HomeController extends Controller
             $userData[] = null;
             $userData['user'] = $user;
             $userData['days'] = [];
+            // only one DB query request solution
+            $timetableData = $user->timetableData->whereBetween('date', [now()->subDay(), now()->addDays($futureDays)]);
+
             for($i = 0; $i <= $futureDays; $i++)
             {
                 $date = now()->addDays($i);
+                $timetableDate = $timetableData->where('date', $date->format('Y-m-d'));
 
                 // check if timetable table has any data for $date day
-                $sql = $user->timetableData->where('date', $date->format('Y-m-d'));
-                if($sql->isEmpty()) {
+                // $sql = $user->timetableData->where('date', $date->format('Y-m-d'));
+                // if($sql->isEmpty()) {
+                if($timetableDate->isEmpty()) {
                     $tt = new Timetable;
                     $tt->user_id = $user;
                     $tt->date = $date;
                     $tt->status = TimetableStatus::NO_TIME;
                     $userData['days'][] = $tt;
                 } else {
-                    $s = $sql->first();
+                    $s = $timetableDate->first();
                     $userData['days'][] = $s;
 
                     // count available users
