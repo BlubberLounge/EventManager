@@ -149,6 +149,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get all accepted Acquaintances user that should be shown on the timetable
+     */
+    public function timetableAcquaintances(): BelongsToMany
+    {
+        return $this->acquaintancesReceived()
+            ->wherePivot('status', AcquaintanceStatus::ACCEPTED)
+            ->where('showOnHomeView', true);
+    }
+
+    /**
      * Get all of the acquaintances
      */
     public function acquaintancesSend(): BelongsToMany

@@ -34,35 +34,35 @@ section#timetable td:not(:first-child) {
     border-radius: 2px;
 }
 
-section#timetable td.check,
-section#timetable td.unkown,
-section#timetable td.x {
+td[data-bl-timetable-status="available"],
+td[data-bl-timetable-status="maybe"],
+td[data-bl-timetable-status="noTime"] {
     font-family: "Font Awesome 6 free";
 }
 
-section#timetable td.check::before {
+td[data-bl-timetable-status="available"]::before {
     content: '\f00c';
 }
 
-section#timetable td.check {
+td[data-bl-timetable-status="available"] {
     background-color: var(--clr-green-soft);
 }
 
-section#timetable td.unkown::before {
+td[data-bl-timetable-status="maybe"]::before {
     content: '\3f';
 }
 
-section#timetable td.unkown {
+td[data-bl-timetable-status="maybe"] {
     color: #a57214;
     background-color: #f1bf61;
     font-size: 1.1em;
 }
 
-section#timetable td.x::before {
+td[data-bl-timetable-status="noTime"]::before {
     content: '\f00d';
 }
 
-section#timetable td.x {
+td[data-bl-timetable-status="noTime"] {
     background-color: var(--clr-red-soft);
 }
 
@@ -368,7 +368,7 @@ section#account {
     padding: 3rem 3rem 1.6rem 3rem;
 }
 
-.timetable-btn {
+.btn-timetable {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -377,7 +377,7 @@ section#account {
     font-size: 1.25rem;
 }
 
-.timetable-btn ~ .timetable-btn {
+.btn-timetable ~ .btn-timetable {
     margin-left: .5rem;
 }
 

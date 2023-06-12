@@ -51,7 +51,7 @@ class HomeController extends Controller
             $data['timeTable']['head'][] = $headData;
         }
 
-        $users = $data['acquaintances']['accepted'];
+        $users = Auth::user()->timetableAcquaintances;
         $users[] = Auth::user();
 
         foreach($users as $user)

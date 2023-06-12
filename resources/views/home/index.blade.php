@@ -1,8 +1,8 @@
 @extends('layouts.app_mobile')
 
 @push('scripts')
-    <script src="{{ mix('js/home.js') }}" defer></script>
     <script src="{{ mix('js/timetable.js') }}" defer></script>
+    <script src="{{ mix('js/home.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -25,7 +25,7 @@
     </section>
 
     <section id="timetable" class="ps-0 pe-2 pt-1" style="max-width: 100vw; overflow-x: scroll;">
-        <table class="pt-2">
+        <table id="timetableTable" class="pt-2">
             <thead>
                 <tr>
                     <th></th>
@@ -47,16 +47,7 @@
                         <td class="detectSticky"></td>
                         <td class="timeTableUser">{{ $dat['user']->id === Auth::user()->id ? '(Ich)' : (strlen($dat['user']->name) >= 10 ? substr($dat['user']->name, 0, 10).'...' : $dat['user']->name) }}</td>
                         @foreach ($dat['days'] as $day)
-                            @php ($content = 'data-bs-toggle="popover" data-bs-placement="top" data-bl-date="'.$day->date.'"')
-                            @if ($day->status == App\Classes\TimetableStatus::AVAILABLE)
-                                <td class="check timetable-popover" {!! $dat['user']->id === Auth::user()->id ? $content : '' !!}></td>
-                            @elseif ($day->status == App\Classes\TimetableStatus::MAYBE)
-                                <td class="unkown timetable-popover" {!! $dat['user']->id === Auth::user()->id ? $content : '' !!}></td>
-                            @elseif ($day->status == App\Classes\TimetableStatus::NO_TIME)
-                                <td class="x timetable-popover" {!! $dat['user']->id === Auth::user()->id ? $content : '' !!}></td>
-                            @else
-                                <td>{{ $day->status }}</td>
-                            @endif
+                            <td class="timetable-popover" data-bl-timetable-status="{{ $day->status }}" data-bl-timetable-date="{{ $day->date }}" data-bs-toggle="popover" data-bs-placement="top"></td>
                         @endforeach
                     </tr>
                 @endforeach
