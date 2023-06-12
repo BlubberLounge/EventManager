@@ -71,6 +71,12 @@ Detailed Description: TBD ❎
 
 **OpenAPI/Swagger Api documentation:** /api/doc
 
+**Generate the documentation**
+
+```sh
+php artisan l5-swagger:generate
+```
+
 ---
 
 ## ✌️ Other

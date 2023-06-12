@@ -14,6 +14,7 @@ $(function()
             return 'Status ändern vom ' + date.format('DD.MM.YYYY');
         },
         content: function () {
+            let date = moment(popoverTriggerEl.getAttribute('data-bl-date'));
             let type = popoverTriggerEl.classList.contains("check")
                 ? 'available'
                 : popoverTriggerEl.classList.contains("unkown")
@@ -21,8 +22,14 @@ $(function()
                     : popoverTriggerEl.classList.contains("x")
                         ? 'noTime' : null;
 
-            let container = document.createElement("form");
-            container.setAttribute('style', 'display: flex;');
+            let container = document.createElement("div");
+            container.classList.add('d-flex', 'justify-center');
+            container.id = "timetable-container";
+
+            let formContainer = document.createElement("form");
+            formContainer.classList.add('justify-center');
+            formContainer.setAttribute('style', 'display: flex;');
+            formContainer.id = "timetable-form";
 
             let baseInput = document.createElement("input");
             baseInput.type = "radio";
@@ -46,8 +53,8 @@ $(function()
             labelAvailable.innerHTML = '<i class="fa-solid fa-check"></i>';
             labelAvailable.setAttribute('for', "btnAvailable");
 
-            container.appendChild(btnAvailable);
-            container.appendChild(labelAvailable);
+            formContainer.appendChild(btnAvailable);
+            formContainer.appendChild(labelAvailable);
 
 
             // Button Maybe
@@ -60,8 +67,8 @@ $(function()
             labelMaybe.innerHTML = '<i class="fa-solid fa-question"></i>';
             labelMaybe.setAttribute('for', "btnMaybe");
 
-            container.appendChild(btnMaybe);
-            container.appendChild(labelMaybe);
+            formContainer.appendChild(btnMaybe);
+            formContainer.appendChild(labelMaybe);
 
 
             // Button Maybe
@@ -74,8 +81,60 @@ $(function()
             labelNoTime.innerHTML = '<i class="fa-solid fa-xmark"></i>';
             labelNoTime.setAttribute('for', "btnNoTime");
 
-            container.appendChild(btnNoTime);
-            container.appendChild(labelNoTime);
+            formContainer.appendChild(btnNoTime);
+            formContainer.appendChild(labelNoTime);
+
+            $(formContainer).children('label').each((k, e) => {
+                $(e).on('click', el => {
+                    let status = e.getAttribute('for') == "btnAvailable"
+                        ? 'available'
+                        : e.getAttribute('for') == "btnMaybe"
+                            ? 'maybe'
+                            : e.getAttribute('for') == "btnNoTime"
+                                ? 'noTime' : null;
+                    $.ajax({
+                        url: '/api/v1/timetable/'+date.format('YYYY-MM-DD'),
+                        method: 'PUT',
+                        data: {
+                          status: status
+                        },
+                        beforeSend: function() {
+                            $('#timetable-form').hide();
+                            $('#loadingSpinnerContainer').show();
+                        },
+                        success: function(response) {
+                            // looks kinda weird when this switch happens and the popover gets closed right after that
+                            // $('#timetable-form').show();
+                            // $('#loadingSpinnerContainer').hide();
+
+                            let cl = response.data.status == 'available'
+                                ? 'check'
+                                : response.data.status == 'maybe'
+                                    ? 'unkown'
+                                    :response.data.status == 'noTime'
+                                        ? 'x' : null;
+                            $(popoverTriggerEl).removeClass('x check unkown');
+                            $(popoverTriggerEl).addClass(cl);
+                            $(popoverTriggerEl).popover('hide');
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            // console.log(errorThrown);
+                            // handle the error case
+                        }
+                      });
+                });
+            });
+
+            let loadingSpinnerContainer = document.createElement("div");
+            loadingSpinnerContainer.setAttribute('style', 'display: none;font-size:2rem;');
+            loadingSpinnerContainer.id = 'loadingSpinnerContainer';
+
+            let loadingSpinner = document.createElement("i");
+            loadingSpinner.classList.add('fa-solid', 'fa-spinner', 'fa-spin-pulse');
+
+            loadingSpinnerContainer.appendChild(loadingSpinner);
+            container.appendChild(formContainer);
+            container.appendChild(loadingSpinnerContainer);
 
             return container;
         }
