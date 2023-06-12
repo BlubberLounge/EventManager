@@ -1,6 +1,7 @@
 @extends('layouts.app_mobile')
 
 @push('scripts')
+    <script src="{{ mix('js/home.js') }}" defer></script>
     <script src="{{ mix('js/timetable.js') }}" defer></script>
 @endpush
 
@@ -42,16 +43,17 @@
             </thead>
             <tbody>
                 @foreach ($timeTable['body'] as $dat)
-                    <tr>
+                    <tr @class(['timetable-me' => $dat['user']->id === Auth::user()->id])>
                         <td class="detectSticky"></td>
                         <td class="timeTableUser">{{ $dat['user']->id === Auth::user()->id ? '(Ich)' : (strlen($dat['user']->name) >= 10 ? substr($dat['user']->name, 0, 10).'...' : $dat['user']->name) }}</td>
                         @foreach ($dat['days'] as $day)
+                            @php ($content = 'data-bs-toggle="popover" data-bs-placement="top" data-bl-date="'.$day->date.'"')
                             @if ($day->status == App\Classes\TimetableStatus::AVAILABLE)
-                                <td class="check"></td>
+                                <td class="check timetable-popover" {!! $dat['user']->id === Auth::user()->id ? $content : '' !!}></td>
                             @elseif ($day->status == App\Classes\TimetableStatus::MAYBE)
-                                <td class="unkown"></td>
+                                <td class="unkown timetable-popover" {!! $dat['user']->id === Auth::user()->id ? $content : '' !!}></td>
                             @elseif ($day->status == App\Classes\TimetableStatus::NO_TIME)
-                                <td class="x"></td>
+                                <td class="x timetable-popover" {!! $dat['user']->id === Auth::user()->id ? $content : '' !!}></td>
                             @else
                                 <td>{{ $day->status }}</td>
                             @endif

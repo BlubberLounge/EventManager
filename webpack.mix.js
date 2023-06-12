@@ -16,6 +16,7 @@ mix
     .js('resources/js/utils.js', 'public/js')           // Utillity js file
     .js('resources/js/menu.js', 'public/js')            // Burger Menu js file
     .js('resources/js/ticket.js', 'public/js')          // Ticket js file
+    .js('resources/js/home.js', 'public/js')            // Home js file
     .js('resources/js/timetable.js', 'public/js')       // Timetable js file
     .js('resources/js/settings.js', 'public/js')        // Top navigation js file
     .js('resources/js/user-edit.js', 'public/js')        // Top navigation js file

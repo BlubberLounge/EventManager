@@ -368,6 +368,19 @@ section#account {
     padding: 3rem 3rem 1.6rem 3rem;
 }
 
+.timetable-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    font-size: 1.25rem;
+}
+
+.timetable-btn ~ .timetable-btn {
+    margin-left: .5rem;
+}
+
 
 /* ================================================================
  *

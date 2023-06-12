@@ -65,15 +65,16 @@ class HomeController extends Controller
             for($i = 0; $i <= $futureDays; $i++)
             {
                 $date = now()->addDays($i);
-                $timetableDate = $timetableData->where('date', $date->format('Y-m-d'));
+                $dateFormated = $date->format('Y-m-d');
+                $timetableDate = $timetableData->where('date', $dateFormated);
 
                 // check if timetable table has any data for $date day
-                // $sql = $user->timetableData->where('date', $date->format('Y-m-d'));
+                // $sql = $user->timetableData->where('date', $dateFormated);
                 // if($sql->isEmpty()) {
                 if($timetableDate->isEmpty()) {
                     $tt = new Timetable;
                     $tt->user_id = $user;
-                    $tt->date = $date;
+                    $tt->date = $dateFormated;
                     $tt->status = TimetableStatus::NO_TIME;
                     $userData['days'][] = $tt;
                 } else {
