@@ -25,6 +25,5 @@ mix
     .sass('resources/sass/app.scss', 'public/css')      // Bootstrap Styles
     .css('resources/css/auth.css', 'public/css')        // auth
     .css('resources/css/top-nav.css', 'public/css')
-    .css('resources/css/mockup-V0/app.css', 'public/css/mockup-V0')   // mockup-V0
     .version()
     .sourceMaps();

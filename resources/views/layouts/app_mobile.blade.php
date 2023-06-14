@@ -11,7 +11,6 @@
     <!-- Styles -->
     @include('includes.head.style')
     <link href="{{ mix('css/top-nav.css') }}" rel="stylesheet">
-    <link href="{{ mix('css/mockup-V0/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/mockup-V0/glide.core.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mockup-V0/glide.theme.min.css') }}">
     @stack('styles')   {{-- get all styles that got pushed to the stack --}}

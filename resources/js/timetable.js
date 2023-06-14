@@ -32,6 +32,7 @@ class TimetableElementFactory
 
     constructor()
     {
+        this.baseContainer = $('<div></div>');
         this.baseInput = $('<input type="radio" class="btn-check" autocomplete="off">');
         this.baseLabel = $('<label class="btn btn-timetable"></label>');
     }
@@ -44,13 +45,13 @@ class TimetableElementFactory
     getButtonClass(s)
     {
         if(TimetableStaus.AVAILABLE == s) {
-            return 'btn-success';
+            return 'btn-bl-success';
         }else if(TimetableStaus.MAYBE == s) {
-            return 'btn-warning';
+            return 'btn-bl-warning';
         }else if(TimetableStaus.NOTIME == s) {
-            return 'btn-danger';
+            return 'btn-bl-danger';
         } else {
-            return '';
+            return 'btn-dark';
         }
     }
 
@@ -63,7 +64,7 @@ class TimetableElementFactory
         }else if(TimetableStaus.NOTIME == s) {
             return '<i class="fa-solid fa-xmark"></i>';
         } else {
-            return '';
+            return '<i class="fa-solid fa-bug"></i>';
         }
     }
 
@@ -72,7 +73,7 @@ class TimetableElementFactory
         let newInput = this.baseInput.clone();
         newInput.attr('name', 'btn-timetable-status');
         newInput.attr('id', 'btn-'+s);
-        newInput.attr('checked', this.isChecked(s.toUpperCase()));
+        newInput.attr('checked', this.isChecked(s));
 
         return newInput;
     }
@@ -85,12 +86,6 @@ class TimetableElementFactory
         newLabel.html(this.getIcon(s));
 
         return newLabel;
-    }
-
-    createActionGroup(s)
-    {
-        let input = this.createInput(s);
-        return this.createLabel(s).after(input);
     }
 }
 
@@ -133,24 +128,32 @@ class Timetable
         let element = $(clickedElement);
         let date = moment(element.attr('data-bl-timetable-date'));
         let status = TimetableStaus[element.attr('data-bl-timetable-status').toUpperCase()];
-        this.factory.TimetableCellStatus = status;
-
         // @ToDo
         if(status === undefined)
             console.log('wrong status: ' + element.attr('data-bl-timetable-status').toUpperCase());
 
+        this.factory.TimetableCellStatus = status;
+
         let container = $('<div id="timetable-container" class="d-flex justify-center"></div>');
         let form = $('<form id="timetable-form" class="justify-center" style="display: flex;"></form>');
 
-        let ActionAvailable = this.factory.createActionGroup('available')
-        form.append(ActionAvailable);
+        // create elements
+        let inputAvailable = this.factory.createInput('available');
+        let labelAvailable = this.factory.createLabel('available');
+        form.append(inputAvailable);
+        form.append(labelAvailable);
 
-        let ActionMaybe = this.factory.createActionGroup('maybe')
-        form.append(ActionMaybe);
+        let inputMaybe = this.factory.createInput('maybe');
+        let labelMaybe = this.factory.createLabel('maybe');
+        form.append(inputMaybe);
+        form.append(labelMaybe);
 
-        let ActionNoTime = this.factory.createActionGroup('noTime')
-        form.append(ActionNoTime);
+        let labelNoTime = this.factory.createLabel('noTime');
+        let inputNoTime = this.factory.createInput('noTime');
+        form.append(inputNoTime);
+        form.append(labelNoTime);
 
+        // Add onClick event listener
         $(form).children('label').each((k, e) =>
         {
             $(e).on('click', el =>

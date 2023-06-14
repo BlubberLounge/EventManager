@@ -9,8 +9,8 @@
 <div class="container-fluid">
 
     {{--
-    <section id="event-next" class="py-3" style="background-color: var(--clr-background-botNav);">
-        <h3 style="color:var(--clr-gray-70);">Event in 2 Days</h3>
+    <section id="event-next" class="py-3" style="background-color: var(--bl-clr-background-botNav);">
+        <h3 style="color:var(--bl-clr-gray-70);">Event in 2 Days</h3>
         <div class="section-content w-100">
             <img src="{{ asset('img/ticketRender_04.png') }}" class="w-100">
         </div>
@@ -47,7 +47,11 @@
                         <td class="detectSticky"></td>
                         <td class="timeTableUser">{{ $dat['user']->id === Auth::user()->id ? '(Ich)' : (strlen($dat['user']->name) >= 10 ? substr($dat['user']->name, 0, 10).'...' : $dat['user']->name) }}</td>
                         @foreach ($dat['days'] as $day)
-                            <td class="timetable-popover" data-bl-timetable-status="{{ $day->status }}" data-bl-timetable-date="{{ $day->date }}" data-bs-toggle="popover" data-bs-placement="top"></td>
+                            @if($dat['user']->id === Auth::user()->id)
+                                <td data-bl-timetable-status="{{ $day->status }}" data-bl-timetable-date="{{ $day->date }}" data-bs-toggle="popover" data-bs-placement="top"></td>
+                            @else
+                                <td data-bl-timetable-status="{{ $day->status }}"></td>
+                            @endif
                         @endforeach
                     </tr>
                 @endforeach
@@ -112,7 +116,7 @@
                     </div>
                 </div>
             @empty
-                <div style="padding: 1rem 0;padding-left: .5em;color:var(--clr-background-light);text-align:center;">
+                <div style="padding: 1rem 0;padding-left: .5em;color:var(--bl-clr-background-light);text-align:center;">
                     no pending acquaintances requests
                 </div>
             @endforelse

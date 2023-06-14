@@ -2,10 +2,10 @@
     position: relative;
     top: 0;
     width: 100%;
-    background-color: var(--clr-primary);
+    background-color: var(--bl-clr-primary);
     justify-content: center;
     padding: .75rem .1rem;
-    color: var(--clr-gray-7p5);
+    color: var(--bl-clr-gray-7p5);
     z-index: 9000;
 }
 
@@ -26,7 +26,7 @@
     position: absolute;
     padding: .2rem 1rem;
     font-size: 1.45rem;
-    background-color: var(--clr-section-h3);
+    background-color: var(--bl-clr-section-h3);
     border-radius: 4px;
     right: 40px;
     bottom: -20px;
@@ -44,7 +44,7 @@
     position: absolute;
     top: 3px;
     right: 5px;
-    background-color: var(--clr-background-light);
+    background-color: var(--bl-clr-background-light);
     animation: growDown 250ms ease-in-out forwards;
     transform-origin: top center;
     border-radius: var(--br-burger-menu) 0 var(--br-burger-menu) var(--br-burger-menu);
@@ -60,12 +60,12 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: var(--clr-gray-7p5);
+    background-color: var(--bl-clr-gray-7p5);
     margin: 2px 0;
 }
 
 .burger-menu-item-group ~ .burger-menu-item-group {
-    border-top: 5px solid var(--clr-background);
+    border-top: 5px solid var(--bl-clr-background);
 }
 
 .burger-menu-item {
@@ -73,7 +73,7 @@
 }
 
 .burger-menu-item i {
-    color: var(--clr-section-h3);
+    color: var(--bl-clr-section-h3);
 }
 
 .burger-menu-item-group:nth-of-type(2) .burger-menu-item:nth-of-type(1) {
@@ -158,11 +158,11 @@
   }
 
 .burger-menu-item:hover {
-    background-color: var(--clr-background-light-hover);
+    background-color: var(--bl-clr-background-light-hover);
 }
 
 .burger-menu-item:active {
-    background-color: var(--clr-background-light-active);
+    background-color: var(--bl-clr-background-light-active);
 }
 
 .burger-menu-item > i {
@@ -174,7 +174,7 @@
     justify-content: center;
     padding: .5 1rem;
     /*
-    background-color: var(--clr-red-soft);
+    background-color: var(--bl-clr-red-soft);
     border-radius: var(--br-burger-menu) 0 0 0;
     */
 }
@@ -196,7 +196,7 @@
 }
 
 .scrollBox {
-    background-color: var(--clr-primary);
+    background-color: var(--bl-clr-primary);
     height: 90px;
     margin-top: 50px; /*height + topnavheight*/
 }
@@ -207,7 +207,7 @@
 }
 
 #topTabs button {
-    background-color: var(--clr-primary);
+    background-color: var(--bl-clr-primary);
 }
 
 #topTabs .col {
@@ -215,6 +215,6 @@
 }
 
 #topTabs .active{
-    border-bottom: 3px solid var(--clr-secondary);
+    border-bottom: 3px solid var(--bl-clr-secondary);
 }
 
