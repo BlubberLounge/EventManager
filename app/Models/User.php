@@ -14,13 +14,14 @@ use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 
 use App\Classes\AcquaintanceStatus;
 
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasMergedRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -151,11 +152,31 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get all accepted Acquaintances user that should be shown on the timetable
      */
-    public function timetableAcquaintances(): BelongsToMany
+    public function timetableAcquaintances()
     {
-        return $this->acquaintancesReceived()
-            ->wherePivot('status', AcquaintanceStatus::ACCEPTED)
-            ->wherePivot('showOnHomeView', true);
+        return $this->acquaintances(AcquaintanceStatus::ACCEPTED, true);
+    }
+
+    // works but is not the best solution
+    public function acquaintances(string $status, bool $showOnHomeView)
+    {
+        $transmitted = $this->acquaintancesSend()
+            ->wherePivot('status', $status)
+            ->wherePivot('showOnHomeView', $showOnHomeView)
+            ->get();
+
+        $received = $this->acquaintancesReceived()
+            ->wherePivot('status', $status)
+            ->wherePivot('showOnHomeView', $showOnHomeView)
+            ->get();
+
+        return $received->merge($transmitted);
+    }
+
+    // works ok. BUT there is no access on pivot tables with this method
+    public function acquaintances_beta()
+    {
+        return $this->mergedRelationWithModel(User::class, 'acquaintances_view');
     }
 
     /**
@@ -200,6 +221,54 @@ class User extends Authenticatable implements MustVerifyEmail
     public function deniedAcquaintances(): BelongsToMany
     {
         return $this->acquaintancesReceived()->wherePivot('status', AcquaintanceStatus::DENIED);
+    }
+
+    /**
+     * Get all pending Acquaintances user
+     */
+    public function pendingAcquaintancesMerged()
+    {
+        $transmitted = $this->acquaintancesSend()
+            ->wherePivot('status', AcquaintanceStatus::PENDING)
+            ->get();
+
+        $received = $this->acquaintancesReceived()
+            ->wherePivot('status', AcquaintanceStatus::PENDING)
+            ->get();
+
+        return $received->merge($transmitted);
+    }
+
+    /**
+     * Get all accepted Acquaintances user
+     */
+    public function acceptedAcquaintancesMerged()
+    {
+        $transmitted = $this->acquaintancesSend()
+            ->wherePivot('status', AcquaintanceStatus::ACCEPTED)
+            ->get();
+
+        $received = $this->acquaintancesReceived()
+            ->wherePivot('status', AcquaintanceStatus::ACCEPTED)
+            ->get();
+
+        return $received->merge($transmitted);
+    }
+
+    /**
+     * Get all denied Acquaintances user
+     */
+    public function deniedAcquaintancesMerged()
+    {
+        $transmitted = $this->acquaintancesSend()
+            ->wherePivot('status', AcquaintanceStatus::DENIED)
+            ->get();
+
+        $received = $this->acquaintancesReceived()
+            ->wherePivot('status', AcquaintanceStatus::DENIED)
+            ->get();
+
+        return $received->merge($transmitted);
     }
 
     /**

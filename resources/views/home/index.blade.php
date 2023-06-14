@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($timeTable['body'] as $dat)
+                @foreach ($timeTable['body'] as $i => $dat)
                     <tr @class(['timetable-me' => $dat['user']->id === Auth::user()->id]) data-bl-timetable-user-id="{{ $dat['user']->id }}">
                         <td class="detectSticky"></td>
                         <td class="timeTableUser">{{ $dat['user']->id === Auth::user()->id ? '(Ich)' : (strlen($dat['user']->name) >= 10 ? substr($dat['user']->name, 0, 10).'...' : $dat['user']->name) }}</td>
@@ -104,22 +104,30 @@
 
     <section id="acquaintances-pending">
         <h3>Acquaintances (pending)</h3>
-        <div class="section-content" {{-- style="max-height: 130px; overflow-y: scroll;" --}}>
-            @forelse ($acquaintances['pending'] as $acquaintancesPending)
-                <div class="d-flex align-items-center" style="margin-top:1em;padding-left: .5em;">
-                    <img src="{{ Avatar::create($acquaintancesPending->firstname)->toBase64() }}" width="30px" />
-                    <span style="margin-left: 20px;">{{ $acquaintancesPending->name }}</span>
-                    <div class="acquaintances-actions d-flex">
-                        <i class="fa-solid fa-square-check"></i>
-                        <i class="fa-solid fa-square-xmark"></i>
-                    </div>
-                </div>
-            @empty
-                <div style="padding: 1rem 0;padding-left: .5em;color:var(--bl-clr-background-light);text-align:center;">
-                    no pending acquaintances requests
-                </div>
-            @endforelse
+        @forelse ($acquaintances['pending'] as $acquaintancesPending)
+        <div class="row mt-2 pe-2 align-items-center" data-bl-acquaintance-id="{{ $acquaintancesPending->id }}">
+            <div class="col">
+                <img src="{{ Avatar::create($acquaintancesPending->firstname)->toBase64() }}" width="40px" />
+                <span class="ms-3" style="font-size:1.05rem;">
+                    {{ $acquaintancesPending->full_name }}
+                </span>
+            </div>
+            <div class="col-1 d-flex justify-center">
+                <button type="button" class="btn btn-bl-icon">
+                    <i class="fa-solid fa-square-check"></i>
+                </button>
+            </div>
+            <div class="col-2 d-flex justify-center">
+                <button type="button" class="btn btn-bl-icon">
+                    <i class="fa-solid fa-square-xmark"></i>
+                </button>
+            </div>
         </div>
+        @empty
+            <div style="padding: 1rem 0;padding-left: .5em;color:var(--bl-clr-background-light);text-align:center;">
+                no pending acquaintances requests
+            </div>
+        @endforelse
     </section>
 
     <section>

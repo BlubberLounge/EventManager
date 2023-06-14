@@ -96,7 +96,7 @@ class TimetableElementFactory
  */
 class Timetable
 {
-	constructor(tableID)
+	constructor(tableID = undefined)
     {
         this.apiBaseURL = '/api/v1';
     	this.tableID = tableID;
@@ -198,10 +198,30 @@ class Timetable
         return container;
     }
 
+    updateAcquaintance(userId, showOnHomeView)
+    {
+        $.ajax({
+            url: this.apiBaseURL+'/acquaintance/byReceiverOrTransmitter/'+userId,
+            method: 'PUT',
+            data: {
+                showOnHomeView: parseInt(showOnHomeView)
+            },
+            beforeSend: function() {
+            },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // handle the error case
+                console.log(errorThrown);
+            }
+        });
+    }
+
     addRow(userId, rowIndex)
     {
-
         $.ajax({
+            // may use `/user/{user}/timetable/between/{dateFrom}/{dateTo}` later
             url: this.apiBaseURL+'/user/'+userId+'/timetable',
             method: 'GET',
             data: {
@@ -209,13 +229,20 @@ class Timetable
             beforeSend: function() {
             },
             success: function(response) {
-                let data = response.data;
+                let data = response.data.timetable;
+                let user = response.data.user;
+
+                if(data === undefined || data.length <= 0)
+                    data = [];
+                let t = new Timetable;
+                t.updateAcquaintance(userId, 1);
+
                 let newRow = $('<tr></tr>')
                     .append($('<td class="detectSticky"></td>'))
-                    .append($('<td class="timeTableUser">penis</td>'));
+                    .append($('<td class="timeTableUser">'+user.name+'</td>'));
                 let newCell = undefined;
 
-                newRow.attr('data-bl-timetable-user-id', response.data[0].user_id);
+                newRow.attr('data-bl-timetable-user-id', userId);
 
                 for(let i=0; i <= 30; i++)
                 {
@@ -238,8 +265,23 @@ class Timetable
 
                     newRow.append(newCell);
                 }
-                // TODO cleanup please.. thx
-                $('#timetableTable tbody > tr:nth-child('+parseInt(rowIndex-1)+')').after(newRow);
+
+                // TODO please fix this .. omg
+                // let activeRows = $('#timetableTable tbody').children().length-3;
+                // let rIndex = parseInt(rowIndex)-1;
+                // let insertAt = activeRows <= 0 || rIndex <= 1
+                //     ? 0
+                //     : rIndex >= activeRows
+                //         ? activeRows
+                //         : rIndex;
+
+                // if(insertAt <= 0) {
+                //     $('#timetableTable tbody > tr:nth-child(1)').before(newRow);
+                // } else {
+                //     $('#timetableTable tbody > tr:nth-child('+insertAt+')').after(newRow);
+                // }
+
+                $('#timetableTable tbody > tr:nth-child(1)').before(newRow);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // handle the error case
@@ -248,10 +290,15 @@ class Timetable
         });
     }
 
-    removeRow(row)
+    removeRow(userId, row)
     {
         let r = $(row);
+        if(r === undefined)
+            return;
+
         r.remove();
+
+        this.updateAcquaintance(userId, 0);
     }
 }
 

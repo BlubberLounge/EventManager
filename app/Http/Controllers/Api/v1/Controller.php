@@ -28,13 +28,18 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  *
  * @OA\Tag(
- *     name="Authentification",
- *     description="Authentification Endpoints"
+ *     name="Timetables",
+ *     description="Timetable Endpoints"
  * )
  *
  * @OA\Tag(
- *     name="Timetables",
- *     description="Timetable Endpoints"
+ *     name="Acquaintances",
+ *     description="Acquaintance Endpoints"
+ * )
+ *
+ * @OA\Tag(
+ *     name="Authentification",
+ *     description="Authentification Endpoints"
  * )
  *
  * @OA\Tag(

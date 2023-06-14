@@ -210,4 +210,52 @@ class TimetableController extends Controller
 
         return $this->sendResponse($data, 'ok');
     }
+
+    /**
+     * Display the specified resource between two dates.
+     */
+    /**
+     * @OA\Get(
+     *      path="/timetable/between/{dateFrom}/{dateTo}",
+     *      operationId="getTimetableBetween",
+     *      tags={"Timetables"},
+     *      summary="Timetable show between",
+     *      description="Display the specified resource between two dates.",
+     *      @OA\Parameter(
+     *          name="dateFrom",
+     *          description="dateFrom",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+    *      @OA\Parameter(
+     *          name="dateTo",
+     *          description="dateTo",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *       @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
+    public function betweenDates(string $dateFrom, string $dateTo)
+    {
+        $data = Auth::user()->timetableData->whereBetween('date', [$dateFrom, $dateTo]);
+        return $this->sendResponse($data, 'ok');
+    }
 }

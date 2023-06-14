@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Classes\TimetableStatus;
 use App\Models\Timetable;
-
+use App\Classes\AcquaintanceStatus;
 class HomeController extends Controller
 {
     /**
@@ -29,8 +29,8 @@ class HomeController extends Controller
     {
         $futureDays = 30;
         $data = [];
-        $data['acquaintances']['pending'] = Auth::user()->pendingAcquaintances;
-        $data['acquaintances']['accepted'] = Auth::user()->acceptedAcquaintances;
+        $data['acquaintances']['pending'] = Auth::user()->pendingAcquaintancesMerged();
+        $data['acquaintances']['accepted'] = Auth::user()->acceptedAcquaintancesMerged();
 
         $data['timeTable']['head'] = [];
         $data['timeTable']['monthCut'] = null;
@@ -51,7 +51,7 @@ class HomeController extends Controller
             $data['timeTable']['head'][] = $headData;
         }
 
-        $users = Auth::user()->timetableAcquaintances;
+        $users = Auth::user()->timetableAcquaintances();
         $users[] = Auth::user();
 
         foreach($users as $user)
