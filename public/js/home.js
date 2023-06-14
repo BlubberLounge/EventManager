@@ -9,6 +9,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./resources/js/home.js":
+/*!******************************!*\
+  !*** ./resources/js/home.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _timetable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./timetable */ \"./resources/js/timetable.js\");\n/* harmony import */ var _timetable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_timetable__WEBPACK_IMPORTED_MODULE_0__);\nfunction _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\"); }\nfunction _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === \"string\") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === \"Object\" && o.constructor) n = o.constructor.name; if (n === \"Map\" || n === \"Set\") return Array.from(o); if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }\nfunction _iterableToArray(iter) { if (typeof Symbol !== \"undefined\" && iter[Symbol.iterator] != null || iter[\"@@iterator\"] != null) return Array.from(iter); }\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }\nfunction _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }\n/**\n * @author Maximilian Mewes\n *\n *\n */\n\n\n$(function () {\n  var timetable = new (_timetable__WEBPACK_IMPORTED_MODULE_0___default())('timetableTable');\n  var popoverTriggerList = $('[data-bs-toggle=\"popover\"]');\n  var popoverList = _toConsumableArray(popoverTriggerList).map(function (popoverTriggerEl) {\n    return new bootstrap.Popover(popoverTriggerEl, {\n      html: true,\n      title: function title() {\n        var date = moment(popoverTriggerEl.getAttribute('data-bl-timetable-date'));\n        return 'Status ändern vom ' + date.format('DD.MM.YYYY');\n      },\n      content: function content() {\n        return timetable.getActions(popoverTriggerEl);\n      }\n    });\n  });\n\n  // Make sure only one popover is active at one time\n  // [...popoverTriggerList].map(popoverTriggerEl => $(popoverTriggerEl).on('click', function (e)\n  //     {\n  //         $('.timetable-popover').not(this).popover('hide');\n  //     }));\n\n  //  Source:: https://stackoverflow.com/questions/11703093/how-to-dismiss-a-twitter-bootstrap-popover-by-clicking-outside\n  $('body').on('click', function (e) {\n    //     //did not click a popover toggle, or icon in popover toggle, or popover\n    //     if ($(e.target).data('toggle') !== 'popover'\n    //         && $(e.target).parents('[data-bs-toggle=\"popover\"]').length === 0\n    //         && $(e.target).parents('.popover.in').length === 0) {\n    //         $('[data-bs-toggle=\"popover\"]').popover('hide');\n    //     }\n    $('[data-bs-toggle=\"popover\"]').each(function () {\n      //the 'is' for buttons that trigger popups\n      //the 'has' for icons within a button that triggers a popup\n      if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {\n        $(this).popover('hide');\n      }\n    });\n  });\n  $('#acquaintances-accepted .btn-add-to-timetable').each(function (k, e) {\n    var e = $(e); // convert to JQuery object\n    e.on('click', function (event) {\n      var isActive = parseInt(e.attr('data-bl-acquaintance-active'));\n      var id = e.attr('data-bl-acquaintance-id');\n      if (isActive) {\n        timetable.removeRow(id, $('[data-bl-timetable-user-id=\"' + id + '\"]'));\n        e.attr('data-bl-acquaintance-active', '0');\n      } else {\n        var rowIndex = e.closest('.row').index();\n        timetable.addRow(id, rowIndex);\n        e.attr('data-bl-acquaintance-active', '1');\n      }\n    });\n  });\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,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Q0FBQyxDQUFDVyxJQUFJLENBQUMsNkJBQTZCLEVBQUUsR0FBRyxDQUFDO01BRTlDO0lBQ0osQ0FBQyxDQUFDO0VBQ04sQ0FBQyxDQUFDO0FBQ04sQ0FBQyxDQUFDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL2hvbWUuanM/MjQyYiJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEBhdXRob3IgTWF4aW1pbGlhbiBNZXdlc1xuICpcbiAqXG4gKi9cblxuaW1wb3J0IFRpbWV0YWJsZSBmcm9tIFwiLi90aW1ldGFibGVcIjtcblxuJChmdW5jdGlvbigpXG57XG4gICAgY29uc3QgdGltZXRhYmxlID0gbmV3IFRpbWV0YWJsZSgndGltZXRhYmxlVGFibGUnKTtcblxuICAgIGNvbnN0IHBvcG92ZXJUcmlnZ2VyTGlzdCA9ICQoJ1tkYXRhLWJzLXRvZ2dsZT1cInBvcG92ZXJcIl0nKTtcbiAgICBjb25zdCBwb3BvdmVyTGlzdCA9IFsuLi5wb3BvdmVyVHJpZ2dlckxpc3RdLm1hcChwb3BvdmVyVHJpZ2dlckVsID0+IG5ldyBib290c3RyYXAuUG9wb3Zlcihwb3BvdmVyVHJpZ2dlckVsLCB7XG4gICAgICAgIGh0bWw6IHRydWUsXG4gICAgICAgIHRpdGxlOiBmdW5jdGlvbigpIHtcbiAgICAgICAgICAgIGxldCBkYXRlID0gbW9tZW50KHBvcG92ZXJUcmlnZ2VyRWwuZ2V0QXR0cmlidXRlKCdkYXRhLWJsLXRpbWV0YWJsZS1kYXRlJykpO1xuICAgICAgICAgICAgcmV0dXJuICdTdGF0dXMgw6RuZGVybiB2b20gJyArIGRhdGUuZm9ybWF0KCdERC5NTS5ZWVlZJyk7XG4gICAgICAgIH0sXG4gICAgICAgIGNvbnRlbnQ6IGZ1bmN0aW9uICgpIHtcbiAgICAgICAgICAgIHJldHVybiB0aW1ldGFibGUuZ2V0QWN0aW9ucyhwb3BvdmVyVHJpZ2dlckVsKTtcbiAgICAgICAgfVxuICAgICAgfSkpO1xuXG4gICAgLy8gTWFrZSBzdXJlIG9ubHkgb25lIHBvcG92ZXIgaXMgYWN0aXZlIGF0IG9uZSB0aW1lXG4gICAgLy8gWy4uLnBvcG92ZXJUcmlnZ2VyTGlzdF0ubWFwKHBvcG92ZXJUcmlnZ2VyRWwgPT4gJChwb3BvdmVyVHJpZ2dlckVsKS5vbignY2xpY2snLCBmdW5jdGlvbiAoZSlcbiAgICAvLyAgICAge1xuICAgIC8vICAgICAgICAgJCgnLnRpbWV0YWJsZS1wb3BvdmVyJykubm90KHRoaXMpLnBvcG92ZXIoJ2hpZGUnKTtcbiAgICAvLyAgICAgfSkpO1xuXG4gICAgLy8gIFNvdXJjZTo6IGh0dHBzOi8vc3RhY2tvdmVyZmxvdy5jb20vcXVlc3Rpb25zLzExNzAzMDkzL2hvdy10by1kaXNtaXNzLWEtdHdpdHRlci1ib290c3RyYXAtcG9wb3Zlci1ieS1jbGlja2luZy1vdXRzaWRlXG4gICAgJCgnYm9keScpLm9uKCdjbGljaycsIGZ1bmN0aW9uIChlKSB7XG4gICAgICAgIC8vICAgICAvL2RpZCBub3QgY2xpY2sgYSBwb3BvdmVyIHRvZ2dsZSwgb3IgaWNvbiBpbiBwb3BvdmVyIHRvZ2dsZSwgb3IgcG9wb3ZlclxuICAgICAgICAvLyAgICAgaWYgKCQoZS50YXJnZXQpLmRhdGEoJ3RvZ2dsZScpICE9PSAncG9wb3ZlcidcbiAgICAgICAgLy8gICAgICAgICAmJiAkKGUudGFyZ2V0KS5wYXJlbnRzKCdbZGF0YS1icy10b2dnbGU9XCJwb3BvdmVyXCJdJykubGVuZ3RoID09PSAwXG4gICAgICAgIC8vICAgICAgICAgJiYgJChlLnRhcmdldCkucGFyZW50cygnLnBvcG92ZXIuaW4nKS5sZW5ndGggPT09IDApIHtcbiAgICAgICAgLy8gICAgICAgICAkKCdbZGF0YS1icy10b2dnbGU9XCJwb3BvdmVyXCJdJykucG9wb3ZlcignaGlkZScpO1xuICAgICAgICAvLyAgICAgfVxuICAgICAgICAkKCdbZGF0YS1icy10b2dnbGU9XCJwb3BvdmVyXCJdJykuZWFjaChmdW5jdGlvbiAoKSB7XG4gICAgICAgICAgICAvL3RoZSAnaXMnIGZvciBidXR0b25zIHRoYXQgdHJpZ2dlciBwb3B1cHNcbiAgICAgICAgICAgIC8vdGhlICdoYXMnIGZvciBpY29ucyB3aXRoaW4gYSBidXR0b24gdGhhdCB0cmlnZ2VycyBhIHBvcHVwXG4gICAgICAgICAgICBpZiAoISQodGhpcykuaXMoZS50YXJnZXQpICYmICQodGhpcykuaGFzKGUudGFyZ2V0KS5sZW5ndGggPT09IDAgJiYgJCgnLnBvcG92ZXInKS5oYXMoZS50YXJnZXQpLmxlbmd0aCA9PT0gMCkge1xuICAgICAgICAgICAgICAgICQodGhpcykucG9wb3ZlcignaGlkZScpO1xuICAgICAgICAgICAgfVxuICAgICAgICB9KTtcbiAgICB9KTtcblxuICAgICQoJyNhY3F1YWludGFuY2VzLWFjY2VwdGVkIC5idG4tYWRkLXRvLXRpbWV0YWJsZScpLmVhY2goKGssIGUpID0+XG4gICAge1xuICAgICAgICB2YXIgZSA9ICQoZSk7IC8vIGNvbnZlcnQgdG8gSlF1ZXJ5IG9iamVjdFxuICAgICAgICBlLm9uKCdjbGljaycsIChldmVudCkgPT5cbiAgICAgICAge1xuICAgICAgICAgICAgbGV0IGlzQWN0aXZlID0gcGFyc2VJbnQoZS5hdHRyKCdkYXRhLWJsLWFjcXVhaW50YW5jZS1hY3RpdmUnKSk7XG4gICAgICAgICAgICBsZXQgaWQgPSBlLmF0dHIoJ2RhdGEtYmwtYWNxdWFpbnRhbmNlLWlkJyk7XG5cbiAgICAgICAgICAgIGlmKGlzQWN0aXZlKSB7XG4gICAgICAgICAgICAgICAgdGltZXRhYmxlLnJlbW92ZVJvdyhpZCwgJCgnW2RhdGEtYmwtdGltZXRhYmxlLXVzZXItaWQ9XCInK2lkKydcIl0nKSk7XG4gICAgICAgICAgICAgICAgZS5hdHRyKCdkYXRhLWJsLWFjcXVhaW50YW5jZS1hY3RpdmUnLCAnMCcpO1xuXG4gICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgIGxldCByb3dJbmRleCA9IGUuY2xvc2VzdCgnLnJvdycpLmluZGV4KClcbiAgICAgICAgICAgICAgICB0aW1ldGFibGUuYWRkUm93KGlkLCByb3dJbmRleCk7XG4gICAgICAgICAgICAgICAgZS5hdHRyKCdkYXRhLWJsLWFjcXVhaW50YW5jZS1hY3RpdmUnLCAnMScpO1xuXG4gICAgICAgICAgICB9XG4gICAgICAgIH0pO1xuICAgIH0pO1xufSk7XG4iXSwibmFtZXMiOlsiVGltZXRhYmxlIiwiJCIsInRpbWV0YWJsZSIsInBvcG92ZXJUcmlnZ2VyTGlzdCIsInBvcG92ZXJMaXN0IiwiX3RvQ29uc3VtYWJsZUFycmF5IiwibWFwIiwicG9wb3ZlclRyaWdnZXJFbCIsImJvb3RzdHJhcCIsIlBvcG92ZXIiLCJodG1sIiwidGl0bGUiLCJkYXRlIiwibW9tZW50IiwiZ2V0QXR0cmlidXRlIiwiZm9ybWF0IiwiY29udGVudCIsImdldEFjdGlvbnMiLCJvbiIsImUiLCJlYWNoIiwiaXMiLCJ0YXJnZXQiLCJoYXMiLCJsZW5ndGgiLCJwb3BvdmVyIiwiayIsImV2ZW50IiwiaXNBY3RpdmUiLCJwYXJzZUludCIsImF0dHIiLCJpZCIsInJlbW92ZVJvdyIsInJvd0luZGV4IiwiY2xvc2VzdCIsImluZGV4IiwiYWRkUm93Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/home.js\n");
+
+/***/ }),
+
 /***/ "./resources/js/timetable.js":
 /*!***********************************!*\
   !*** ./resources/js/timetable.js ***!
@@ -46,11 +57,52 @@ eval("function _typeof(obj) { \"@babel/helpers - typeof\"; return _typeof = \"fu
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./resources/js/timetable.js");
+/******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./resources/js/home.js");
 /******/ 	
 /******/ })()
 ;

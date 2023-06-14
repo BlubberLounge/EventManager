@@ -15,6 +15,206 @@
         }
     ],
     "paths": {
+        "/acquaintance/{acquaintanceID}": {
+            "put": {
+                "tags": [
+                    "Acquaintances"
+                ],
+                "summary": "Acquaintance update",
+                "description": "Update the specified resource by ID",
+                "operationId": "updateAcquaintance",
+                "parameters": [
+                    {
+                        "name": "acquaintanceID",
+                        "in": "path",
+                        "description": "acquaintanceID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "showOnHomeView",
+                        "in": "query",
+                        "description": "showOnHomeView",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/acquaintance/byReceiver/{acquaintanceID}": {
+            "put": {
+                "tags": [
+                    "Acquaintances"
+                ],
+                "summary": "Acquaintance update by receiver user",
+                "description": "Update the specified resource by ID",
+                "operationId": "updateAcquaintanceByReceiver",
+                "parameters": [
+                    {
+                        "name": "acquaintanceID",
+                        "in": "path",
+                        "description": "acquaintanceID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "showOnHomeView",
+                        "in": "query",
+                        "description": "showOnHomeView",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/acquaintance/byTransmitter/{acquaintanceID}": {
+            "put": {
+                "tags": [
+                    "Acquaintances"
+                ],
+                "summary": "Acquaintance update by transmitter user",
+                "description": "Update the specified resource by ID",
+                "operationId": "updateAcquaintanceByTransmitter",
+                "parameters": [
+                    {
+                        "name": "acquaintanceID",
+                        "in": "path",
+                        "description": "acquaintanceID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "showOnHomeView",
+                        "in": "query",
+                        "description": "showOnHomeView",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/acquaintance/byReceiverOrTransmitter/{acquaintanceID}": {
+            "put": {
+                "tags": [
+                    "Acquaintances"
+                ],
+                "summary": "Acquaintance update by receiver OR transmitter user",
+                "description": "Update the specified resource by ID",
+                "operationId": "updateAcquaintanceByReceiverOrTransmitter",
+                "parameters": [
+                    {
+                        "name": "acquaintanceID",
+                        "in": "path",
+                        "description": "acquaintanceID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "showOnHomeView",
+                        "in": "query",
+                        "description": "showOnHomeView",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "/login": {
             "post": {
                 "tags": [
@@ -84,6 +284,169 @@
                 }
             }
         },
+        "/timetable": {
+            "get": {
+                "tags": [
+                    "Timetables"
+                ],
+                "summary": "Timetable index",
+                "description": "Display a listing of the resource.",
+                "operationId": "getAllTimetable",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Timetables"
+                ],
+                "summary": "Timetable store",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "createTimetable",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Date",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/timetable/{timetableID}": {
+            "get": {
+                "tags": [
+                    "Timetables"
+                ],
+                "summary": "Timetable show",
+                "description": "Display the specified resource.",
+                "operationId": "getTimetable",
+                "parameters": [
+                    {
+                        "name": "timetableID",
+                        "in": "path",
+                        "description": "timetableID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Timetables"
+                ],
+                "summary": "Timetable update",
+                "description": "Update the specified resource by ID or Date",
+                "operationId": "updateTimetable",
+                "parameters": [
+                    {
+                        "name": "timetableID",
+                        "in": "path",
+                        "description": "timetableID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/timetable/between/{dateFrom}/{dateTo}": {
+            "get": {
+                "tags": [
+                    "Timetables"
+                ],
+                "summary": "Timetable show between",
+                "description": "Display the specified resource between two dates.",
+                "operationId": "getTimetableBetween",
+                "parameters": [
+                    {
+                        "name": "dateFrom",
+                        "in": "path",
+                        "description": "dateFrom",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dateTo",
+                        "in": "path",
+                        "description": "dateTo",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "/user": {
             "get": {
                 "tags": [
@@ -92,6 +455,98 @@
                 "summary": "Get current User",
                 "description": "Get current User",
                 "operationId": "getUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/{userID}/timetable": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Timetable index",
+                "description": "Display a listing of the resource.",
+                "operationId": "getUserAllTimetable",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/{userID}/timetable/{timetableID}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Timetable show",
+                "description": "Display the specified resource.",
+                "operationId": "getUserTimetable",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/{userID}/timetable/between/{dateFrom}/{dateTo}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Timetable show between",
+                "description": "Display the specified resource between two dates.",
+                "operationId": "getUserTimetableBetween",
+                "parameters": [
+                    {
+                        "name": "userID",
+                        "in": "path",
+                        "description": "userID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dateFrom",
+                        "in": "path",
+                        "description": "dateFrom",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dateTo",
+                        "in": "path",
+                        "description": "dateTo",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -262,12 +717,20 @@
             "description": "User Endpoints"
         },
         {
+            "name": "Timetables",
+            "description": "Timetable Endpoints"
+        },
+        {
+            "name": "Acquaintances",
+            "description": "Acquaintance Endpoints"
+        },
+        {
             "name": "Authentification",
             "description": "Authentification Endpoints"
         },
         {
             "name": "Utillities",
-            "description": "Utillities Endpoints"
+            "description": "Utillity Endpoints"
         }
     ]
 }

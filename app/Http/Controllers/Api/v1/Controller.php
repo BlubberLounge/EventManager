@@ -28,13 +28,23 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  *
  * @OA\Tag(
+ *     name="Timetables",
+ *     description="Timetable Endpoints"
+ * )
+ *
+ * @OA\Tag(
+ *     name="Acquaintances",
+ *     description="Acquaintance Endpoints"
+ * )
+ *
+ * @OA\Tag(
  *     name="Authentification",
  *     description="Authentification Endpoints"
  * )
  *
  * @OA\Tag(
  *     name="Utillities",
- *     description="Utillities Endpoints"
+ *     description="Utillity Endpoints"
  * )
  */
 class Controller extends BaseController
@@ -52,7 +62,7 @@ class Controller extends BaseController
         // $this->middleware('auth:sanctum');
     }
 
-        /**
+    /**
      * success response method.
      *
      * @return \Illuminate\Http\Response

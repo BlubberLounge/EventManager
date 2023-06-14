@@ -29,7 +29,7 @@
                 </div>
                 <div style="line-height: 1">
                     <span class="h4 m-0"> {{ Auth::user()->firstname .' '. Auth::user()->lastname }} </span>
-                    <span class="d-block m-0 p-0" style="color: var(--clr-gray-50);"> {{ '@'.Auth::user()->name }} </span>
+                    <span class="d-block m-0 p-0" style="color: var(--bl-clr-gray-50);"> {{ '@'.Auth::user()->name }} </span>
                 </div>
             </div>
             <div class="col-1">

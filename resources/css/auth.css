@@ -1,6 +1,6 @@
 body {
-    color: var(--clr-gray-5);
-    background-color: var(--clr-gray-90);
+    color: var(--bl-clr-gray-5);
+    background-color: var(--bl-clr-gray-90);
 }
 
 body::after {
@@ -26,8 +26,8 @@ a {
     position: absolute;
     font-family: 'Montserrat';
     font-weight: 700;
-    background-color: var(--clr-brand);
-    color: var(--clr-gray-80);
+    background-color: var(--bl-clr-brand);
+    color: var(--bl-clr-gray-80);
     padding: .3em .8em;
     border-radius: .5rem;
     bottom: 2em;
@@ -42,7 +42,7 @@ a {
     position: absolute;
     width: 12px;
     height: 11px;
-    background-color: var(--clr-gray-90);
+    background-color: var(--bl-clr-gray-90);
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
@@ -57,7 +57,7 @@ a {
 }
 
 input ~ i {
-    color: var(--clr-gray-50);
+    color: var(--bl-clr-gray-50);
     position: absolute;
     right: 25px;
     top: 50%;
@@ -80,5 +80,5 @@ input.is-invalid ~ i {
 }
 
 .registerText {
-    color: var(--clr-gray-40);
+    color: var(--bl-clr-gray-40);
 }

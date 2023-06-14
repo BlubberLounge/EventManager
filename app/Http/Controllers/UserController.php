@@ -89,7 +89,7 @@ class UserController extends Controller
         $acq = new Acquaintance;
         $acq->transmitter_user_id = Auth::user()->id;
         $acq->receiver_user_id = $request->u;
-        $acq->status = Status::PENDING;
+        $acq->status = AcquaintanceStatus::PENDING;
 
         // Error handling
         return rescue(function () use ($acq) {

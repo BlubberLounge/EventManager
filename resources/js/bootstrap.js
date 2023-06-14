@@ -1,4 +1,14 @@
-import 'bootstrap';
+// import '@popperjs/core';
+// import 'bootstrap';
+
+try {
+    window.Popper = require('@popperjs/core');
+    window.bootstrap = require('bootstrap');
+    window.moment = require('moment');
+
+} catch (e) {
+    // console.log(e);
+}
 
 import 'animate.css';
 

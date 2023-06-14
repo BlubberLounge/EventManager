@@ -18,6 +18,7 @@ class Acquaintance extends Model
         'transmitter_user_id',
         'receiver_user_id',
         'status',
+        'showOnHomeView',
     ];
 
     /**

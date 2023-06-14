@@ -208,9 +208,9 @@
         </a>
     </section>
 
-    <div class="d-flex flex-column align-items-center pt-4 pb-3" style="background-color:var(--clr-background-dark);">
-        <p class="m-0 small" style="color:var(--clr-gray-60);">EventManager v{{ env('APP_VERSION', 'invalid') }} | Systemtime: {{ now()->format('H:i:s d.m.y ') }} </p>
-        <p class="m-0 small" style="color:var(--clr-gray-70);"><i class="fa-regular fa-copyright fa-xs"></i> EventManager {{ now()->year }}. Some Rights Reserverd.</p>
+    <div class="d-flex flex-column align-items-center pt-4 pb-3" style="background-color:var(--bl-clr-background-dark);">
+        <p class="m-0 small" style="color:var(--bl-clr-gray-60);">EventManager v{{ env('APP_VERSION', 'invalid') }} | Systemtime: {{ now()->format('H:i:s d.m.y ') }} </p>
+        <p class="m-0 small" style="color:var(--bl-clr-gray-70);"><i class="fa-regular fa-copyright fa-xs"></i> EventManager {{ now()->year }}. Some Rights Reserverd.</p>
     </div>
 </div>
 @endsection
