@@ -12113,6 +12113,10 @@ section h3 {
     font-family: var(--font-primary);
 }
 
+Button[data-bl-acquaintance-active="1"] {
+    color: var(--bl-clr-green);
+}
+
 .acquaintances-actions {
     margin-left: auto;
 }
@@ -12124,13 +12128,6 @@ section h3 {
     cursor: pointer;
 }
 
-.acquaintances-actions input[type="checkbox"] {
-    display:none;
-}
-
-.acquaintances-actions input[type=checkbox]:checked + label {
-    color: var(--bl-clr-green);
-}
 
 section#timetable table {
     text-align: center;
@@ -12549,6 +12546,11 @@ section#account {
     --bs-btn-active-color: var(--bs-white);
     --bs-btn-active-bg: var(--bl-clr-bd-red);
     --bs-btn-active-border-color: var(--bl-clr-bd-red);
+}
+
+.btn-bl-icon {
+    font-size: 1.2rem;
+    background: transparent;
 }
 
 

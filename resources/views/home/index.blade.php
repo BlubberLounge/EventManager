@@ -43,7 +43,7 @@
             </thead>
             <tbody>
                 @foreach ($timeTable['body'] as $dat)
-                    <tr @class(['timetable-me' => $dat['user']->id === Auth::user()->id])>
+                    <tr @class(['timetable-me' => $dat['user']->id === Auth::user()->id]) data-bl-timetable-user-id="{{ $dat['user']->id }}">
                         <td class="detectSticky"></td>
                         <td class="timeTableUser">{{ $dat['user']->id === Auth::user()->id ? '(Ich)' : (strlen($dat['user']->name) >= 10 ? substr($dat['user']->name, 0, 10).'...' : $dat['user']->name) }}</td>
                         @foreach ($dat['days'] as $day)
@@ -80,27 +80,26 @@
 
     <section id="acquaintances-accepted">
         <h3>Acquaintances</h3>
-        <div class="section-content" {{-- style="max-height: 130px; overflow-y: scroll;" --}}>
-            @foreach ($acquaintances['accepted'] as $acquaintancesAccepted)
-                <div class="d-flex align-items-center" style="margin-top:1em;padding-left: .5em;">
+        @foreach ($acquaintances['accepted'] as $acquaintancesAccepted)
+            <div class="row mt-2 pe-2 align-items-center">
+                <div class="col">
                     <img src="{{ Avatar::create($acquaintancesAccepted->firstname)->toBase64() }}" width="40px" />
                     <span class="ms-3" style="font-size:1.05rem;">
                         {{ $acquaintancesAccepted->full_name }}
                     </span>
-                    <div class="acquaintances-actions d-flex">
-                        <div>
-                            <input type="checkbox" id="checkbox-checked-{{ $acquaintancesAccepted->id }}" name="checkbox-checked-{{ $acquaintancesAccepted->id }}" />
-                            <label for="checkbox-checked-{{ $acquaintancesAccepted->id }}">
-                                <i class="fa-regular fa-calendar-check"></i>
-                            </label>
-                        </div>
-
-                        {{-- <div><i class="fa-regular fa-calendar-xmark"></i></div> --}}
-                        <div><i class="fa-solid fa-circle-info"></i></div>
-                    </div>
                 </div>
-            @endforeach
-        </div>
+                <div class="col-1 d-flex justify-center">
+                    <button type="button" class="btn-bl-icon btn-add-to-timetable" data-bl-acquaintance-id="{{ $acquaintancesAccepted->id }}" data-bl-acquaintance-active="{{ $acquaintancesAccepted->pivot->showOnHomeView }}">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </button>
+                </div>
+                <div class="col-2 d-flex justify-center">
+                    <button type="button" class="btn btn-bl-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </div>
+            </div>
+        @endforeach
     </section>
 
     <section id="acquaintances-pending">

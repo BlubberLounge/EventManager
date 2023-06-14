@@ -98,6 +98,7 @@ class Timetable
 {
 	constructor(tableID)
     {
+        this.apiBaseURL = '/api/v1';
     	this.tableID = tableID;
         this.factory = new TimetableElementFactory;
         this.init();
@@ -128,7 +129,7 @@ class Timetable
         let element = $(clickedElement);
         let date = moment(element.attr('data-bl-timetable-date'));
         let status = TimetableStaus[element.attr('data-bl-timetable-status').toUpperCase()];
-        // @ToDo
+        // TODO clenup
         if(status === undefined)
             console.log('wrong status: ' + element.attr('data-bl-timetable-status').toUpperCase());
 
@@ -159,7 +160,7 @@ class Timetable
             $(e).on('click', el =>
             {
                 $.ajax({
-                    url: '/api/v1/timetable/'+date.format('YYYY-MM-DD'),
+                    url: this.apiBaseURL+'/timetable/'+date.format('YYYY-MM-DD'),
                     method: 'PUT',
                     data: {
                       status: TimetableStaus[$(e).attr('for').replace('btn-', '').toUpperCase()]
@@ -179,7 +180,7 @@ class Timetable
                         // console.log(errorThrown);
                         // handle the error case
                     }
-                  });
+                });
             });
         });
 
@@ -195,6 +196,62 @@ class Timetable
         container.append(loadingSpinnerContainer);
 
         return container;
+    }
+
+    addRow(userId, rowIndex)
+    {
+
+        $.ajax({
+            url: this.apiBaseURL+'/user/'+userId+'/timetable',
+            method: 'GET',
+            data: {
+            },
+            beforeSend: function() {
+            },
+            success: function(response) {
+                let data = response.data;
+                let newRow = $('<tr></tr>')
+                    .append($('<td class="detectSticky"></td>'))
+                    .append($('<td class="timeTableUser">penis</td>'));
+                let newCell = undefined;
+
+                newRow.attr('data-bl-timetable-user-id', response.data[0].user_id);
+
+                for(let i=0; i <= 30; i++)
+                {
+                    let d = data[i];
+                    let calculatedDate = moment().add(i, 'days');
+                    var foundEntry = undefined;
+                    // TODO will most likely cause problems with more data
+                    data.forEach((item, index) => {
+                        // console.table([item.date, date]);
+                        let date = calculatedDate.format('YYYY-MM-DD');
+                        if(item.date == date)
+                            foundEntry = item;
+                    });
+
+                    if(foundEntry !== undefined) {
+                        newCell = $('<td data-bl-timetable-status="'+TimetableStaus[foundEntry.status.toUpperCase()]+'"></td>');
+                    } else {
+                        newCell = $('<td data-bl-timetable-status="'+TimetableStaus['noTime'.toUpperCase()]+'"></td>');
+                    }
+
+                    newRow.append(newCell);
+                }
+                // TODO cleanup please.. thx
+                $('#timetableTable tbody > tr:nth-child('+parseInt(rowIndex-1)+')').after(newRow);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // handle the error case
+                console.log(errorThrown);
+            }
+        });
+    }
+
+    removeRow(row)
+    {
+        let r = $(row);
+        r.remove();
     }
 }
 

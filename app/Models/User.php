@@ -155,7 +155,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->acquaintancesReceived()
             ->wherePivot('status', AcquaintanceStatus::ACCEPTED)
-            ->where('showOnHomeView', true);
+            ->wherePivot('showOnHomeView', true);
     }
 
     /**
@@ -174,7 +174,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function acquaintancesReceived(): BelongsToMany
     {
         return $this->belongsToMany(User::class, Acquaintance::class, 'receiver_user_id', 'transmitter_user_id')
-            ->withPivot('status')
+            ->withPivot('status', 'showOnHomeView')
             ->withTimestamps();
     }
 
