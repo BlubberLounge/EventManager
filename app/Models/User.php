@@ -154,7 +154,10 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function timetableAcquaintances()
     {
-        return $this->acquaintances(AcquaintanceStatus::ACCEPTED, true);
+        return $this->acquaintances(AcquaintanceStatus::ACCEPTED, true)->sortBy(
+            ['firstname', 'asc'],
+            ['lastname', 'asc'],
+        );;
     }
 
     // works but is not the best solution
@@ -236,7 +239,10 @@ class User extends Authenticatable implements MustVerifyEmail
             ->wherePivot('status', AcquaintanceStatus::PENDING)
             ->get();
 
-        return $received->merge($transmitted);
+        return $received->merge($transmitted)->sortBy(
+            ['firstname', 'asc'],
+            ['lastname', 'asc'],
+        );
     }
 
     /**
@@ -252,7 +258,10 @@ class User extends Authenticatable implements MustVerifyEmail
             ->wherePivot('status', AcquaintanceStatus::ACCEPTED)
             ->get();
 
-        return $received->merge($transmitted);
+        return $received->merge($transmitted)->sortBy(
+            ['firstname', 'asc'],
+            ['lastname', 'asc'],
+        );
     }
 
     /**
@@ -268,7 +277,10 @@ class User extends Authenticatable implements MustVerifyEmail
             ->wherePivot('status', AcquaintanceStatus::DENIED)
             ->get();
 
-        return $received->merge($transmitted);
+        return $received->merge($transmitted)->sortBy(
+            ['firstname', 'asc'],
+            ['lastname', 'asc'],
+        );
     }
 
     /**
