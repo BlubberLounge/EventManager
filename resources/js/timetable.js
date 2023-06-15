@@ -13,15 +13,7 @@ const TimetableStaus = {
     NOTIME: 'noTime',
 };
 
-// class TimetableRow
-// {
 
-// }
-
-// class TimetableCell
-// {
-
-// }
 /**
  *
  *
@@ -209,11 +201,11 @@ class Timetable
             beforeSend: function() {
             },
             success: function(response) {
-                console.log(response);
+                // console.log(response);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // handle the error case
-                console.log(errorThrown);
+                // console.log(errorThrown);
             }
         });
     }
@@ -285,7 +277,7 @@ class Timetable
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // handle the error case
-                console.log(errorThrown);
+                // console.log(errorThrown);
             }
         });
     }

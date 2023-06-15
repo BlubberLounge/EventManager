@@ -105,24 +105,24 @@
     <section id="acquaintances-pending">
         <h3>Acquaintances (pending)</h3>
         @forelse ($acquaintances['pending'] as $acquaintancesPending)
-        <div class="row mt-2 pe-2 align-items-center" data-bl-acquaintance-id="{{ $acquaintancesPending->id }}">
-            <div class="col">
-                <img src="{{ Avatar::create($acquaintancesPending->firstname)->toBase64() }}" width="40px" />
-                <span class="ms-3" style="font-size:1.05rem;">
-                    {{ $acquaintancesPending->full_name }}
-                </span>
+            <div class="row mt-2 pe-2 align-items-center" data-bl-acquaintance-id="{{ $acquaintancesPending->id }}">
+                <div class="col">
+                    <img src="{{ Avatar::create($acquaintancesPending->firstname)->toBase64() }}" width="40px" />
+                    <span class="ms-3" style="font-size:1.05rem;">
+                        {{ $acquaintancesPending->full_name }}
+                    </span>
+                </div>
+                <div class="col-1 d-flex justify-center">
+                    <button type="button" class="btn btn-bl-icon btn-acquaintance-accept">
+                        <i class="fa-solid fa-square-check"></i>
+                    </button>
+                </div>
+                <div class="col-2 d-flex justify-center">
+                    <button type="button" class="btn btn-bl-icon btn-acquaintance-decline">
+                        <i class="fa-solid fa-square-xmark"></i>
+                    </button>
+                </div>
             </div>
-            <div class="col-1 d-flex justify-center">
-                <button type="button" class="btn btn-bl-icon">
-                    <i class="fa-solid fa-square-check"></i>
-                </button>
-            </div>
-            <div class="col-2 d-flex justify-center">
-                <button type="button" class="btn btn-bl-icon">
-                    <i class="fa-solid fa-square-xmark"></i>
-                </button>
-            </div>
-        </div>
         @empty
             <div style="padding: 1rem 0;padding-left: .5em;color:var(--bl-clr-background-light);text-align:center;">
                 no pending acquaintances requests

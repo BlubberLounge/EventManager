@@ -5,10 +5,12 @@
  */
 
 import Timetable from "./timetable";
+import Acquaintance from "./acquaintance";
 
 $(function()
 {
     const timetable = new Timetable('timetableTable');
+    const acquaintance = new Acquaintance;
 
     const popoverTriggerList = $('[data-bs-toggle="popover"]');
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl, {
@@ -63,6 +65,24 @@ $(function()
                 e.attr('data-bl-acquaintance-active', '1');
 
             }
+        });
+    });
+
+    $('.btn-acquaintance-accept').each((k, e) =>
+    {
+        var e = $(e); // convert to JQuery object
+        e.on('click', (event) =>
+        {
+            acquaintance.updateByReceiverOrTransmitter(e.closest('div.row').attr('data-bl-acquaintance-id'), 'accepted');
+        });
+    });
+
+    $('.btn-acquaintance-decline').each((k, e) =>
+    {
+        var e = $(e); // convert to JQuery object
+        e.on('click', (event) =>
+        {
+            acquaintance.updateByReceiverOrTransmitter(e.closest('div.row').attr('data-bl-acquaintance-id'), 'denied');
         });
     });
 });
