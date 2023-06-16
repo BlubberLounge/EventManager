@@ -15,13 +15,14 @@ use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
+use OwenIt\Auditing\Contracts\Auditable;
 
 use App\Classes\AcquaintanceStatus;
 
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasMergedRelationships;
+    use HasApiTokens, HasFactory, Notifiable, HasMergedRelationships, \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.
@@ -59,6 +60,15 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Attributes to include in the Audit.
+     *
+     * @var array
+     */
+    protected $auditInclude = [
+        //
     ];
 
     /**
@@ -139,6 +149,14 @@ class User extends Authenticatable implements MustVerifyEmail
     private function generateQRCode(): String
     {
         return URL::temporarySignedRoute('user.acquaintanceAdd', now()->addMinutes(config('custom.QRCode.expiration')), ['u' => $this->id]);
+    }
+
+    /**
+     *
+     */
+    public function showOnHomeView(): boolean
+    {
+        //
     }
 
     /**

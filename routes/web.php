@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,12 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');
     Route::view('/tickets/done', 'ticket.done')->name('tickets.done');
 
+    /**
+     * DEBUG Routes
+     */
+    if (App::environment(['local', 'development'])) {
+        Route::get('/debug/auditLog', [AuditController::class, 'index'])->name('debug.AuditLog');
+    }
     /* ==============================
     * Mockup Views
     * ============================== */

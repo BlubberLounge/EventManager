@@ -325,10 +325,16 @@ section#timetable table .day {
     to   { opacity: 1}
 }
 
-section#reliability,
-section#account {
+#container-account > section {
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+
+#container-account hr {
+    border-top: 2px solid var(--bl-clr-background-dark);
+    margin: 0 3rem;
+    opacity: 1;
 }
 
 .reliability-meter {
@@ -390,17 +396,20 @@ section#account {
     margin-right: 1rem;
 }
 
-#account-settings {
+#account-settings,
+#account-debug {
     font-size: 1.1rem;
     padding: 2rem 1rem 1rem 1rem;
 }
 
-#account-settings .row {
+#account-settings .row,
+#account-debug .row {
     padding: .3rem 1rem;
     align-items: center;
 }
 
-#account-settings .col {
+#account-settings .col,
+#account-debug .col {
     position: relative;
     margin: 0 1rem;
     padding: .5rem 0;
@@ -412,27 +421,26 @@ section#account {
 }
 */
 
-#account-settings hr {
-    border-top: 2px solid var(--bl-clr-background-dark);
-    margin: 0 3rem;
-    opacity: 1;
-}
-
-#account-settings a {
+#account-settings a,
+#account-debug a {
     text-decoration: none;
     color: inherit;
 }
 
 #account-settings .row:hover,
-#account-settings .row:active {
+#account-settings .row:active
+#account-debug .row:hover,
+#account-debug .row:active {
     background-color: var(--bl-clr-background-light);
 }
 
-#account-settings i {
+#account-settings i,
+#account-debug i {
     font-size: 1.2rem;
 }
 
-#account-settings span {
+#account-settings span,
+#account-debug span {
     padding-left: .5rem;
 }
 
@@ -523,6 +531,10 @@ section#account {
 .btn-bl-icon {
     font-size: 1.2rem;
     background: transparent;
+}
+
+#table-auditLog {
+    font-size: .8rem;
 }
 
 
