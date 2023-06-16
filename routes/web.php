@@ -79,6 +79,8 @@ Route::middleware(['auth', 'verified'])->group(function ()
     if (App::environment(['local', 'development'])) {
         Route::get('/debug/auditLog', [AuditController::class, 'index'])->name('debug.AuditLog');
     }
+
+
     /* ==============================
     * Mockup Views
     * ============================== */
