@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="container-account">
     <section id="reliability">
         <h3 style="font-size: 1rem"> Zuverlässigkeit </h3>
         <div class="row justify-content-center align-items-center">
@@ -207,6 +207,10 @@
             </div>
         </a>
     </section>
+
+    @includeIf('includes.section-development', [
+        App::environment(['local', 'development'])
+    ])
 
     <div class="d-flex flex-column align-items-center pt-4 pb-3" style="background-color:var(--bl-clr-background-dark);">
         <p class="m-0 small" style="color:var(--bl-clr-gray-60);">EventManager v{{ env('APP_VERSION', 'invalid') }} | Systemtime: {{ now()->format('H:i:s d.m.y ') }} </p>

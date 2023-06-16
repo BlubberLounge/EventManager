@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Classes\TimetableStatus;
 use App\Models\Timetable;
 use App\Classes\AcquaintanceStatus;
+
+
 class HomeController extends Controller
 {
     /**
