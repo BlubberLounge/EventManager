@@ -16,13 +16,19 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 use OwenIt\Auditing\Contracts\Auditable;
+use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 
 use App\Classes\AcquaintanceStatus;
 
 
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasMergedRelationships, \OwenIt\Auditing\Auditable;
+    use HasApiTokens,
+        HasFactory,
+        Notifiable,
+        HasMergedRelationships,
+        \OwenIt\Auditing\Auditable,
+        HasRoleAndPermission;
 
     /**
      * The attributes that are mass assignable.
@@ -154,7 +160,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      *
      */
-    public function showOnHomeView(): boolean
+    public function showOnHomeView(): bool
     {
         //
     }

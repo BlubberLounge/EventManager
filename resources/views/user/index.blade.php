@@ -126,6 +126,36 @@
                 <span>{{ $user->telefon_mobil }}</span>
             </div>
         </div>
+        @level(5)
+            <div class="row">
+                <div class="col-1 d-flex justiy-content-center">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div class="col">
+                    @role('root')
+                        <span class="badge rounded-pill text-bg-danger"> Root </span>
+                    @endrole
+                    @role('Developer')
+                        <span class="badge rounded-pill text-bg-success"> Developer </span>
+                    @endrole
+                    @role('Admin')
+                        <span class="badge rounded-pill text-bg-info"> Admin </span>
+                    @endrole
+                    @role('EventManager')
+                        <span class="badge rounded-pill text-bg-warning"> EventManager </span>
+                    @endrole
+                    @role('Trusted')
+                        <span class="badge rounded-pill text-bg-light"> Trusted </span>
+                    @endrole
+                    @role('User')
+                        <span class="badge rounded-pill text-bg-secondary"> User </span>
+                    @endrole
+                    @role('Unverified')
+                        <span class="badge rounded-pill text-bg-secondary"> Unverified </span>
+                    @endrole
+                </div>
+            </div>
+        @endlevel
     </section>
 
     <section id="account-settings">

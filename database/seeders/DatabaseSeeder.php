@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,10 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            UserSeeder::class,
-            //AcquaintanceSeeder::class
+        Model::unguard();
 
+        $this->call([
+            //AcquaintanceSeeder::class
+            PermissionsSeeder::class,
+            RolesSeeder::class,
+            ConnectRelationshipsSeeder::class,
+            UserSeeder::class,
         ]);
+
+        Model::reguard();
     }
 }
