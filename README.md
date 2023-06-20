@@ -10,12 +10,16 @@ Manage events, send/recieve invitations, lost and found list, create polls and s
 
 ## ⚙️ Features
 
-- TBD: still in very early development ❎
-- [User management]
-- [Audit logging]
-- [Send Invitations]
-- [See Invites (Accepts/decline)]
-- [Guest list]
+(still in very early development)
+
+- Timetable (schedule finder with acquaintances) ✔️
+- Audit logging ✔️
+- Acquaintance System ✔️
+- Great design ✔️
+- [User management] ❌
+- [Send Invitations] ❌
+- [Send Invites (Accepts/decline)] ❌
+- [Guest list] ❌
 - and much more
 
 ---
@@ -67,15 +71,27 @@ Detailed Description: TBD ❎
     php artisan serve
     ```
 
-## API Usage
+## Hints
 
-**OpenAPI/Swagger Api documentation:** /api/doc
+### API usage
 
-**Generate the documentation**
+1. The OpenAPI/Swagger Api documentation can be found under: **/api/doc**
 
-```sh
-php artisan l5-swagger:generate
-```
+2. Generate the documentation via the following command:
+
+    ```sh
+    php artisan l5-swagger:generate
+    ```
+
+### User settings
+
+1. Manage user settings via `settings/users.php`
+
+2. Migrate user settings
+
+    ```sh
+    php artisan settings:migrate
+    ```
 
 ---
 
