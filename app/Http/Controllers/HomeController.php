@@ -29,7 +29,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // dd(Auth::user()->settings);
         $futureDays = 30;
         $data = [];
         $data['acquaintances']['pending'] = Auth::user()->pendingAcquaintancesMerged();

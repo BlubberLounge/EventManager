@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -179,6 +180,23 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function settings(): HasMany
     {
         return $this->hasMany(UserSetting::class);
+            // ->with('metadata');
+    }
+
+    /**
+     * Get the value of a specific setting
+     */
+    public function getSetting(string $name): mixed
+    {
+        return $this->settings()->where('name', $name)->first();
+    }
+
+    /**
+     * Get a list of values of a specific setting category
+     */
+    public function getSettingsByCategory(string $category): mixed
+    {
+        return $this->settings()->where('category', $category)->get()->toArray();
     }
 
     /**

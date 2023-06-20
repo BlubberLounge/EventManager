@@ -81,18 +81,20 @@ class UserSettingMetadataSeeder extends Seeder
          * Add Metadata Items
          *
          */
-        foreach ($MetadataItems as $MetadataItem)
-            if ($MetadataItem['name'])
+        foreach ($MetadataItems as $MetadataItem) {
+            if ($MetadataItem['name'] === null)
                 continue;
 
             $newMetadataItem = UserSettingsMetadata::where('slug', $MetadataItem['slug'])->first();
 
             if ($newMetadataItem === null)
                 $newMetadataItem = UserSettingsMetadata::create([
-                    'name'      => $MetadataItem['name'],
-                    'category'  => $MetadataItem['category'],
-                    'default'   => $MetadataItem['default'],
-                    'slug'      => $MetadataItem['slug'],
+                    'name'          => $MetadataItem['name'],
+                    'category'      => $MetadataItem['category'],
+                    'default'       => $MetadataItem['default'],
+                    'slug'          => $MetadataItem['slug'],
+                    'description'   => $MetadataItem['description'],
                 ]);
+        }
     }
 }

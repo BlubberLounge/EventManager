@@ -16,10 +16,6 @@ class AddMetadata implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
-     * @param  \Illuminate\Database\Eloquent\Model|\DarkGhostHunter\Laraconfig\HasConfig  $model
-     *
-     * @return void
      */
     public function apply(Builder $builder, Model $model): void
     {
@@ -45,7 +41,6 @@ class AddMetadata implements Scope
     /**
      * Returns the columns to add to the query.
      *
-     * @return string[]
      */
     protected static function getColumns(): array
     {
