@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 use OwenIt\Auditing\Contracts\Auditable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
+use DarkGhostHunter\Laraconfig\HasConfig;
 
 use App\Classes\AcquaintanceStatus;
 
@@ -29,6 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         HasApiTokens,
         HasMergedRelationships,
         \OwenIt\Auditing\Auditable,
+        HasConfig,
         HasRoleAndPermission;
 
     /**
@@ -172,31 +174,6 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function timetableData(): HasMany
     {
         return $this->hasMany(Timetable::class);
-    }
-
-    /**
-     * Get all of user settings
-     */
-    public function settings(): HasMany
-    {
-        return $this->hasMany(UserSetting::class);
-            // ->with('metadata');
-    }
-
-    /**
-     * Get the value of a specific setting
-     */
-    public function getSetting(string $name): mixed
-    {
-        return $this->settings()->where('name', $name)->first();
-    }
-
-    /**
-     * Get a list of values of a specific setting category
-     */
-    public function getSettingsByCategory(string $category): mixed
-    {
-        return $this->settings()->where('category', $category)->get()->toArray();
     }
 
     /**
