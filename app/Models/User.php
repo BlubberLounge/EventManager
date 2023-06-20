@@ -23,9 +23,9 @@ use App\Classes\AcquaintanceStatus;
 
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use HasApiTokens,
-        HasFactory,
+    use HasFactory,
         Notifiable,
+        HasApiTokens,
         HasMergedRelationships,
         \OwenIt\Auditing\Auditable,
         HasRoleAndPermission;
@@ -171,6 +171,14 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function timetableData(): HasMany
     {
         return $this->hasMany(Timetable::class);
+    }
+
+    /**
+     * Get all of user settings
+     */
+    public function settings(): HasMany
+    {
+        return $this->hasMany(UserSetting::class);
     }
 
     /**
