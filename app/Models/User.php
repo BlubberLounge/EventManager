@@ -8,17 +8,20 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\URL;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Auth;
+
+// composer package traits
 use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 use OwenIt\Auditing\Contracts\Auditable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use DarkGhostHunter\Laraconfig\HasConfig;
+use IvanoMatteo\LaravelDeviceTracking\Traits\UseDevices;
 
 use App\Classes\AcquaintanceStatus;
 
@@ -31,7 +34,8 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         HasMergedRelationships,
         \OwenIt\Auditing\Auditable,
         HasConfig,
-        HasRoleAndPermission;
+        HasRoleAndPermission,
+        UseDevices;
 
     /**
      * The attributes that are mass assignable.
