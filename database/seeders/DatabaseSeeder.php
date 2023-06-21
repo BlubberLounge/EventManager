@@ -16,11 +16,14 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call([
-            //AcquaintanceSeeder::class
+            // AcquaintanceSeeder::class
             PermissionsSeeder::class,
             RolesSeeder::class,
             ConnectRelationshipsSeeder::class,
+            //
             UserSeeder::class,
+            UserSettingMetadataSeeder::class,
+            UserSettingSeeder::class,
         ]);
 
         Model::reguard();
