@@ -68,7 +68,7 @@
                     <td> </td>
                     @foreach ($timeTable['result'] as $key => $result)
                         <td>
-                            @if ($result >= ceil(count($timeTable['body']) / 2) && end($timeTable['body'])['days'][$key]->status == App\Classes\TimetableStatus::AVAILABLE)
+                            @if ($result >= ceil(count($timeTable['body']) / 2) && end($timeTable['body'])['days'][$key]->status == App\Enums\TimetableStatus::AVAILABLE)
                                 <i class="fa-solid fa-calendar-plus"></i>
                             @endif
                         </td>

@@ -22,7 +22,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use DarkGhostHunter\Laraconfig\HasConfig;
 
-use App\Classes\AcquaintanceStatus;
+use App\Enums\AcquaintanceStatus;
 
 
 class User extends Authenticatable implements MustVerifyEmail, Auditable
@@ -199,7 +199,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     }
 
     // works but is not the best solution
-    public function acquaintances(string $status, bool $showOnHomeView)
+    public function acquaintances(AcquaintanceStatus $status, bool $showOnHomeView)
     {
         $transmitted = $this->acquaintancesSend()
             ->wherePivot('status', $status)
