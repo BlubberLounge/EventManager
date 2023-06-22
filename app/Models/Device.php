@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use OwenIt\Auditing\Contracts\Auditable;
 
 use App\Enums\DeviceType;
 
 
-class Device extends Model
+class Device extends Model implements Auditable
 {
-    use HasFactory;
+    use HasFactory,
+        \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +21,7 @@ class Device extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'device_type',
         'browser',
         'browser_version',
@@ -26,7 +29,6 @@ class Device extends Model
         'platform_version',
         'ip',
         'data',
-        'last_active',
     ];
 
     /**
@@ -43,9 +45,13 @@ class Device extends Model
     /**
      * Get all of the Users that own this device
      */
-    public function users(): belongsToMany
+    public function users(): belongsTo
     {
-        return $this->belongsToMany(User::class)
-            ->using(DeviceUser::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function getIfExists(Device $device)
+    {
+        return $this;
     }
 }

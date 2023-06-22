@@ -15,13 +15,27 @@ return new class extends Migration
         {
             $table->id();
 
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade');
             $table->enum('device_type', ['unkown', 'mobile', 'tablet', 'desktop', 'bot'])
-                ->default('unkown');
+                ->default('unkown')
+                ->index();
+            $table->string('device_family')
+                ->nullable();
+            $table->string('device_model')
+                ->nullable();
+            $table->string('device_grade')
+                ->nullable();
             $table->string('browser')
+                ->nullable();
+            $table->string('browser_family')
                 ->nullable();
             $table->string('browser_version')
                 ->nullable();
             $table->string('platform')
+                ->nullable();
+            $table->string('platform_family')
                 ->nullable();
             $table->string('platform_version')
                 ->nullable();
@@ -29,6 +43,8 @@ return new class extends Migration
                 ->index();
             $table->json('data')
                 ->nullable();
+            $table->integer('login_count')
+                ->default(0);
             $table->timestamp('last_active')
                 ->nullable();
 

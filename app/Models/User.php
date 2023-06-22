@@ -70,6 +70,8 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      * @var array<string, string>
      */
     protected $casts = [
+        'dob' => 'date',
+        'qrcode_created_at' => 'datetime',
         'email_verified_at' => 'datetime',
     ];
 
@@ -181,10 +183,9 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Get all of the Devices
      */
-    public function devices(): belongsToMany
+    public function devices(): hasMany
     {
-        return $this->belongsToMany(Device::class)
-            ->using(DeviceUser::class);
+        return $this->hasMany(Device::class);
     }
 
     /**

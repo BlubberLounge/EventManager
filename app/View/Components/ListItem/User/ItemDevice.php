@@ -74,7 +74,7 @@ class ItemDevice extends Component
         } else if(Str::contains($platform, 'linux')) {
             $iconClass = "fa-brands fa-linux";
         } else if(Str::contains($platform, 'android')) {
-            $iconClass = "fa-solid fa-mobile-screen";
+            $iconClass = "fa-brands fa-android";
         } else {
             $iconClass = "fa-regular fa-circle-question";
             Log::channel('customMissing')->alert('User device Operating System is missing in {class}: {device_type}', [
@@ -100,6 +100,8 @@ class ItemDevice extends Component
             $iconClass = "fa-brands fa-firefox-browser";
         } else if(Str::contains($browser, 'safari')) {
             $iconClass = "fa-brands fa-safari";
+        } else if(Str::contains($browser, 'samsung browser')) {
+            $iconClass = "fa-brands fa-internet-explorer";
         } else {
             $iconClass = "fa-regular fa-circle-question";
             Log::channel('customMissing')->alert('User device browser is missing in {class}: {device_type}', [
@@ -116,8 +118,8 @@ class ItemDevice extends Component
      */
     private function getDisplayName(): string
     {
-        $browser = $this->device->browser;
-        $platform = $this->device->platform;
+        $browser = $this->device->browser_family;
+        $platform = $this->device->platform_family;
 
         return "$platform ($browser)";
 
