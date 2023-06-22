@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use App\Classes\TimetableStatus;
 use App\Models\Timetable;
-use App\Classes\AcquaintanceStatus;
+use App\Enums\TimetableStatus;
+use App\Enums\AcquaintanceStatus;
 
 
 class HomeController extends Controller

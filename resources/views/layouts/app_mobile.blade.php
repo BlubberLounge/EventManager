@@ -34,7 +34,7 @@
 
         @endif
 
-        <main class="pt-1">
+        <main> {{-- <main class="pt-1"> --}}
             @yield('content')
         </main>
 

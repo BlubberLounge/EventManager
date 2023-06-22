@@ -8,19 +8,21 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\URL;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Auth;
+
+// composer package traits
 use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 use OwenIt\Auditing\Contracts\Auditable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use DarkGhostHunter\Laraconfig\HasConfig;
 
-use App\Classes\AcquaintanceStatus;
+use App\Enums\AcquaintanceStatus;
 
 
 class User extends Authenticatable implements MustVerifyEmail, Auditable
@@ -68,6 +70,8 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      * @var array<string, string>
      */
     protected $casts = [
+        'dob' => 'date',
+        'qrcode_created_at' => 'datetime',
         'email_verified_at' => 'datetime',
     ];
 
@@ -177,6 +181,16 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     }
 
     /**
+     * Get all of the Devices
+     */
+    public function devices(): hasMany
+    {
+        return $this->hasMany(Device::class)
+            ->orderBy('verified_at', 'desc')
+            ->orderBy('last_active', 'desc');
+    }
+
+    /**
      * Get all accepted Acquaintances user that should be shown on the timetable
      */
     public function timetableAcquaintances()
@@ -188,7 +202,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     }
 
     // works but is not the best solution
-    public function acquaintances(string $status, bool $showOnHomeView)
+    public function acquaintances(AcquaintanceStatus $status, bool $showOnHomeView)
     {
         $transmitted = $this->acquaintancesSend()
             ->wherePivot('status', $status)
