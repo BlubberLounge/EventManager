@@ -29,6 +29,7 @@
     --bl-clr-green: #67ab24;
     --bl-clr-yellow: #f1bf61; /* #ebc23b */
     --bl-clr-red: #bc1a1a;
+    --bl-clr-blue: #1DA1F2;
 
     --bl-clr-bd-green: #457219;
     --bl-clr-bd-yellow: #ac8e2c;
@@ -475,6 +476,16 @@ section#timetable table .day {
 
 .btn-timetable ~ .btn-timetable {
     margin-left: .5rem;
+}
+
+.btn-back {
+    position: absolute;
+    right: 0;
+    padding: 1rem;
+    text-decoration: none;
+    background-color: var(--bl-clr-primary);
+    color: var(--bl-clr-white);
+    border-bottom-left-radius: 1rem;
 }
 
 /* ============================================================================================

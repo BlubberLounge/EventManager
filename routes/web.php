@@ -62,7 +62,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::view('/calendar', 'calendar.index')->name('calendar');
 
     Route::singleton('user', UserController::class);
-    Route::get('/user/device', [UserController::class, 'device'])->name('user.device');
+    Route::get('/user/device', [DeviceController::class, 'index'])->name('user.device.index');
     Route::get('/user/QRCode', [UserController::class, 'qrCode'])->name('user.qrCode');
     Route::get('/user/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
         ->name('user.acquaintanceAdd')

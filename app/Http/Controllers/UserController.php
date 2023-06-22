@@ -118,14 +118,4 @@ class UserController extends Controller
 
         return view('user.qrCode', $data);
     }
-
-    /**
-     *
-     */
-    public function device()
-    {
-        $data['devices'] = Auth::user()->devices->sortDesc();
-        // \DeviceTracker::flagCurrentAsVerified();
-        return view('user.settings.device.index', $data);
-    }
 }

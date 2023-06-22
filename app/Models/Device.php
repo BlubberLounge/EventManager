@@ -29,6 +29,9 @@ class Device extends Model implements Auditable
         'platform_version',
         'ip',
         'data',
+        'login_count',
+        'verified_at',
+        'last_active',
     ];
 
     /**
@@ -39,7 +42,17 @@ class Device extends Model implements Auditable
     protected $casts = [
         'device_type' => DeviceType::class,
         'data' => 'array',
+        'verified_at' => 'datetime',
         'last_active' => 'datetime',
+    ];
+
+    /**
+     * Attributes to exclude in the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'last_active',
     ];
 
     /**
@@ -50,8 +63,11 @@ class Device extends Model implements Auditable
         return $this->belongsTo(User::class);
     }
 
-    public function getIfExists(Device $device)
+    /**
+     *
+     */
+    public function getIsVerifiedAttribute(): bool
     {
-        return $this;
+        return !is_null($this->verified_at);
     }
 }

@@ -13,44 +13,55 @@ use App\Models\Device;
 class DeviceTracker
 {
 
-
+    /**
+     *
+     */
     public static function detect()
     {
+        $result = Browser::parse('Mozilla/5.0 (IPhone; CPU IPhone OS 16_5 like Max OS X) AppleWebKit/605.1.15 (KHTML,like Gecko) Version/16.5 Mobile/15E148 Safari/604.1');
+        // $result = Browser::detect();
+
+        $device_type = Str::lower($result->deviceType());
+        $device_family = $result->deviceFamily();
+        $device_model = $result->deviceModel();
+        $browser = $result->browserName();
+        $platform = $result->platformName();
 
         $device = Device::where('user_id', Auth::user()->id)
-            ->where('device_type', Str::lower(Browser::deviceType()))
-            ->where('device_family', Browser::deviceFamily())
-            ->where('device_model', Browser::deviceModel())
-            ->where('browser', Browser::browserName())
-            ->where('platform', Browser::platformName())
+            ->where('device_type', $device_type)
+            ->where('device_family',  $device_family)
+            ->where('device_model', $device_model)
+            ->where('browser', $browser)
+            ->where('platform', $platform)
             ->where('ip', Request::ip())
             ->first();
 
         if(is_null($device)) {
             $device = new Device;
             $device->user_id = Auth::user()->id;
-            $device->device_type = Str::lower(Browser::deviceType());
-            $device->device_family = Browser::deviceFamily();
-            $device->device_model = Browser::deviceModel();
-            $device->device_grade = Browser::mobileGrade();
+            $device->device_type = $device_type;
+            $device->device_family = $device_family;
+            $device->device_model = $device_model;
+            $device->device_grade = $result->mobileGrade();
 
-            $device->browser = Browser::browserName();
-            $device->browser_family = Browser::browserFamily();
-            $device->browser_version = Browser::browserVersion();
+            $device->browser = $browser;
+            $device->browser_family = $result->browserFamily();
+            $device->browser_version = $result->browserVersion();
 
-            $device->platform = Browser::platformName();
-            $device->platform_family = Browser::platformFamily();
-            $device->platform_version = Browser::platformVersion();
+            $device->platform = $platform;
+            $device->platform_family = $result->platformFamily();
+            $device->platform_version = $result->platformVersion();
 
             $device->data = [
                 'ip_addresses' => Request::ips(),
                 'user_agent' => Str::limit(Request::header('user-agent'), 512),
             ];
             $device->ip = Request::ip();
-            $device->last_active = now();
-
-            $device->save();
         }
+
+
+        $device->last_active = now();
+        $device->save();
 
         return $device;
     }
@@ -66,5 +77,14 @@ class DeviceTracker
         $d = self::detect();
         $d->login_count += 1;
         $d->save();
+    }
+
+    /**
+     *
+     */
+    public static function detectRegistration()
+    {
+        if(!Auth::guard('web')->check())
+            return;
     }
 };

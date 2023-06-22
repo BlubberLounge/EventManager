@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Device;
 use App\Http\Requests\StoreDeviceRequest;
 use App\Http\Requests\UpdateDeviceRequest;
+use Illuminate\Support\Facades\Auth;
 
 class DeviceController extends Controller
 {
@@ -13,7 +14,9 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        //
+        $data['devices'] = Auth::user()->devices;
+
+        return view('user.settings.device.index', $data);
     }
 
     /**

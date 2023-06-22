@@ -32,6 +32,7 @@ class ItemDevice extends Component
         $data['familyIcon'] = $this->getBrowserIcon();
         $data['displayName'] = $this->getDisplayName();
         $data['lastActivity'] = $this->device->last_active->format('d.m.Y H:i:s');
+        $data['isVerified'] = $this->device->isVerified;
 
         return view('components.list-item.user.item-device', $data);
     }
@@ -75,6 +76,8 @@ class ItemDevice extends Component
             $iconClass = "fa-brands fa-linux";
         } else if(Str::contains($platform, 'android')) {
             $iconClass = "fa-brands fa-android";
+        } else if(Str::contains($platform, 'ios')) {
+            $iconClass = "fa-brands fa-apple";
         } else {
             $iconClass = "fa-regular fa-circle-question";
             Log::channel('customMissing')->alert('User device Operating System is missing in {class}: {device_type}', [

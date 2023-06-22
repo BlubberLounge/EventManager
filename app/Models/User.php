@@ -185,7 +185,9 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      */
     public function devices(): hasMany
     {
-        return $this->hasMany(Device::class);
+        return $this->hasMany(Device::class)
+            ->orderBy('verified_at', 'desc')
+            ->orderBy('last_active', 'desc');
     }
 
     /**
