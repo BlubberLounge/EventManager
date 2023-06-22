@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <x-buttons.back />
+    <x-buttons.back urlAddition="#settingsDevice" />
     <section id="device-description" class="text-center" style="padding: 2rem 3rem 1rem 3rem;">
         <i class="fa-solid fa-computer" style="font-size: 4rem"></i>
         <h1>Geräte </h1>
