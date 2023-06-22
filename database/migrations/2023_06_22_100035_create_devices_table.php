@@ -45,6 +45,8 @@ return new class extends Migration
                 ->nullable();
             $table->integer('login_count')
                 ->default(0);
+            $table->timestamp('verified_at')
+                ->nullable();
             $table->timestamp('last_active')
                 ->nullable();
 
