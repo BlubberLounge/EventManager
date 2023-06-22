@@ -118,6 +118,12 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        // CUSTOM CHANNELS
+        'customMissing' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/customMissing.log')
+        ],
     ],
 
 ];

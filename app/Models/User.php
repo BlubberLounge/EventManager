@@ -21,7 +21,6 @@ use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 use OwenIt\Auditing\Contracts\Auditable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use DarkGhostHunter\Laraconfig\HasConfig;
-use IvanoMatteo\LaravelDeviceTracking\Traits\UseDevices;
 
 use App\Classes\AcquaintanceStatus;
 
@@ -34,8 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         HasMergedRelationships,
         \OwenIt\Auditing\Auditable,
         HasConfig,
-        HasRoleAndPermission,
-        UseDevices;
+        HasRoleAndPermission;
 
     /**
      * The attributes that are mass assignable.
@@ -178,6 +176,15 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function timetableData(): HasMany
     {
         return $this->hasMany(Timetable::class);
+    }
+
+    /**
+     * Get all of the Devices
+     */
+    public function devices(): belongsToMany
+    {
+        return $this->belongsToMany(Device::class)
+            ->using(DeviceUser::class);
     }
 
     /**

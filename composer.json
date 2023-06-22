@@ -17,7 +17,7 @@
         "darkghosthunter/laraconfig": "^1.0",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
-        "ivanomatteo/laravel-device-tracking": "^0.2.1",
+        "hisorange/browser-detect": "^4.5",
         "jeremykenedy/laravel-roles": "^10.0",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",

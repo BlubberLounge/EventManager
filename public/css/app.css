@@ -12094,6 +12094,10 @@ i {
     position: relative;
 }
 
+a {
+    text-decoration: none;
+}
+
 main .container-fluid {
     padding: 0;
 }
@@ -12563,6 +12567,10 @@ section#timetable table .day {
 
 #table-auditLog {
     font-size: .8rem;
+}
+
+.device-browser-icon {
+    font-size: 2rem;
 }
 
 
