@@ -20,10 +20,12 @@ return new class extends Migration
                     ->constrained('users')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-                $table->enum('type', ['general', 'question', 'informative', 'enhancement'])
+                $table->enum('type', ['general', 'bug', 'information', 'enhancement'])
                     ->default('general');
+                $table->enum('status', ['unkown', 'new', 'seen', 'accepted', 'declined'])
+                    ->default('unkown');
                 $table->string('subject')
-                    ->comment('message title/subject');
+                ->comment('message title/subject');
                 $table->text('message');
                 $table->string('area')
                     ->comment('Where? - page/view/url/site')

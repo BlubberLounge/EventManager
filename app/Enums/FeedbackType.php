@@ -8,7 +8,7 @@ namespace App\Enums;
 enum FeedbackType: string
 {
     case GENERAL = 'general';
-    case QUESTION = 'question';
-    case INFORMATIVE = 'informative';
+    case BUG = 'bug';
+    case INFORMATION = 'information';
     case ENHANCEMENT = 'enhancement';
 }

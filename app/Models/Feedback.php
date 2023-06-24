@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
 use App\Enums\FeedbackType;
+use App\Enums\FeedbackStatus;
 
 
 class Feedback extends Model implements Auditable
@@ -23,6 +24,7 @@ class Feedback extends Model implements Auditable
      */
     protected $fillable = [
         'type',
+        'status',
         'subject',
         'message',
         'area',
@@ -34,6 +36,7 @@ class Feedback extends Model implements Auditable
      * @var array<string, string>
      */
     protected $casts = [
-        'type' => FeedbackType::class
+        'type' => FeedbackType::class,
+        'status' => FeedbackStatus::class,
     ];
 }
