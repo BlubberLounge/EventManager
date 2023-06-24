@@ -11,25 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table)
-        {
-            $table->id();
+        if(!Schema::hasTable('feedback'))
+            Schema::create('feedback', function (Blueprint $table)
+            {
+                $table->id();
 
-            $table->foreignId('user_id')
-                ->constrained('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->enum('type', ['general', 'question', 'informative', 'enhancement'])
-                ->default('general');
-            $table->string('subject')
-                ->comment('message title/subject');
-            $table->text('message');
-            $table->string('area')
-                ->comment('Where? - page/view/url/site')
-                ->nullable();
+                $table->foreignId('user_id')
+                    ->constrained('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+                $table->enum('type', ['general', 'question', 'informative', 'enhancement'])
+                    ->default('general');
+                $table->string('subject')
+                    ->comment('message title/subject');
+                $table->text('message');
+                $table->string('area')
+                    ->comment('Where? - page/view/url/site')
+                    ->nullable();
 
-            $table->timestamps();
-        });
+                $table->timestamps();
+            });
     }
 
     /**

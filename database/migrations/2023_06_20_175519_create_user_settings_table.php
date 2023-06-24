@@ -13,20 +13,20 @@ class CreateUserSettingsTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_settings', static function (Blueprint $table): void {
-            $table->id();
+        if(!Schema::hasTable('user_settings'))
+            Schema::create('user_settings', static function (Blueprint $table)
+            {
+                $table->id();
 
-            $table->unsignedBigInteger('metadata_id');
+                $table->unsignedBigInteger('metadata_id');
+                // You can change this morph column to suit your needs, like using `uuidMorphs()`.
+                // $table->uuidMorphs('settable');
+                $table->numericMorphs('settable');
+                $table->string('value')->nullable();
+                $table->boolean('is_enabled')->default(true);
 
-            // You can change this morph column to suit your needs, like using `uuidMorphs()`.
-            // $table->uuidMorphs('settable');
-            $table->numericMorphs('settable');
-
-            $table->string('value')->nullable();
-            $table->boolean('is_enabled')->default(true);
-
-            $table->timestamps();
-        });
+                $table->timestamps();
+            });
     }
 
     /**

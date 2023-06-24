@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('locked')
-                ->default(false)
-                ->comment('User Account is locked may be temporarly banned / disabled')
-                ->after('remember_token');
-            $table->string('qrcode', 255)
-                ->comment('QRCode for adding acquaintances')
-                ->nullable()
-                ->after('img');
-            $table->timestamp('qrcode_created_time')
-                ->comment('time when QrCode got created')
-                ->nullable()
-                ->after('qrcode');
-        });
+        if(Schema::hasTable('users'))
+            Schema::table('users', function (Blueprint $table)
+            {
+                $table->boolean('locked')
+                    ->default(false)
+                    ->comment('User Account is locked may be temporarly banned / disabled')
+                    ->after('remember_token');
+                $table->string('qrcode', 255)
+                    ->comment('QRCode for adding acquaintances')
+                    ->nullable()
+                    ->after('img');
+                $table->timestamp('qrcode_created_time')
+                    ->comment('time when QrCode got created')
+                    ->nullable()
+                    ->after('qrcode');
+            });
     }
 
     /**
@@ -32,10 +34,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('locked');
-            $table->dropColumn('qrcode');
-            $table->dropColumn('qrcode_created_at');
-        });
+        if(Schema::hasTable('users'))
+            Schema::table('users', function (Blueprint $table)
+            {
+                $table->dropColumn('locked');
+                $table->dropColumn('qrcode');
+                $table->dropColumn('qrcode_created_at');
+            });
     }
 };

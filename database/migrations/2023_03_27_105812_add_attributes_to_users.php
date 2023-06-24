@@ -11,29 +11,31 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('name')
-                ->unique()
-                ->comment('unique username of the user')
-                ->change();
-            $table->string('firstname')
-                ->comment('users firstname')
-                ->after('name');
-            $table->string('lastname')
-                ->comment('users lastname/sirname')
-                ->after('firstname');
-            $table->string('telefon_mobil')
-                ->comment('telefonnumber')
-                ->after('email');
-            $table->timestamp('dob')
-                ->comment('date of birth')
-                ->after('telefon_mobil')
-                ->nullable();
-            $table->string('img')
-                ->comment('users profile picture')
-                ->nullable()
-                ->after('dob');
-        });
+        if(Schema::hasTable('users'))
+            Schema::table('users', function (Blueprint $table)
+            {
+                $table->string('name')
+                    ->unique()
+                    ->comment('unique username of the user')
+                    ->change();
+                $table->string('firstname')
+                    ->comment('users firstname')
+                    ->after('name');
+                $table->string('lastname')
+                    ->comment('users lastname/sirname')
+                    ->after('firstname');
+                $table->string('telefon_mobil')
+                    ->comment('telefonnumber')
+                    ->after('email');
+                $table->timestamp('dob')
+                    ->comment('date of birth')
+                    ->after('telefon_mobil')
+                    ->nullable();
+                $table->string('img')
+                    ->comment('users profile picture')
+                    ->nullable()
+                    ->after('dob');
+            });
     }
 
     /**
@@ -41,13 +43,15 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('name')->change();
-            $table->dropColumn('firstname');
-            $table->dropColumn('lastname');
-            $table->dropColumn('telefon_mobil');
-            $table->dropColumn('dob');
-            $table->dropColumn('img');
-        });
+        if(Schema::hasTable('users'))
+            Schema::table('users', function (Blueprint $table)
+            {
+                $table->string('name')->change();
+                $table->dropColumn('firstname');
+                $table->dropColumn('lastname');
+                $table->dropColumn('telefon_mobil');
+                $table->dropColumn('dob');
+                $table->dropColumn('img');
+            });
     }
 };

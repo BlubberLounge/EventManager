@@ -11,30 +11,32 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('timetable', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')
-                ->constrained('users')
-                ->comment('the user that initialised the friend request')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->timestamp('time_from')  // $table->time('time_from')
-                ->comment('may be used in a later version')
-                ->nullable();
-            $table->timestamp('time_to')    // $table->time('time_to')
-                ->comment('may be used in a later version')
-                ->nullable();
-            $table->date('date')
-                ->comment('date')
-                ->nullable();   // ->default(now())
-            $table->enum('status', ['available', 'maybe', 'noTime'])
-                ->default('available')
-                ->comment('available/maybe/noTime');
-            $table->timestamps();
+        if(!Schema::hasTable('timetable'))
+            Schema::create('timetable', function (Blueprint $table)
+            {
+                $table->id();
+                $table->foreignId('user_id')
+                    ->constrained('users')
+                    ->comment('the user that initialised the friend request')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+                $table->timestamp('time_from')  // $table->time('time_from')
+                    ->comment('may be used in a later version')
+                    ->nullable();
+                $table->timestamp('time_to')    // $table->time('time_to')
+                    ->comment('may be used in a later version')
+                    ->nullable();
+                $table->date('date')
+                    ->comment('date')
+                    ->nullable();   // ->default(now())
+                $table->enum('status', ['available', 'maybe', 'noTime'])
+                    ->default('available')
+                    ->comment('available/maybe/noTime');
+                $table->timestamps();
 
-            // composite unique key
-            $table->unique(['user_id', 'date']);
-        });
+                // composite unique key
+                $table->unique(['user_id', 'date']);
+            });
     }
 
     /**

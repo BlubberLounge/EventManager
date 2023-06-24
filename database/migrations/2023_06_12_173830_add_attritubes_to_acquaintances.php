@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('acquaintances', function (Blueprint $table) {
-            $table->boolean('showOnHomeView')
-                ->default(true)
-                ->comment('Wheter the user should be displayed on the homescreen in the timetable')
-                ->after('status');
-        });
+        if(Schema::hasTable('acquaintances'))
+            Schema::table('acquaintances', function (Blueprint $table)
+            {
+                $table->boolean('showOnHomeView')
+                    ->default(true)
+                    ->comment('Wheter the user should be displayed on the homescreen in the timetable')
+                    ->after('status');
+            });
     }
 
     /**
@@ -24,8 +26,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('acquaintances', function (Blueprint $table) {
-            $table->dropColumn('showOnHomeView');
-        });
+        if(Schema::hasTable('acquaintances'))
+            Schema::table('acquaintances', function (Blueprint $table) {
+                $table->dropColumn('showOnHomeView');
+            });
     }
 };
