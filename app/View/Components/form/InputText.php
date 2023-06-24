@@ -14,6 +14,7 @@ class InputText extends Component
     public function __construct(
         public string $attribute,
         public string $label = '',
+        public bool $autofocus = false,
     ) {}
 
     /**
@@ -21,7 +22,7 @@ class InputText extends Component
      */
     public function render(): View|Closure|string
     {
-        $this->label = $this->label ? $this->label : $this->attribute;
+        $this->label = $this->label ?? $this->attribute;
 
         return view('components.form.input-text');
     }
