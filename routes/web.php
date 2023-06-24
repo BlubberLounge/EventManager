@@ -71,6 +71,8 @@ Route::middleware(['auth', 'verified'])->group(function ()
         ->name('user.updateAcquaintances')
         ->middleware('signed');
 
+    Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
+
     Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
     Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');
     Route::view('/tickets/done', 'ticket.done')->name('tickets.done');
