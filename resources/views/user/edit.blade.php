@@ -11,18 +11,18 @@
             @csrf
             @method('PUT')
 
-            <x-forms.user.edit.Input-text attribute="name" label="Name" />
-            <x-forms.user.edit.Input-text attribute="firstname" label="Firstname" />
-            <x-forms.user.edit.Input-text attribute="lastname" label="Lastname" />
-            <x-forms.user.edit.Input-text attribute="dob" label="Date of dirth" />
-            <x-forms.user.edit.Input-text attribute="telefon_mobil" label="Mobilephone" />
-            <x-forms.user.edit.Input-text attribute="email" label="Email" />
+            <x-form.input-text attribute="name" label="Name" />
+            <x-form.input-text attribute="firstname" label="Firstname" />
+            <x-form.input-text attribute="lastname" label="Lastname" />
+            <x-form.input-text attribute="dob" label="Date of dirth" />
+            <x-form.input-text attribute="telefon_mobil" label="Mobilephone" />
+            <x-form.input-text attribute="email" label="Email" />
 
             <div class="mb-4">
                 <a href="#"> change Password </a>
             </div>
 
-            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+            <x-form.button-submit />
         </form>
     </div>
 </div>

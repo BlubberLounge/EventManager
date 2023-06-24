@@ -21,7 +21,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
+        return view('feedback.create');
     }
 
     /**

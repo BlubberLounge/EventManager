@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\FeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,16 +63,23 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::view('/calendar', 'calendar.index')->name('calendar');
 
     Route::singleton('user', UserController::class);
-    Route::get('/user/device', [DeviceController::class, 'index'])->name('user.device.index');
-    Route::get('/user/QRCode', [UserController::class, 'qrCode'])->name('user.qrCode');
-    Route::get('/user/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
-        ->name('user.acquaintanceAdd')
-        ->middleware('signed');
-    Route::put('/user/updateAcquaintances', [UserController::class, 'updateAcquaintances'])
-        ->name('user.updateAcquaintances')
-        ->middleware('signed');
+    // route: /user/*
+    // name: user.*
+    Route::prefix('user')->group(function () {
+        Route::name('user.')->group(function () {
+            Route::get('/device', [DeviceController::class, 'index'])->name('device.index');
+            Route::get('/QRCode', [UserController::class, 'qrCode'])->name('qrCode');
+            Route::get('/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
+                ->name('acquaintanceAdd')
+                ->middleware('signed');
+            Route::put('/updateAcquaintances', [UserController::class, 'updateAcquaintances'])
+                ->name('updateAcquaintances')
+                ->middleware('signed');
 
-    Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
+            Route::resource('feedback', FeedbackController::class)
+                ->except('destroy');
+        });
+    });
 
     Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
     Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');
@@ -106,3 +114,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     });
     */
 });
+
+// Route::fallback(function () {
+//     // ...
+// });

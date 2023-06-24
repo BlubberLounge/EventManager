@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 // composer package traits
 use OwenIt\Auditing\Contracts\Auditable;
@@ -15,6 +16,7 @@ use App\Enums\FeedbackStatus;
 class Feedback extends Model implements Auditable
 {
     use HasFactory,
+        SoftDeletes,
         \OwenIt\Auditing\Auditable;
 
     /**
