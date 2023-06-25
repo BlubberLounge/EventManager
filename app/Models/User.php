@@ -17,11 +17,13 @@ use Carbon\Carbon;
 use Carbon\CarbonInterval;
 
 // composer package traits
+use Browser;
 use Staudenmeir\LaravelMergedRelations\Eloquent\HasMergedRelationships;
 use OwenIt\Auditing\Contracts\Auditable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use DarkGhostHunter\Laraconfig\HasConfig;
 
+use App\Classes\DeviceTracker;
 use App\Enums\AcquaintanceStatus;
 
 
@@ -92,7 +94,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     {
         return Attribute::make(
             get: function (string|null $value) {
-                if(is_null($value) || !$this->needsNewQRCode())
+                if(!is_null($value) && !$this->needsNewQRCode())
                     return $value;
 
                 $value = $this->generateQRCode();
@@ -188,6 +190,22 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         return $this->hasMany(Device::class)
             ->orderBy('verified_at', 'desc')
             ->orderBy('last_active', 'desc');
+    }
+
+    /**
+     *
+     */
+    public function currentDevice()
+    {
+        return DeviceTracker::detect(false);
+    }
+
+    /**
+     * Get all of the TimetableData
+     */
+    public function feedback(): HasMany
+    {
+        return $this->hasMany(Feedback::class);
     }
 
     /**

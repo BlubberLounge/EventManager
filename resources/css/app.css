@@ -71,7 +71,7 @@ a {
     text-decoration: none;
 }
 
-main .container-fluid {
+main #container-account {
     padding: 0;
 }
 

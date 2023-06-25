@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\URL;
 
 use chillerlan\QRCode\{QRCode, QROptions};
 
-use App\Classes\Status;
+use App\Enums\AcquaintanceStatus;
 use App\Models\User;
 use App\Models\Acquaintance;
 

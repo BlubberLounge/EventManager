@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 // composer package traits
 use OwenIt\Auditing\Contracts\Auditable;
@@ -41,4 +42,12 @@ class Feedback extends Model implements Auditable
         'type' => FeedbackType::class,
         'status' => FeedbackStatus::class,
     ];
+
+    /**
+     * Get the user that owns this feedback
+     */
+    public function user(): belongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

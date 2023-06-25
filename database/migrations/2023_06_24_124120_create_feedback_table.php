@@ -30,6 +30,10 @@ return new class extends Migration
                 $table->string('area')
                     ->comment('Where? - page/view/url/site')
                     ->nullable();
+                $table->foreignId('device_id')
+                    ->constrained('devices')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
 
                 $table->timestamps();
                 $table->softDeletes();

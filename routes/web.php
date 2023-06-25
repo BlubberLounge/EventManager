@@ -81,10 +81,15 @@ Route::middleware(['auth', 'verified'])->group(function ()
         });
     });
 
-    Route::view('/tickets/accepted', 'ticket.accepted')->name('tickets.accepted');
-    Route::view('/tickets/pending', 'ticket.pending')->name('tickets.pending');
-    Route::view('/tickets/done', 'ticket.done')->name('tickets.done');
-
+    // route: /tickets/*
+    // name: tickets.*
+    Route::prefix('tickets')->group(function () {
+        Route::name('tickets.')->group(function () {
+            Route::view('/accepted', 'ticket.accepted')->name('accepted');
+            Route::view('/pending', 'ticket.pending')->name('pending');
+            Route::view('/done', 'ticket.done')->name('done');
+        });
+    });
 
     /**
      * DEBUG Routes
