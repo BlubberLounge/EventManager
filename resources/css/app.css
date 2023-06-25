@@ -488,6 +488,24 @@ section#timetable table .day {
     border-bottom-left-radius: 1rem;
 }
 
+.btn-feedback-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #fff;
+    border-radius: var(--br-primary);
+    height: 160px;
+    width: 100%;
+    font-size: 1.2rem;
+    background-color: transparent;
+}
+
+.btn-feedback-type i {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
 /* ============================================================================================
  *      CUSTOM BOOTSTRAP COMPONENTS - May convert to SASS later
  * ============================================================================================

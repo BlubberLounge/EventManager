@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
+use App\Enums\FeedbackStatus;
+use App\Enums\FeedbackType;
+
+
 class FeedbackController extends Controller
 {
     /**
@@ -81,7 +85,6 @@ class FeedbackController extends Controller
 
         ];
 
-
         return view('feedback.create', $data);
     }
 
@@ -90,8 +93,19 @@ class FeedbackController extends Controller
      */
     public function store(StoreFeedbackRequest $request)
     {
-        $currentDevice = Auth::user()->currentDevice();
-        // dd($currentDevice);
+        $f = new Feedback;
+        $f->type = FeedbackType::fromString($request->type);
+        $f->status = FeedbackStatus::NEW;
+        $f->user_id = Auth::user()->id;
+        $f->subject = $request->subject;
+        $f->message = $request->message;
+        $f->area = $request->area;
+        $f->device_id = Auth::user()->currentDevice()->id;
+
+        $f->save();
+
+        return redirect()->route('user.show')
+            ->with('success','Your Feedback has been send successfully');
     }
 
     /**

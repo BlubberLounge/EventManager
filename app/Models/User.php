@@ -201,11 +201,12 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     }
 
     /**
-     * Get all of the TimetableData
+     * Get all of the user Feedback
      */
     public function feedback(): HasMany
     {
-        return $this->hasMany(Feedback::class);
+        return $this->hasMany(Feedback::class)
+            ->orderBy('created_at', 'desc');
     }
 
     /**
