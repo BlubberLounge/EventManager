@@ -50,4 +50,12 @@ class Feedback extends Model implements Auditable
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the device that corresponds to this feedback / user
+     */
+    public function device(): belongsTo
+    {
+        return $this->belongsTo(Device::class);
+    }
 }

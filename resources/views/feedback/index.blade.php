@@ -23,25 +23,83 @@
                     </div>
                     <h2 class="accordion-header feedback-type-{{ $feedback->type }}" id="{{ $headerID }}">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $bodyID }}" aria-expanded="false" aria-controls="{{ $bodyID }}">
-                            {{ Str::limit($feedback->subject, 40) }}
+                            <span style="margin-right: auto">
+                                {{ Str::limit($feedback->subject, 40) }}
+                            </span>
+                        @if ($feedback->status === \App\Enums\FeedbackStatus::SEEN)
+                            <i class="fa-solid fa-eye fa-lg" style="color: #000;"></i>
+                        @elseif ($feedback->status === \App\Enums\FeedbackStatus::GOOD)
+                            <i class="fa-solid fa-thumbs-up fa-lg" style="color: var(--bl-clr-green);"></i>
+                        @elseif ($feedback->status === \App\Enums\FeedbackStatus::BAD)
+                            <i class="fa-solid fa-thumbs-down fa-lg" style="color: var(--bl-clr-red);"></i>
+                        @endif
                         </button>
                     </h2>
                     <div id="{{ $bodyID }}" class="accordion-collapse collapse" aria-labelledby="{{ $headerID }}" data-bs-parent="#accordionfeedback">
                         <div class="accordion-body p-4" style="word-break: break-all;">
                             <div class="row">
-                                <div class="btn-group mb-4" role="group">
-                                    <button type="button" class="btn btn-success">
-                                        <i class="fa-regular fa-thumbs-up"></i>
-                                        Good
-                                    </button>
-                                    <button type="button" class="btn btn-danger">
-                                        <i class="fa-regular fa-thumbs-down"></i>
-                                        Bad
-                                    </button>
-                                  </div>
+                                @if($feedback->status !== \App\Enums\FeedbackStatus::GOOD && $feedback->status !== \App\Enums\FeedbackStatus::BAD)
+                                    <div class="btn-group mb-4" role="group">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="fa-regular fa-thumbs-up"></i>
+                                            Good
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <i class="fa-regular fa-thumbs-down"></i>
+                                            Bad
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="row mt-3">
+                                <h3>
+                                    Message
+                                </h3>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col">
+                                    {{ $feedback->message }}
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <h3>
+                                    Additional Information
+                                </h3>
                             </div>
                             <div class="row">
-                                {{ $feedback->message }}
+                                <div class="col">
+                                    <b>Eingereicht am:</b> {{ $feedback->created_at->format('d.m.Y - h:i:s') }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <b>Letztes update:</b> {{ $feedback->updated_at->format('d.m.Y - h:i:s') }}
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <h3>
+                                    Device Information
+                                </h3>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <b>Family:</b> {{ $feedback->device->device_family }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <b>Model:</b> {{ $feedback->device->device_model }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <b>platform:</b> {{ $feedback->device->platform }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <b>Browser:</b> {{ $feedback->device->browser }}
+                                </div>
                             </div>
                         </div>
                     </div>

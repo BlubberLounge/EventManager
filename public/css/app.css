@@ -12613,6 +12613,10 @@ section#timetable table .day {
     background-color: var(--bl-clr-yellow);
 }
 
+.accordion-button::after {
+    margin-left: .5rem;
+}
+
 .btn-bl-icon {
     font-size: 1.2rem;
     background: transparent;
