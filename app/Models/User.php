@@ -344,10 +344,10 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     }
 
     /**
-     * get admin account
+     * get root account
      */
-    protected function adminAcc(): User
+    protected function rootAcc(): User
     {
-        return $this->where('name', 'Admin')->first();
+        return $this->where('name', 'root')->first();
     }
 }

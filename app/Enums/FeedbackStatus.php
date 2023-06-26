@@ -9,11 +9,10 @@ use App\Interfaces\EnumTypeOrStatus;
  */
 enum FeedbackStatus: string implements EnumTypeOrStatus
 {
-    case UNKOWN = 'unkown';
     case NEW = 'new';
     case SEEN = 'seen';
-    case ACCEPTED = 'accepted';
-    case DECLINED = 'declined';
+    case GOOD = 'good';
+    case BAD = 'bad';
 
     public static function fromString(string $string): FeedbackStatus
     {
@@ -28,11 +27,10 @@ enum FeedbackStatus: string implements EnumTypeOrStatus
     {
         return match($this)
         {
-            FeedbackStatus::UNKOWN => 'var(--bl-clr-gray-50)',
             FeedbackStatus::NEW => 'var(--bl-clr-yellow)',
             FeedbackStatus::SEEN => 'var(--bl-clr-blue)',
-            FeedbackStatus::ACCEPTED => 'var(--bl-clr-green)',
-            FeedbackStatus::DECLINED => 'var(--bl-clr-red)',
+            FeedbackStatus::GOOD => 'var(--bl-clr-green)',
+            FeedbackStatus::BAD => 'var(--bl-clr-red)',
         };
     }
 }

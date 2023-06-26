@@ -30,7 +30,7 @@ enum FeedbackType: string implements EnumTypeOrStatus
             FeedbackType::GENERAL => 'var(--bl-clr-gray-50)',
             FeedbackType::BUG => 'var(--bl-clr-bd-red)',
             FeedbackType::INFORMATION => 'var(--bl-clr-blue)',
-            FeedbackType::ENHANCEMENT => 'var(--bl-clr-txt-yellow)',
+            FeedbackType::ENHANCEMENT => 'var(--bl-clr-yellow)',
         };
     }
 }

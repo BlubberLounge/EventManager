@@ -22,8 +22,8 @@ return new class extends Migration
                     ->onDelete('cascade');
                 $table->enum('type', ['general', 'bug', 'information', 'enhancement'])
                     ->default('general');
-                $table->enum('status', ['unkown', 'new', 'seen', 'accepted', 'declined'])
-                    ->default('unkown');
+                $table->enum('status', ['new', 'seen', 'good', 'bad'])
+                    ->default('new');
                 $table->string('subject')
                 ->comment('message title/subject');
                 $table->text('message');

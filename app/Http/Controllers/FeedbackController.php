@@ -15,12 +15,30 @@ use App\Enums\FeedbackType;
 
 class FeedbackController extends Controller
 {
+
+    public array $areas = [
+        'unkown' => 'Other',
+        'registration' => 'Registration',
+        'login' => 'Login',
+        'home' => 'Home',
+        'home.timetable' => 'Home > Timetable',
+        'home.acquaintances' => 'Home > Acquaintances',
+        'tickets' => 'Tickets',
+        'events' => 'Events',
+        'calendar' => 'Calendar',
+        'profile' => 'Profile',
+        'profile.account' => 'Profile > Account',
+        'profile.settings' => 'Profile > Settings',
+
+    ];
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $data['feedbackList'] = Feedback::orderBy('created_at', 'desc')->get();
+        return view('feedback.index', $data);
     }
 
     /**
@@ -69,21 +87,7 @@ class FeedbackController extends Controller
         //     $data['options'][$route->getName()] = $route->uri();
         // }
 
-        $data['options'] = [
-            'unkown' => 'Other',
-            'registration' => 'Registration',
-            'login' => 'Login',
-            'home' => 'Home',
-            'home.timetable' => 'Home > Timetable',
-            'home.acquaintances' => 'Home > Acquaintances',
-            'tickets' => 'Tickets',
-            'events' => 'Events',
-            'calendar' => 'Calendar',
-            'profile' => 'Profile',
-            'profile.account' => 'Profile > Account',
-            'profile.settings' => 'Profile > Settings',
-
-        ];
+        $data['options'] = $this->areas;
 
         return view('feedback.create', $data);
     }
