@@ -1,7 +1,7 @@
 @extends('layouts.app_mobile')
 
 @push('scripts')
-    <script src="{{ mix('js/feedback.js') }}" defer></script>
+    <script src="{{ mix('js/feedback-index.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -39,12 +39,12 @@
                         <div class="accordion-body p-4" style="word-break: break-all;">
                             <div class="row">
                                 @if($feedback->status !== \App\Enums\FeedbackStatus::GOOD && $feedback->status !== \App\Enums\FeedbackStatus::BAD)
-                                    <div class="btn-group mb-4" role="group">
-                                        <button type="button" class="btn btn-success">
+                                    <div class="btn-group mb-4" role="group" data-bl-feedback-id="{{ $feedback->id }}">
+                                        <button type="button" class="btn btn-success btn-feedback-rating" data-bl-feedback-status="good">
                                             <i class="fa-regular fa-thumbs-up"></i>
                                             Good
                                         </button>
-                                        <button type="button" class="btn btn-danger">
+                                        <button type="button" class="btn btn-danger btn-feedback-rating" data-bl-feedback-status="bad">
                                             <i class="fa-regular fa-thumbs-down"></i>
                                             Bad
                                         </button>
@@ -65,6 +65,11 @@
                                 <h3>
                                     Additional Information
                                 </h3>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <b>Bereich:</b> {{ $feedback->area }}
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col">
@@ -112,6 +117,11 @@
             </div>
             @endforelse
         </div>
+        @if ($feedbackList->hasPages())
+            <div class="d-flex justify-content-center">
+                {!! $feedbackList->links() !!}
+            </div>
+        @endif
     </section>
 </div>
 @endsection

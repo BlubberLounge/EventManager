@@ -37,7 +37,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $data['feedbackList'] = Feedback::orderBy('created_at', 'desc')->get();
+        $data['feedbackList'] = Feedback::orderBy('created_at', 'desc')->paginate(15);
         return view('feedback.index', $data);
     }
 
@@ -133,7 +133,10 @@ class FeedbackController extends Controller
      */
     public function update(UpdateFeedbackRequest $request, Feedback $feedback)
     {
-        //
+        $feedback->status = FeedbackStatus::fromString($request->status);
+        $feedback->save();
+
+        return;
     }
 
     /**

@@ -21,7 +21,8 @@ mix
     .js('resources/js/acquaintance.js', 'public/js')    // Acquaintance js file
     .js('resources/js/settings.js', 'public/js')        // Top navigation js file
     .js('resources/js/user-edit.js', 'public/js')       // User edit js file
-    .js('resources/js/feedback.js', 'public/js')        // Feedback js file
+    .js('resources/js/feedback-create.js', 'public/js') // Feedback create js file
+    .js('resources/js/feedback-index.js', 'public/js')  // Feedback index js file
     // Styles
     .css('resources/css/app.css', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')      // Bootstrap Styles

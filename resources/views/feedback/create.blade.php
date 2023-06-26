@@ -1,7 +1,7 @@
 @extends('layouts.app_mobile')
 
 @push('scripts')
-    <script src="{{ mix('js/feedback.js') }}" defer></script>
+    <script src="{{ mix('js/feedback-create.js') }}" defer></script>
 @endpush
 
 @section('content')
