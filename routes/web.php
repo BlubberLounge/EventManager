@@ -97,9 +97,11 @@ Route::middleware(['auth', 'verified'])->group(function ()
     // if (App::environment(['local', 'development'])) {
 
     // }
+
     Route::group(['middleware' => ['level:5']], function ()
     {
         Route::get('/debug/auditLog', [AuditController::class, 'index'])->name('debug.AuditLog');
+        Route::view('/defaultComponents', 'debug.defaultComponents')->name('defaultComponents');
     });
 
 
