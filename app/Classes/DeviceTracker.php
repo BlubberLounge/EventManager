@@ -16,7 +16,7 @@ class DeviceTracker
     /**
      *
      */
-    public static function detect()
+    public static function detect(bool $updateLastActive = false)
     {
         $result = Browser::parse('Mozilla/5.0 (IPhone; CPU IPhone OS 16_5 like Max OS X) AppleWebKit/605.1.15 (KHTML,like Gecko) Version/16.5 Mobile/15E148 Safari/604.1');
         // $result = Browser::detect();
@@ -59,8 +59,9 @@ class DeviceTracker
             $device->ip = Request::ip();
         }
 
+        if($updateLastActive)
+            $device->last_active = now();
 
-        $device->last_active = now();
         $device->save();
 
         return $device;

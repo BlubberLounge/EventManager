@@ -22,8 +22,6 @@ class DatabaseSeeder extends Seeder
             ConnectRelationshipsSeeder::class,
             //
             UserSeeder::class,
-            UserSettingMetadataSeeder::class,
-            UserSettingSeeder::class,
         ]);
 
         Model::reguard();

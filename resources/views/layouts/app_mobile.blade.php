@@ -22,16 +22,23 @@
 
         @if (session('status'))
             <x-alert type="primary" message="{{ session('status') }}" />
-
         @elseif (session('error'))
             <x-alert type="danger" message="{{ session('error') }}" />
-
         @elseif (session('success'))
             <x-alert type="success" message="{{ session('success') }}" />
-
         @elseif (session('info'))
             <x-alert type="info" message="{{ session('info') }}" />
+        @endif
 
+        {{-- Validation error debugging --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
 
         <main> {{-- <main class="pt-1"> --}}

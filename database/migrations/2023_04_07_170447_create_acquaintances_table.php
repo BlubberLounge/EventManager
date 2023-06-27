@@ -11,25 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('acquaintances', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('transmitter_user_id')
-                ->constrained('users')
-                ->comment('the user that initialised the friend request')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('receiver_user_id')
-                ->constrained('users')
-                ->comment('the user that received the friend request')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->enum('status', ['pending', 'accepted','denied','blocked'])
-                ->default('pending')
-                ->comment('pending/accepted/denied/blocked');
-            $table->timestamps();
-            // composite unique key
-            $table->unique(['transmitter_user_id', 'receiver_user_id']);
-        });
+        if(!Schema::hasTable('acquaintances'))
+            Schema::create('acquaintances', function (Blueprint $table)
+            {
+                $table->id();
+
+                $table->foreignId('transmitter_user_id')
+                    ->constrained('users')
+                    ->comment('the user that initialised the friend request')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+                $table->foreignId('receiver_user_id')
+                    ->constrained('users')
+                    ->comment('the user that received the friend request')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+                $table->enum('status', ['pending', 'accepted','denied','blocked'])
+                    ->default('pending')
+                    ->comment('pending/accepted/denied/blocked');
+
+                $table->timestamps();
+
+                // composite unique key
+                $table->unique(['transmitter_user_id', 'receiver_user_id']);
+            });
     }
 
     /**

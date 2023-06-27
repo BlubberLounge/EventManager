@@ -64,6 +64,14 @@ class Device extends Model implements Auditable
     }
 
     /**
+     * Get all of the feedback
+     */
+    public function feedback(): HasMany
+    {
+        return $this->hasMany(Feedback::class);
+    }
+
+    /**
      *
      */
     public function getIsVerifiedAttribute(): bool

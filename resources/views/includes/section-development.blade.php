@@ -4,6 +4,17 @@
             Development
         <i class="fa-solid fa-bugs"></i>
     </h3>
+    <a href="{{ route('user.feedback.index') }}">
+        <div class="row">
+            <div class="col-1">
+                <i class="fa-solid fa-list"></i>
+            </div>
+            <div class="col">
+                <span> User Feedback </span>
+            </div>
+        </div>
+    </a>
+    <hr />
     <a href="#">
         <div class="row">
             <div class="col-1">
@@ -15,17 +26,6 @@
         </div>
     </a>
     <hr />
-    <a href="{{ route('l5-swagger.default.api') }}" target="_blank" rel="noopener noreferrer">
-        <div class="row">
-            <div class="col-1">
-                <i class="fa-solid fa-book"></i>
-            </div>
-            <div class="col">
-                <span> Api Documentation </span>
-            </div>
-        </div>
-    </a>
-    <hr />
     <a href="{{ route('debug.AuditLog') }}" target="_blank" rel="noopener noreferrer">
         <div class="row">
             <div class="col-1">
@@ -33,6 +33,17 @@
             </div>
             <div class="col">
                 <span> Audit-log </span>
+            </div>
+        </div>
+    </a>
+    <hr />
+    <a href="{{ route('l5-swagger.default.api') }}" target="_blank" rel="noopener noreferrer">
+        <div class="row">
+            <div class="col-1">
+                <i class="fa-solid fa-book"></i>
+            </div>
+            <div class="col">
+                <span> Api Documentation </span>
             </div>
         </div>
     </a>

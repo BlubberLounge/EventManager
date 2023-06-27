@@ -1,7 +1,7 @@
 @extends('layouts.app_mobile')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid px-0">
     <x-buttons.back urlAddition="#settingsDevice" />
     <section id="device-description" class="text-center" style="padding: 2rem 3rem 1rem 3rem;">
         <i class="fa-solid fa-computer" style="font-size: 4rem"></i>

@@ -16,6 +16,7 @@ Manage events, send/recieve invitations, lost and found list, create polls and s
 - Audit logging ✔️
 - Acquaintance System ✔️
 - Great design ✔️
+- Feedback System ✔️
 - [User management] ❌
 - [Send Invitations] ❌
 - [Send Invites (Accepts/decline)] ❌

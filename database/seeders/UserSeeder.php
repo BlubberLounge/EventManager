@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Feedback;
 
 class UserSeeder extends Seeder
 {
@@ -39,6 +40,10 @@ class UserSeeder extends Seeder
         $userRole = config('roles.models.role')::where('name', 'User')->first();
         User::factory()
             ->count(rand(10, 18))
+            ->has(
+                Feedback::factory()
+                    ->count(rand(0, 2))
+            )
             ->create()
             ->each( function($user) use ($userRole) {
                 $user->attachRole($userRole);

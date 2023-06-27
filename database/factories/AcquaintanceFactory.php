@@ -23,7 +23,7 @@ class AcquaintanceFactory extends Factory
 
         return [
             'transmitter_user_id' => fake()->unique()->numberBetween(2, User::all()->count()-1),
-            'receiver_user_id' => User::adminAcc()->id,
+            'receiver_user_id' => User::rootAcc()->id,
             'status' => fake()->boolean(55),
         ];
     }
