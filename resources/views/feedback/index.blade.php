@@ -53,6 +53,16 @@
                             </div>
                             <div class="row mt-3">
                                 <h3>
+                                    Subject
+                                </h3>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    {{ $feedback->subject }}
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <h3>
                                     Message
                                 </h3>
                             </div>

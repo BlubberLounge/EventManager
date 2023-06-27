@@ -3,10 +3,15 @@
     <textarea
         id="{{ $attribute }}"
         class="form-control @error('{{ $attribute }}') is-invalid @enderror"
-        name="{{ $attribute }}" value="{{ old($attribute) ? old($attribute) : Auth::user()->$attribute }}"
+        name="{{ $attribute }}"
         style="resize: none"
         @if($maxRows > 0) rows="{{ $maxRows }}" @endif
         @if($autofocus) autofocus @endif
         autocomplete="off"
-    ></textarea>
+    >{{ old($attribute) ? old($attribute) : Auth::user()->$attribute }}</textarea>
+    @error('{{ $attribute }}')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
 </div>

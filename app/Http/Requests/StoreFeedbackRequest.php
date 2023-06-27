@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
+
+use App\Enums\FedbackType;
+use App\Enums\FedbackStatus;
 
 class StoreFeedbackRequest extends FormRequest
 {
@@ -22,7 +26,13 @@ class StoreFeedbackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id'   => 'exists:users,id',
+            // 'type'      => 'required|in:GENERAL,BUG,INFORMATION,ENHANCEMENT',
+            'status'    => [new Enum(FedbackStatus::class)],
+            'subject'   => 'required|string',
+            'message'   => 'required|string',
+            'area'      => 'required|string',
+            'device_id' => 'exists:devices,id',
         ];
     }
 }
