@@ -17,29 +17,30 @@
             @forelse ($feedbackList as $feedback)
                 @php($headerID = 'header-'.$feedback->id)
                 @php($bodyID = 'body-'.$feedback->id)
-                <div class="accordion-item position-relative mb-4">
+                <div class="accordion-item position-relative mb-4" data-bl-feedback-id="{{ $feedback->id }}">
                     <div class="position-absolute" style="z-index: 100;top:-10px;">
                         <span class="badge rounded-pill feedback-type-{{ $feedback->type }}" style="background-color:{{ $feedback->type->color() }};"> {{ $feedback->type }} </span>
                     </div>
                     <h2 class="accordion-header feedback-type-{{ $feedback->type }}" id="{{ $headerID }}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $bodyID }}" aria-expanded="false" aria-controls="{{ $bodyID }}">
+                        <button class="accordion-button collapsed" type="button" data-bl-feedback-status="{{ $feedback->status }}" data-bs-toggle="collapse" data-bs-target="#{{ $bodyID }}" aria-expanded="false" aria-controls="{{ $bodyID }}">
                             <span style="margin-right: auto">
                                 {{ Str::limit($feedback->subject, 40) }}
                             </span>
-                        @if ($feedback->status === \App\Enums\FeedbackStatus::SEEN)
-                            <i class="fa-solid fa-eye fa-lg" style="color: #000;"></i>
-                        @elseif ($feedback->status === \App\Enums\FeedbackStatus::GOOD)
-                            <i class="fa-solid fa-thumbs-up fa-lg" style="color: var(--bl-clr-green);"></i>
-                        @elseif ($feedback->status === \App\Enums\FeedbackStatus::BAD)
-                            <i class="fa-solid fa-thumbs-down fa-lg" style="color: var(--bl-clr-red);"></i>
-                        @endif
+                            <i class="fa-solid fa-eye fa-lg feedback-seen-icon" style="color: #000; {{ $feedback->status === \App\Enums\FeedbackStatus::SEEN ?: 'display: none;'}}"></i>
+                            @if ($feedback->status === \App\Enums\FeedbackStatus::GOOD)
+                                <i class="fa-solid fa-thumbs-up fa-lg" style="color: var(--bl-clr-green);"></i>
+                            @elseif ($feedback->status === \App\Enums\FeedbackStatus::BAD)
+                                <i class="fa-solid fa-thumbs-down fa-lg" style="color: var(--bl-clr-red);"></i>
+                            @else
+
+                            @endif
                         </button>
                     </h2>
                     <div id="{{ $bodyID }}" class="accordion-collapse collapse" aria-labelledby="{{ $headerID }}" data-bs-parent="#accordionfeedback">
                         <div class="accordion-body p-4" style="word-break: break-all;">
                             <div class="row">
                                 @if($feedback->status !== \App\Enums\FeedbackStatus::GOOD && $feedback->status !== \App\Enums\FeedbackStatus::BAD)
-                                    <div class="btn-group mb-4" role="group" data-bl-feedback-id="{{ $feedback->id }}">
+                                    <div class="btn-group mb-4" role="group">
                                         <button type="button" class="btn btn-success btn-feedback-rating" data-bl-feedback-status="good">
                                             <i class="fa-regular fa-thumbs-up"></i>
                                             Good

@@ -16,6 +16,9 @@ use App\Enums\FeedbackType;
 class FeedbackController extends Controller
 {
 
+    /**
+     *
+     */
     public array $areas = [
         'unkown' => 'Other',
         'registration' => 'Registration',
@@ -29,7 +32,12 @@ class FeedbackController extends Controller
         'profile' => 'Profile',
         'profile.account' => 'Profile > Account',
         'profile.settings' => 'Profile > Settings',
-
+        'statistics' => 'Statistics',
+        'feedback' => 'Feedback',
+        // 'ui' => 'User Interface (design)',
+        // 'translation' => 'Translation',
+        'api' => 'REST API',
+        'api.doc' => 'API Documentation',
     ];
 
     /**
