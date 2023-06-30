@@ -4,8 +4,11 @@
 // Variables
 @import 'variables';
 
+// Custom Bootstrap additions
+@import 'custom';
+
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-// Components
-// @import 'buttons';
+// Custom Sass
+@import 'timetable';

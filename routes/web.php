@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\DeviceController;
@@ -60,7 +61,15 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::view('/tickets', 'ticket.index')->name('tickets');
     Route::view('/host', 'host.index')->name('host');
-    Route::view('/calendar', 'calendar.index')->name('calendar');
+
+    Route::resource('calendar', CalendarController::class)
+        ->except('destroy');
+
+    Route::prefix('calendar')->group(function () {
+        Route::name('calendar.')->group(function () {
+            //
+        });
+    });
 
     Route::singleton('user', UserController::class);
     // route: /user/*

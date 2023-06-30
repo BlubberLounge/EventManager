@@ -22,7 +22,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="{{ route('calendar') }}" @class(['active' => request()->routeIs('calendar') || request()->routeIs('calendar.*')])>
+                <a href="{{ route('calendar.index') }}" @class(['active' => request()->routeIs('calendar') || request()->routeIs('calendar.*')])>
                     <i class="fa-solid fa-calendar-days"></i>
                     Calendar
                 </a>
