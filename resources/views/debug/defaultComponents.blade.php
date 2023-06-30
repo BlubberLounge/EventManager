@@ -10,79 +10,55 @@
     <h1> BlubberLounge Components </h1>
     <div>
         <h1> Form </h1>
-        {{--
-            <input type="button">
-            <input type="checkbox">
-            <input type="color">
-            <input type="date">
-            <input type="datetime-local">
-            <input type="email">
-            <input type="file">
-            <input type="hidden">
-            <input type="image">
-            <input type="month">
-            <input type="number">
-            <input type="password">
-            <input type="radio">
-            <input type="range">
-            <input type="reset">
-            <input type="search">
-            <input type="submit">
-            <input type="tel">
-            <input type="text">
-            <input type="time">
-            <input type="url">
-            <input type="week">
-        --}}
         <form>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Text Field </label>
-                <input type="text" class="form-control" id="InputText">
+                <label for="CustomInputText" class="form-label"> Text Field </label>
+                <input type="text" class="form-control" id="CustomInputText">
             </div>
             <div class="mb-3">
-                <label for="InputEmail" class="form-label"> Email address </label>
-                <input type="email" class="form-control" id="InputEmail">
+                <label for="CustomInputEmail" class="form-label"> Email address </label>
+                <input type="email" class="form-control" id="CustomInputEmail">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
-                <label for="InputPassword" class="form-label"> Password </label>
-                <input type="password" class="form-control" id="InputPassword">
+                <label for="CustomInputPassword" class="form-label"> Password </label>
+                <input type="password" class="form-control" id="CustomInputPassword">
             </div>
             <div class="mb-3 form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="CustomCheckbox">
+                <label class="form-check-label" for="CustomCheckbox">
                   Default checkbox
                 </label>
             </div>
             <div class="mb-3 form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="CustomRadio">
+                <label class="form-check-label" for="CustomRadio">
                   Default radio
                 </label>
             </div>
             <div class="mb-3 form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                <input class="form-check-input" type="checkbox" role="switch" id="CustomSwitch">
+                <label class="form-check-label" for="CustomSwitch">Default switch checkbox input</label>
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Date </label>
-                <input type="date" class="form-control" id="InputText">
+                <label for="CustomInputDate" class="form-label"> Date </label>
+                <input type="date" class="form-control" id="CustomInputDate">
             </div>
             <div class="mb-3">
-                <label for="customRange1" class="form-label">Example range</label>
-                <input type="range" class="form-range" id="customRange1">
+                <label for="CustomInputRange" class="form-label">Example range</label>
+                <input type="range" class="form-range" id="CustomInputRange">
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Text Field </label>
-                <input type="file" class="form-control" id="InputText">
+                <label for="CustomInputFile" class="form-label"> Text Field </label>
+                <input type="file" class="form-control" id="CustomInputFile">
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Text Field </label>
-                <input type="number" class="form-control" id="InputText">
+                <label for="CustomInputNumber" class="form-label"> Text Field </label>
+                <input type="number" class="form-control" id="CustomInputNumber">
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Text Field </label>
-                <input type="time" class="form-control" id="InputText">
+                <label for="CustomInputTime" class="form-label"> Text Field </label>
+                <input type="time" class="form-control" id="CustomInputTime">
             </div>
         </form>
     </div>
@@ -272,24 +248,24 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Date </label>
-                <input type="date" class="form-control" id="InputText">
+                <label for="InputDate" class="form-label"> Date </label>
+                <input type="date" class="form-control" id="InputDate">
             </div>
             <div class="mb-3">
-                <label for="customRange1" class="form-label">Example range</label>
-                <input type="range" class="form-range" id="customRange1">
+                <label for="InputRange" class="form-label">Example range</label>
+                <input type="range" class="form-range" id="InputRange">
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Text Field </label>
-                <input type="file" class="form-control" id="InputText">
+                <label for="InputFile" class="form-label"> Text Field </label>
+                <input type="file" class="form-control" id="InputFile">
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Text Field </label>
-                <input type="number" class="form-control" id="InputText">
+                <label for="InputNumber" class="form-label"> Text Field </label>
+                <input type="number" class="form-control" id="InputNumber">
             </div>
             <div class="mb-3">
-                <label for="InputText" class="form-label"> Text Field </label>
-                <input type="time" class="form-control" id="InputText">
+                <label for="InputTime" class="form-label"> Text Field </label>
+                <input type="time" class="form-control" id="InputTime">
             </div>
         </form>
     </div>
