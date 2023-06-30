@@ -28,5 +28,6 @@ mix
     .sass('resources/sass/app.scss', 'public/css')      // Bootstrap Styles
     .css('resources/css/auth.css', 'public/css')        // auth
     .css('resources/css/top-nav.css', 'public/css')
+    .css('resources/css/defaultComponents.css', 'public/css')
     .version()
     .sourceMaps();
