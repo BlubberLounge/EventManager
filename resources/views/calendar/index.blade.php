@@ -1,7 +1,7 @@
 @extends('layouts.app_mobile')
 
 @push('scripts')
-    <script src="{{ mix('js/timetable.js') }}" defer></script>
+    <script src="{{ mix('js/calendar.js') }}" defer></script>
 @endpush
 
 @section('content')

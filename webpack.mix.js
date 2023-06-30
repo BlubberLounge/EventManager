@@ -23,6 +23,7 @@ mix
     .js('resources/js/user-edit.js', 'public/js')       // User edit js file
     .js('resources/js/feedback-create.js', 'public/js') // Feedback create js file
     .js('resources/js/feedback-index.js', 'public/js')  // Feedback index js file
+    .js('resources/js/calendar.js', 'public/js')  // Calendar index js file
     // Styles
     .css('resources/css/app.css', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')      // Bootstrap Styles
