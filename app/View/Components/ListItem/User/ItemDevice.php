@@ -33,6 +33,7 @@ class ItemDevice extends Component
         $data['displayName'] = $this->getDisplayName();
         $data['lastActivity'] = $this->device->last_active->format('d.m.Y H:i:s');
         $data['isVerified'] = $this->device->isVerified;
+        $data['loginCounter'] = $this->device->login_count;
 
         return view('components.list-item.user.item-device', $data);
     }
