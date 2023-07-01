@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\DeviceController;
@@ -26,11 +27,12 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-if (App::environment('local')) {
+// https://github.com/laravel/ui/blob/4.x/src/AuthRouteMethods.php
+// if (App::environment('local')) {
     Auth::routes(['verify' => true]);
-} else {
-    Auth::routes(['verify' => true, 'register' => false]);
-}
+// } else {
+//     Auth::routes(['verify' => true, 'register' => false]);
+// }
 
 /*
  * email verification routes
@@ -60,7 +62,15 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::view('/tickets', 'ticket.index')->name('tickets');
     Route::view('/host', 'host.index')->name('host');
-    Route::view('/calendar', 'calendar.index')->name('calendar');
+
+    Route::resource('calendar', CalendarController::class)
+        ->except('destroy');
+
+    Route::prefix('calendar')->group(function () {
+        Route::name('calendar.')->group(function () {
+            //
+        });
+    });
 
     Route::singleton('user', UserController::class);
     // route: /user/*
@@ -97,9 +107,11 @@ Route::middleware(['auth', 'verified'])->group(function ()
     // if (App::environment(['local', 'development'])) {
 
     // }
+
     Route::group(['middleware' => ['level:5']], function ()
     {
         Route::get('/debug/auditLog', [AuditController::class, 'index'])->name('debug.AuditLog');
+        Route::view('/defaultComponents', 'debug.defaultComponents')->name('defaultComponents');
     });
 
 

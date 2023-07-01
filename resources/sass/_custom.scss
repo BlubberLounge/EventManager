@@ -1,0 +1,37 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// (prefix)EventManager-*
+// em-*
+$custom-colors: (
+    "blubberlounge": #ffb600,
+    "sadasd": #ff00ff,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$primary: #1e2f34;
+$secondary: #287ada;
+$success: #67ab24;
+$danger: #bc1a1a;
+$warning: #f1bf61;
+
+
+
+#container-home,
+#container-calendar {
+    padding: 0;
+}
+
+
+#section-page-description {
+    text-align: center;
+    padding: 2rem 3rem 1rem 3rem;
+}
+
+.page-description-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}

@@ -10,14 +10,16 @@ $(function() {
     $('#topNav').css('position', 'fixed');
 
     const CONFIG = {
-      el: $('#moveMe'),
-      startPosX: $('#moveMe2').offset().left,
-      startPosY: $('#moveMe2').offset().top,
-      startFontSize: toRem($('#moveMe').css('font-size')),
-      endPosX: 25, // px
-      endPosY: 70, // px
-      endFontSize: 1.2, // rem
-      maxScroll: $('.scrollBox').height() // px
+        el: $('#moveMe'),
+        //startPosX: $('#moveMe2').offset().left,
+        //startPosY: $('#moveMe2').offset().top,
+        startPosX: 88,
+        startPosY: 12,
+        startFontSize: toRem($('#moveMe').css('font-size')),
+        endPosX: 25, // px
+        endPosY: 70, // px
+        endFontSize: 1.2, // rem
+        maxScroll: $('.scrollBox').height() // px
     }
 
     init();
@@ -26,12 +28,15 @@ $(function() {
         updateNavBar();
     };
 
-    function init() {
+    function init()
+    {
         CONFIG.el.css('left', CONFIG.endPosX);
         CONFIG.el.css('top', CONFIG.endPosY);
     }
 
-    function updateNavBar() {
+    function updateNavBar()
+    {
+        console.log('================================================');
         if(CONFIG.maxScroll <= getYPos()) {
             CONFIG.el.css('left', CONFIG.startPosX);
             CONFIG.el.css('top', CONFIG.startPosY);

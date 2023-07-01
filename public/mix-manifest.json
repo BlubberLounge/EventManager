@@ -1,16 +1,19 @@
 {
-    "/js/app.js": "/js/app.js?id=6a60d459da53a620bfe80908a2dade57",
+    "/js/app.js": "/js/app.js?id=db9f3dbcfccc3460f4860a7eaa8a9079",
+    "/js/auth.js": "/js/auth.js?id=e1291bef91a8c220c06a04d1f0a358b1",
     "/js/utils.js": "/js/utils.js?id=43260ba002e92b41c9ce5f81f94e82b1",
     "/js/menu.js": "/js/menu.js?id=e04db79aabf06ccdd1f075647c8cb28c",
     "/js/ticket.js": "/js/ticket.js?id=6ddf0c351fe212397a671ed60de777ec",
-    "/js/home.js": "/js/home.js?id=9da7c5c6b27e11bed0ded0bb0dcabad1",
+    "/js/home.js": "/js/home.js?id=4868d24916a166b02451bbd0b6cdaa4e",
     "/js/timetable.js": "/js/timetable.js?id=580b7a7fa6ab29f2783462d93c4fe7d3",
     "/js/acquaintance.js": "/js/acquaintance.js?id=f2891a8339d61ab60ca3b3ae11adb61a",
-    "/js/settings.js": "/js/settings.js?id=061b7cde9cdefe7baf4933d696a28c12",
+    "/js/settings.js": "/js/settings.js?id=886c2a151a843d15ea5248f5ccce525c",
     "/js/user-edit.js": "/js/user-edit.js?id=949ca0a0d2bdd9487b7eb795bbd5be3d",
     "/js/feedback-create.js": "/js/feedback-create.js?id=d0c98a6433a7ee81a2fef82bf7f18ef9",
-    "/js/feedback-index.js": "/js/feedback-index.js?id=f238ed5f6f17854082411b951cfbb85e",
-    "/css/app.css": "/css/app.css?id=cd86f0716bcec7548ae0d1d7066f06dd",
+    "/js/feedback-index.js": "/js/feedback-index.js?id=a44556d568cdd816a4e12b03abacff06",
+    "/js/calendar.js": "/js/calendar.js?id=eb4ecb847690f6a99721a31925b70996",
+    "/css/app.css": "/css/app.css?id=6278b608a8fe7774136ec0187922ace6",
+    "/css/defaultComponents.css": "/css/defaultComponents.css?id=94d177312232cbce4b0f0f7dabde04df",
     "/css/top-nav.css": "/css/top-nav.css?id=8a240bc90118f2b71d0ed696eaa5b1c1",
-    "/css/auth.css": "/css/auth.css?id=31d77f814324eb80d8107af7ce16aaf2"
+    "/css/auth.css": "/css/auth.css?id=68e6b3febcc7005f372c0c417faa5a5a"
 }

@@ -17,9 +17,16 @@
             </span>
         </div>
         <div class="row">
-            <span class="text-muted">
-                Letzte aktivität: {{ $lastActivity }}
-            </span>
+            <div class="col">
+                <span class="text-muted">
+                    Letzte aktivität: {{ $lastActivity }}
+                </span>
+            </div>
+            <div class="col-auto">
+                <span class="text-muted">
+                    {{ $loginCounter }}
+                </span>
+            </div>
         </div>
     </div>
 </div>

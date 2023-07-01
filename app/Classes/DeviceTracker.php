@@ -18,8 +18,8 @@ class DeviceTracker
      */
     public static function detect(bool $updateLastActive = false)
     {
-        $result = Browser::parse('Mozilla/5.0 (IPhone; CPU IPhone OS 16_5 like Max OS X) AppleWebKit/605.1.15 (KHTML,like Gecko) Version/16.5 Mobile/15E148 Safari/604.1');
-        // $result = Browser::detect();
+        // $result = Browser::parse('Mozilla/5.0 (IPhone; CPU IPhone OS 16_5 like Max OS X) AppleWebKit/605.1.15 (KHTML,like Gecko) Version/16.5 Mobile/15E148 Safari/604.1');
+        $result = Browser::detect();
 
         $device_type = Str::lower($result->deviceType());
         $device_family = $result->deviceFamily();
@@ -75,7 +75,7 @@ class DeviceTracker
         if(!Auth::guard('web')->check())
             return;
 
-        $d = self::detect();
+        $d = self::detect(false);
         $d->login_count += 1;
         $d->save();
     }
@@ -87,5 +87,7 @@ class DeviceTracker
     {
         if(!Auth::guard('web')->check())
             return;
+
+        self::detectLogin();
     }
 };

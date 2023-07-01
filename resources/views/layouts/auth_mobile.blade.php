@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
 <head>
     @include('includes.head.meta')
 
     <!-- Scripts -->
     @include('includes.head.script')
     @stack('scripts')   {{-- get all scripts that got pushed to the stack --}}
+    <script src="{{ mix('js/auth.js') }}" defer></script>
 
     <!-- Styles -->
     @include('includes.head.style')
-    <link href="{{ mix('css/auth.css') }}" rel="stylesheet">
     @stack('styles')   {{-- get all styles that got pushed to the stack --}}
+    <link href="{{ mix('css/auth.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app" class="p-4 w-100">

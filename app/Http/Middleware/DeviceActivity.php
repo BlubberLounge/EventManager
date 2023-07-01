@@ -22,7 +22,7 @@ class DeviceActivity
         if (Auth::check())
         {
             // $user = Auth::user();
-            DeviceTracker::detect();
+            DeviceTracker::detect(true);
         }
 
         return $next($request);

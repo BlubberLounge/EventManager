@@ -1,20 +1,23 @@
-body {
-    color: var(--bl-clr-gray-5);
-    background-color: var(--bl-clr-gray-90);
-}
+// Variables
+@import 'variables';
 
-body::after {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 90vw;
-    height: 50vh;
-    background-image: url('/img/blubber2.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: .03;
-    z-index: -1;
+body {
+    color: $bl-clr-gray-5;
+    background-color: $bl-clr-gray-90;
+
+    &::after {
+        content: '';
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 90vw;
+        height: 50vh;
+        background-image: url('/img/blubber2.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: .03;
+        z-index: -1;
+    }
 }
 
 a {
@@ -34,32 +37,35 @@ a {
     right: calc(50vw - 140px);
     transform: rotate(-16deg);
     box-shadow: 2px 2px 0 1px rgba(255,132,0,.75);
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 11px;
+        background-color: var(--bl-clr-gray-90);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &::before {
+        left: -7px;
+    }
+
+    &::after {
+        right: -7px;
+    }
 }
 
-#subText::before,
-#subText::after {
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 11px;
-    background-color: var(--bl-clr-gray-90);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#subText::before {
-    left: -7px;
-}
-
-#subText::after {
-    right: -7px;
+input:not([type="checkbox"]) {
+    padding-left: 35px !important;
 }
 
 input ~ i {
     color: var(--bl-clr-gray-50);
     position: absolute;
-    right: 25px;
+    left: 25px;
     top: 50%;
     transform: translateY(-50%);
 
@@ -81,4 +87,8 @@ input.is-invalid ~ i {
 
 .registerText {
     color: var(--bl-clr-gray-40);
+}
+
+#password-toggler {
+    cursor: pointer;
 }

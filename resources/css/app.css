@@ -74,7 +74,6 @@ a {
 main #container-account {
     padding: 0;
 }
-
 section {
     padding: 2rem 1rem;
 }
@@ -103,78 +102,6 @@ Button[data-bl-acquaintance-active="1"] {
     margin-left: 1.25em;
     color: inherit;
     cursor: pointer;
-}
-
-
-section#timetable table {
-    text-align: center;
-    border-spacing: 5px;
-    border-collapse: separate;
-}
-
-section#timetable tr:not(:first-child) th:not(:first-child) {
-    padding: 0 .5rem 1rem .5rem;
-    font-weight: 400;
-}
-
-section#timetable td:not(:first-child) {
-    font-weight: 900;
-    padding: .4em .5em;
-    border-radius: 2px;
-}
-
-td[data-bl-timetable-status="available"],
-td[data-bl-timetable-status="maybe"],
-td[data-bl-timetable-status="noTime"] {
-    font-family: "Font Awesome 6 free";
-}
-
-td[data-bl-timetable-status="available"]::before {
-    content: '\f00c';
-}
-
-td[data-bl-timetable-status="available"] {
-    background-color: var(--bl-clr-green);
-}
-
-td[data-bl-timetable-status="maybe"]::before {
-    content: '\3f';
-}
-
-td[data-bl-timetable-status="maybe"] {
-    color: #a57214;
-    background-color: #f1bf61;
-    font-size: 1.1em;
-}
-
-td[data-bl-timetable-status="noTime"]::before {
-    content: '\f00d';
-}
-
-td[data-bl-timetable-status="noTime"] {
-    background-color: var(--bl-clr-red);
-}
-
-section#timetable table tbody td.timeTableUser {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-    text-align: left;
-    min-width: 110px;
-    background-color: var(--bl-clr-background-light);/*rgba(255, 255, 255, 0.2);*/
-}
-
-section#timetable .isStuck {
-    color: var(--bl-clr-gray-20);
-}
-
-section#timetable .isStuck ~ tr{
-    padding: 0;
-}
-
-section#timetable table .day {
-    font-size: 1.5em;
-    font-weight: 600;
 }
 
 #botNav {
@@ -464,20 +391,6 @@ section#timetable table .day {
 .acquaintanceAdd-container {
     padding: 3rem 3rem 1.6rem 3rem;
 }
-
-.btn-timetable {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    font-size: 1.25rem;
-}
-
-.btn-timetable ~ .btn-timetable {
-    margin-left: .5rem;
-}
-
 .btn-back {
     position: absolute;
     right: 0;

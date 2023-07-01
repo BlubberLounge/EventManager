@@ -1,0 +1,4 @@
+#container-defaultComponents > * ~ * {
+    margin-top: 2rem;
+}
+
