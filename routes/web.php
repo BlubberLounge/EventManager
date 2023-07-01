@@ -27,6 +27,7 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
+// https://github.com/laravel/ui/blob/4.x/src/AuthRouteMethods.php
 // if (App::environment('local')) {
     Auth::routes(['verify' => true]);
 // } else {
