@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
 <head>
     @include('includes.head.meta')
 
@@ -9,8 +9,8 @@
 
     <!-- Styles -->
     @include('includes.head.style')
-    <link href="{{ mix('css/auth.css') }}" rel="stylesheet">
     @stack('styles')   {{-- get all styles that got pushed to the stack --}}
+    <link href="{{ mix('css/auth.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app" class="p-4 w-100">

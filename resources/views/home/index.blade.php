@@ -49,6 +49,13 @@
         @endforelse
     </section>
 
+    <section id="section-next-event">
+        <h3 class="section-title"> Events nearby </h3>
+        <div class="section-content">
+            <img src="{{ asset('img/ticketRender_06.png') }}" class="w-100">
+        </div>
+    </section>
+
     <section>
         <h1> Ignore this </h1>
         <div class="row mb-3">

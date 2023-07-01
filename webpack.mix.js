@@ -27,7 +27,7 @@ mix
     // Styles
     .css('resources/css/app.css', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')      // Bootstrap Styles
-    .css('resources/css/auth.css', 'public/css')        // auth
+    .sass('resources/sass/auth.scss', 'public/css')      // Authentification Styles
     .css('resources/css/top-nav.css', 'public/css')
     .css('resources/css/defaultComponents.css', 'public/css')
     .version()

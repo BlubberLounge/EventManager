@@ -27,11 +27,11 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-if (App::environment('local')) {
+// if (App::environment('local')) {
     Auth::routes(['verify' => true]);
-} else {
-    Auth::routes(['verify' => true, 'register' => false]);
-}
+// } else {
+//     Auth::routes(['verify' => true, 'register' => false]);
+// }
 
 /*
  * email verification routes
