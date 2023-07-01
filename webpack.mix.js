@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix
     .js('resources/js/app.js', 'public/js')             // Main js file
+    .js('resources/js/auth.js', 'public/js')             // Main js file
     .js('resources/js/utils.js', 'public/js')           // Utillity js file
     .js('resources/js/menu.js', 'public/js')            // Burger Menu js file
     .js('resources/js/ticket.js', 'public/js')          // Ticket js file

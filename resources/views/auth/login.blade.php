@@ -37,7 +37,7 @@
                     required
                     autocomplete="off"
                 >
-                <i class="fa-solid fa-key"></i>
+                <i class="fa-solid fa-key" id="password-toggler"></i>
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">

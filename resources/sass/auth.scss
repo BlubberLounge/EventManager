@@ -89,12 +89,6 @@ input.is-invalid ~ i {
     color: var(--bl-clr-gray-40);
 }
 
-input[type="password"]::after {
-    font-family: $font-font-awesome;
-    content: '\f06e';
-    color: var(--bl-clr-gray-50);
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
+#password-toggler {
+    cursor: pointer;
 }

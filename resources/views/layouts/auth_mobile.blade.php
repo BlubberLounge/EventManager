@@ -6,6 +6,7 @@
     <!-- Scripts -->
     @include('includes.head.script')
     @stack('scripts')   {{-- get all scripts that got pushed to the stack --}}
+    <script src="{{ mix('js/auth.js') }}" defer></script>
 
     <!-- Styles -->
     @include('includes.head.style')
