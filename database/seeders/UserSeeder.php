@@ -37,16 +37,18 @@ class UserSeeder extends Seeder
             //     $adminUser->attachPermission($permission);
         }
 
-        $userRole = config('roles.models.role')::where('name', 'User')->first();
-        User::factory()
-            ->count(rand(10, 18))
-            ->has(
-                Feedback::factory()
-                    ->count(rand(0, 2))
-            )
-            ->create()
-            ->each( function($user) use ($userRole) {
-                $user->attachRole($userRole);
-            });
+        if(User::count() <= 50) {
+            $userRole = config('roles.models.role')::where('name', 'User')->first();
+            User::factory()
+                ->count(rand(10, 18))
+                ->has(
+                    Feedback::factory()
+                        ->count(rand(0, 2))
+                )
+                ->create()
+                ->each( function($user) use ($userRole) {
+                    $user->attachRole($userRole);
+                });
+        }
     }
 }
