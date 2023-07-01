@@ -35,9 +35,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        if ($this->app->environment('local')) {
-            Mail::alwaysTo(env('MAIL_TO_DEVELOPMENT', 'admin@blubber-lounge.de'));
-        }
+        // if ($this->app->environment('local')) {
+        //     Mail::alwaysTo(env('MAIL_TO_DEVELOPMENT', 'admin@blubber-lounge.de'));
+        // }
     }
 
     // public function provides()

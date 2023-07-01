@@ -76,7 +76,8 @@ Route::middleware(['auth', 'verified'])->group(function ()
     // route: /user/*
     // name: user.*
     Route::prefix('user')->group(function () {
-        Route::name('user.')->group(function () {
+        Route::name('user.')->group(function ()
+        {
             Route::get('/device', [DeviceController::class, 'index'])->name('device.index');
             Route::get('/QRCode', [UserController::class, 'qrCode'])->name('qrCode');
             Route::get('/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
@@ -94,7 +95,8 @@ Route::middleware(['auth', 'verified'])->group(function ()
     // route: /tickets/*
     // name: tickets.*
     Route::prefix('tickets')->group(function () {
-        Route::name('tickets.')->group(function () {
+        Route::name('tickets.')->group(function ()
+        {
             Route::view('/accepted', 'ticket.accepted')->name('accepted');
             Route::view('/pending', 'ticket.pending')->name('pending');
             Route::view('/done', 'ticket.done')->name('done');
@@ -104,9 +106,14 @@ Route::middleware(['auth', 'verified'])->group(function ()
     /**
      * DEBUG Routes
      */
-    // if (App::environment(['local', 'development'])) {
-
-    // }
+    if (App::environment(['local', 'development']))
+    {
+        // Mail Design Testing
+        Route::get('/mail', function(){
+            $mail = new App\Mail\TestMail();
+            return $mail->render();
+        });
+    }
 
     Route::group(['middleware' => ['level:5']], function ()
     {
