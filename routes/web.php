@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AuditController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\AuditController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\FeedbackController;
 
 /*
@@ -86,7 +87,8 @@ Route::middleware(['auth', 'verified'])->group(function ()
             Route::put('/updateAcquaintances', [UserController::class, 'updateAcquaintances'])
                 ->name('updateAcquaintances')
                 ->middleware('signed');
-
+            Route::resource('faq', FAQController::class)
+                ->except('destroy');
             Route::resource('feedback', FeedbackController::class)
                 ->except('destroy');
         });

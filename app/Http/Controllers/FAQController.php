@@ -13,7 +13,8 @@ class FAQController extends Controller
      */
     public function index()
     {
-        //
+        $data['FAQList'] = FAQ::orderBy('created_at', 'asc')->get();
+        return view('faq.index', $data);
     }
 
     /**

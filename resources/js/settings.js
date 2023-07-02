@@ -36,7 +36,6 @@ $(function() {
 
     function updateNavBar()
     {
-        console.log('================================================');
         if(CONFIG.maxScroll <= getYPos()) {
             CONFIG.el.css('left', CONFIG.startPosX);
             CONFIG.el.css('top', CONFIG.startPosY);
