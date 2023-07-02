@@ -1,5 +1,4 @@
-<nav id="topNav" @class(['navbar',
-                        'no-bottom-padding' => request()->routeIs('user.qrCode') && App::environment(['local', 'development']) ])>
+<nav id="topNav" @class(['navbar','no-bottom-padding' => request()->routeIs('user.qrCode') && App::environment(['local', 'development']) ])>
     <div class="container" style="max-width: 1200px">
         <div @class([ 'col-auto' => request()->routeIs('user.show') || request()->routeIs('user.edit'),
                       'col' => !request()->routeIs('user.show') && !request()->routeIs('user.edit')])>
@@ -8,8 +7,9 @@
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
             @else
-                <a class="navbar-brand m-0" href="{{ url('/') }}">
-                    <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
+                <a class="navbar-brand m-0 placeholder-glow" href="{{ url('/') }}">
+                    {{-- <span class="placeholder col-3"></span> --}}
+                    <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white_optimized.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
                 </a>
             @endif
         </div>
