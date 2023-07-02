@@ -21,6 +21,7 @@
     "dependencies": {
         "@glidejs/glide": "^3.6.0",
         "animate.css": "^4.1.1",
+        "cropperjs": "^1.5.13",
         "moment": "^2.29.4"
     }
 }
