@@ -67,7 +67,7 @@ return [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
-            'days' => 365,
+            'days' => 30,
         ],
 
         'slack' => [
@@ -123,6 +123,13 @@ return [
         'customMissing' => [
             'driver' => 'single',
             'path' => storage_path('logs/customMissing.log')
+        ],
+
+        'mail' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/mail.log'),
+            // 'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
         ],
     ],
 

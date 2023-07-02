@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call([
+            FAQSeeder::class,
+
             // AcquaintanceSeeder::class
             PermissionsSeeder::class,
             RolesSeeder::class,

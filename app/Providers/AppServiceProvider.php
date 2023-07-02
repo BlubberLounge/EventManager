@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Mail;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+
+        // if ($this->app->environment('local')) {
+        //     Mail::alwaysTo(env('MAIL_TO_DEVELOPMENT', 'admin@blubber-lounge.de'));
+        // }
     }
 
     // public function provides()

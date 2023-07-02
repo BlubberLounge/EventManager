@@ -215,7 +215,7 @@
             </div>
         </a>
         <hr />
-        <a href="#">
+        <a href="{{ route('user.faq.index') }}">
             <div class="row">
                 <div class="col-1">
                     <i class="fa-solid fa-comment-dots"></i>
