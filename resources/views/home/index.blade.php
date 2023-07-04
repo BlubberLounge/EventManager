@@ -1,4 +1,4 @@
-@extends('layouts.app_mobile')
+@extends('layouts.app')
 
 @push('scripts')
     <script src="{{ mix('js/timetable.js') }}" defer></script>

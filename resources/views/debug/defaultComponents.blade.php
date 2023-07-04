@@ -1,4 +1,4 @@
-@extends('layouts.app_mobile')
+@extends('layouts.app')
 
 @push('styles')
 <link href="{{ mix('css/defaultComponents.css') }}" rel="stylesheet">

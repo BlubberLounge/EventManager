@@ -107,7 +107,9 @@
     <div class="scrollBox position-relative">
         <div class="col-1 d-flex justify-content-center">
             <div class="update-profileimage">
-                <i class="fa-solid fa-camera"></i>
+                <a href="{{ route('user.image.edit') }}">
+                    <i class="fa-solid fa-camera"></i>
+                </a>
             </div>
         </div>
     </div>

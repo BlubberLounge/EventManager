@@ -1,4 +1,4 @@
-@extends('layouts.app_mobile')
+@extends('layouts.app')
 
 @section('content')
 <div class="container-fluid px-0">
