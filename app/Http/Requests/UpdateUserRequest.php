@@ -29,7 +29,7 @@ class UpdateUserRequest extends FormRequest
             'lastname' => 'nullable|string',
             'email' => 'nullable|email:rfc',
             'telefon_mobil' => 'nullable|string',
-            'originalImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'originalImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:9765', //max 10mb
             'croppedImage' => 'nullable|string',
             'qrcode' => 'nullable|url',
             'password' => 'nullable|min:5|string',

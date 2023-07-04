@@ -10,7 +10,7 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-$primary: #1e2f34;
+$primary: #11171a;
 $secondary: #287ada;
 $success: #67ab24;
 $danger: #bc1a1a;
@@ -18,6 +18,7 @@ $warning: #f1bf61;
 
 // Custom Sass
 @import 'timetable';
+@import '_buttons';
 
 // div {
 //     -webkit-user-select: none; /* Safari 3.1+ */
@@ -25,3 +26,30 @@ $warning: #f1bf61;
 //     -ms-user-select: none; /* IE 10+ */
 //     user-select: none; /* Standard syntax */
 // }
+
+
+
+
+#container-home,
+#container-calendar {
+    padding: 0;
+}
+
+
+#section-page-description {
+    text-align: center;
+    padding: 2rem 3rem 1rem 3rem;
+}
+
+.page-description-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.step-2 {
+    display: none;
+}
+
+.form-file {
+    display: none;
+}

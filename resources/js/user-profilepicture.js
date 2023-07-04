@@ -33,32 +33,30 @@ $(function() {
     var uploadedImageName = 'cropped.jpg';
     var uploadedImageURL;
 
-    $('#originalImage').change(e => {
+    $('#originalImage').change(e =>
+    {
         var files = e.currentTarget.files;
         var file;
-        console.log(e.currentTarget.files);
-        if (files && files.length) {
-          file = files[0];
 
-          console.log('uploaded image cahnged');
+        if (files && files.length) {
+            file = files[0];
+
+            $('.step-2').show();
+            $('.step-1').hide();
+
             if (/^image\/\w+/.test(file.type)) {
                 uploadedImageType = file.type;
                 uploadedImageName = file.name;
 
-                if (uploadedImageURL) {
+                if (uploadedImageURL)
                     URL.revokeObjectURL(uploadedImageURL);
-                }
 
                 image.src = uploadedImageURL = URL.createObjectURL(file);
 
-                console.log('uploaded image cahnged');
-                if (cropper) {
+                if (cropper)
                     cropper.destroy();
-                }
 
-                console.log('uploaded image cahnged');
                 cropper = new Cropper(image, options);
-                inputImage.value = null;
             } else {
                 window.alert('Please choose an image file.');
             }

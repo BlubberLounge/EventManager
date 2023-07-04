@@ -106,11 +106,9 @@
 @if(request()->routeIs('user.show'))
     <div class="scrollBox position-relative">
         <div class="col-1 d-flex justify-content-center">
-            <div class="update-profileimage">
-                <a href="{{ route('user.image.edit') }}">
-                    <i class="fa-solid fa-camera"></i>
-                </a>
-            </div>
+            <a href="{{ route('user.image.edit') }}" class="btn btn-primary update-profileimage">
+                <i class="fa-solid fa-camera"></i>
+            </a>
         </div>
     </div>
 @endif
