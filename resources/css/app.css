@@ -109,7 +109,8 @@ Button[data-bl-acquaintance-active="1"] {
     bottom: 0;
     width: 100%;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, .125);
-    padding: .6em 0 .3em 0;
+    /* padding: .6em 0 .3em 0; */
+    padding: 0;
     background-color: var(--bl-clr-background-botNav);
     z-index: 1000;
 }
@@ -132,6 +133,11 @@ Button[data-bl-acquaintance-active="1"] {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+#botNav .col {
+    padding: .6em 0 .3em 0;
+    border-radius: 5rem;
 }
 
 #botNav .col,

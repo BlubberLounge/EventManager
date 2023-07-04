@@ -24,11 +24,16 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
+            'name' => 'string',
             'firstname' => 'nullable|string',
             'lastname' => 'nullable|string',
             'email' => 'nullable|email:rfc',
-            'password' => 'nullable|min:5|string'
+            'telefon_mobil' => 'nullable|string',
+            'originalImage' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'croppedImage' => 'nullable|string',
+            'qrcode' => 'nullable|url',
+            'password' => 'nullable|min:5|string',
+            'locked' => 'boolean'
         ];
     }
 }

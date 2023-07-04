@@ -9,10 +9,11 @@
     "/js/acquaintance.js": "/js/acquaintance.js?id=f2891a8339d61ab60ca3b3ae11adb61a",
     "/js/settings.js": "/js/settings.js?id=c5304b1913ef049e3b6858c93c77c119",
     "/js/user-edit.js": "/js/user-edit.js?id=949ca0a0d2bdd9487b7eb795bbd5be3d",
+    "/js/user-profilepicture.js": "/js/user-profilepicture.js?id=0448c27637ee639a2dd949188bf9b09a",
     "/js/feedback-create.js": "/js/feedback-create.js?id=d0c98a6433a7ee81a2fef82bf7f18ef9",
     "/js/feedback-index.js": "/js/feedback-index.js?id=a44556d568cdd816a4e12b03abacff06",
     "/js/calendar.js": "/js/calendar.js?id=eb4ecb847690f6a99721a31925b70996",
-    "/css/app.css": "/css/app.css?id=6278b608a8fe7774136ec0187922ace6",
+    "/css/app.css": "/css/app.css?id=d02878d160767295d52cdf0e252e01bc",
     "/css/defaultComponents.css": "/css/defaultComponents.css?id=94d177312232cbce4b0f0f7dabde04df",
     "/css/top-nav.css": "/css/top-nav.css?id=8a240bc90118f2b71d0ed696eaa5b1c1",
     "/css/auth.css": "/css/auth.css?id=68e6b3febcc7005f372c0c417faa5a5a"
