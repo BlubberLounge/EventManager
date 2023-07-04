@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Mail;
 
+use chillerlan\QRCode\QRCode;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,11 +23,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // $this->app->bind(chillerlan\QRCode\QRCode::class, function (Application $app) {
+        // doesn't work
+        $this->app->bind('QRCode', function (Application $app) {
 
-        //     $qrcode = new chillerlan\QRCode\QRCode();
-        //     return $qrcode;
-        // });
+            $qrcode = new QRCode();
+            return $qrcode;
+        });
     }
 
     /**
@@ -40,8 +43,8 @@ class AppServiceProvider extends ServiceProvider
         // }
     }
 
-    // public function provides()
-    // {
-    //     return ['qrcode'];
-    // }
+    public function provides()
+    {
+        return ['QRCode'];
+    }
 }
