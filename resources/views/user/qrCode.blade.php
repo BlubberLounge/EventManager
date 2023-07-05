@@ -1,4 +1,4 @@
-@extends('layouts.app_mobile')
+@extends('layouts.app')
 
 @section('content')
 <div class="container tab-content" id="nav-tabContent">
@@ -7,7 +7,7 @@
             <div class="qrcode-container text-center position-relative">
                 <div  class="position-absolute" style="top:-20px;left:50%;transform:translateX(-50%);background-color:var(--bl-clr-primary);border:10px solid var(--bl-clr-primary);border-radius:var(--br-primary);">
                     @if(Auth::user()->img)
-                        <img src="{{ Auth::user()->img }}" width="40px">
+                        <img src="{{ asset(Auth::user()->img) }}" width="40px" style="border-radius: 50%;"/>
                     @else
                         {!! Avatar::create(Auth::user()->name)->setDimension(50)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
                     @endif

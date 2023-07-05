@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         // always create one root user, that root user has always to be verified
         if(User::where('email', 'admin+EventManager@blubber-lounge.de')->first() === null) {
             $rootUser = User::create([
-                'name' => 'Admin',
+                'name' => 'Root',
                 'firstname' => 'Blubber',
                 'lastname' => 'Lounge',
                 'email' => 'admin+EventManager@blubber-lounge.de',

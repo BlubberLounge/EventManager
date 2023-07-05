@@ -1,13 +1,14 @@
-.btn-bd-primary {
-    --bs-btn-font-weight: 600;
-    --bs-btn-color: var(--bs-white);
-    --bs-btn-bg: green;
-    --bs-btn-border-color: #fff;
-    --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #{shade-color(#fff, 10%)};
-    --bs-btn-hover-border-color: #{shade-color(#fff, 10%)};
-    --bs-btn-focus-shadow-rgb: #fff;
-    --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #{shade-color(#fff, 20%)};
-    --bs-btn-active-border-color: #{shade-color(#fff, 20%)};
-  }
+// Variables
+@import 'variables';
+
+.btn-upload {
+    font-weight: 700;
+
+    &::before {
+        font-family: $font-font-awesome;
+        content: "\f35b";
+        font-weight: 900;
+        font-size: 1.2rem;
+        margin-right: .25rem;
+    }
+}

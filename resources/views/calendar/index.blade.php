@@ -1,4 +1,4 @@
-@extends('layouts.app_mobile')
+@extends('layouts.app')
 
 @push('scripts')
     <script src="{{ mix('js/calendar.js') }}" defer></script>
@@ -70,7 +70,11 @@
         @foreach ($acquaintances['accepted'] as $acquaintancesAccepted)
             <div class="row mt-2 pe-2 align-items-center">
                 <div class="col">
-                    <img src="{{ Avatar::create($acquaintancesAccepted->firstname)->toBase64() }}" width="40px" />
+                    @if(!$acquaintancesAccepted->img)
+                        <img src="{{ Avatar::create($acquaintancesAccepted->firstname)->toBase64() }}" width="40px" />
+                    @else
+                        <img src="{{ $acquaintancesAccepted->img }}" width="40px" style="border-radius: 50%;"/>
+                    @endif
                     <span class="ms-3" style="font-size:1.05rem;">
                         {{ $acquaintancesAccepted->full_name }}
                     </span>

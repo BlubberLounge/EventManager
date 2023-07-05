@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 use chillerlan\QRCode\{QRCode, QROptions};
 
+use App\Helpers\FileHelper;
 use App\Enums\AcquaintanceStatus;
 use App\Models\User;
 use App\Models\Acquaintance;
@@ -51,12 +54,32 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request)
     {
+        $storagePathOriginal = storage_path('/app/private/uploads/user/original');
+        $storagePathCropped = '/public/uploads/user';
+
+        // Original image may be used later for further cropping
+        if($request->has('originalImage')) {
+            $originalImage = $request->file('originalImage');
+            $originalImageFilename = time().'_'.Auth::user()->id.'.' . $originalImage->extension();
+            $originalImagepath = $originalImage->move($storagePathOriginal, $originalImageFilename);
+        }
+
+        // Cropped image
+        if($request->has('croppedImage')) {
+            $croppedImagePath = FileHelper::fromBase64($request->croppedImage)->storePublicly($storagePathCropped);
+            $croppedImagePath = Str::replace('public', 'storage', $croppedImagePath);
+        }
+
         $u = Auth::user();
         $u->name = $request->name ?? $u->name;
         $u->firstname = $request->firstname ?? $u->firstname;
         $u->lastname = $request->lastname ?? $u->firstname;
         $u->email = $request->email ?? $u->email;
+        $u->telefon_mobil = $request->telefon_mobil ?? $u->telefon_mobil;
+        $u->img = $croppedImagePath ?? $u->img;
+        $u->qrcode = $request->qrcode ?? $u->qrcode;
         $u->password = $request->password ? Hash::make($request->password) : $u->password;
+        $u->locked = $request->locked ?? $u->locked;
 
         $u->save();
 
@@ -117,5 +140,14 @@ class UserController extends Controller
         $data['qrcode_expires_in'] = Auth::user()->qrCodeExpiresIn(true);
 
         return view('user.qrCode', $data);
+    }
+
+    /**
+     * Show the form for editing the image.
+     */
+    public function imageEdit()
+    {
+        $data['image'] = Auth::user()->img ?? 'img/dummyAvatar.png';
+        return view('user.image-edit', $data);
     }
 }

@@ -79,6 +79,7 @@ Route::middleware(['auth', 'verified'])->group(function ()
     Route::prefix('user')->group(function () {
         Route::name('user.')->group(function ()
         {
+            Route::get('/image/edit', [UserController::class, 'imageEdit'])->name('image.edit');
             Route::get('/device', [DeviceController::class, 'index'])->name('device.index');
             Route::get('/QRCode', [UserController::class, 'qrCode'])->name('qrCode');
             Route::get('/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
