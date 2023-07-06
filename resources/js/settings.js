@@ -11,15 +11,17 @@ $(function() {
 
     const CONFIG = {
         el: $('#moveMe'),
-        //startPosX: $('#moveMe2').offset().left,
-        //startPosY: $('#moveMe2').offset().top,
+        // startPosX: $('#moveMe2').offset().left,
+        // startPosY: $('#moveMe2').offset().top,
         startPosX: 88,
         startPosY: 12,
-        startFontSize: toRem($('#moveMe').css('font-size')),
+        startFontSize: 1,
         endPosX: 25, // px
         endPosY: 70, // px
-        endFontSize: 1.2, // rem
-        maxScroll: $('.scrollBox').height() // px
+        endFontSize: 1.25, // rem
+        maxScroll: $('.scrollBox').height(), // px
+        startImageWidth: 55,
+        endImageWidth: 35
     }
 
     init();
@@ -32,6 +34,8 @@ $(function() {
     {
         CONFIG.el.css('left', CONFIG.endPosX);
         CONFIG.el.css('top', CONFIG.endPosY);
+        $('#moveMe img').css('width', CONFIG.startImageWidth);
+        CONFIG.el.css('font-size', CONFIG.endFontSize+'rem');
     }
 
     function updateNavBar()
@@ -39,8 +43,8 @@ $(function() {
         if(CONFIG.maxScroll <= getYPos()) {
             CONFIG.el.css('left', CONFIG.startPosX);
             CONFIG.el.css('top', CONFIG.startPosY);
-            //CONFIG.el.css('font-size', lerp(CONFIG.endFontSize, CONFIG.startFontSize, p)+'rem');
-            $('#moveMe img').css('width', 30);
+            CONFIG.el.css('font-size', lerp(CONFIG.endFontSize, CONFIG.startFontSize, p)+'rem');
+            $('#moveMe img').css('width', CONFIG.endImageWidth);
             $('#navBrand').css('width', 60);
 
             $('.update-profileimage').css('transform', 'scale(0)');
@@ -51,8 +55,8 @@ $(function() {
         let p = map(1, CONFIG.maxScroll, getYPos());
         CONFIG.el.css('left', lerp(CONFIG.endPosX, CONFIG.startPosX, p));
         CONFIG.el.css('top', lerp(CONFIG.endPosY, CONFIG.startPosY, p));
-        //CONFIG.el.css('font-size', lerp(CONFIG.endFontSize, CONFIG.startFontSize, p)+'rem');
-        $('#moveMe img').css('width', lerp(45, 30, p));
+        CONFIG.el.css('font-size', lerp(CONFIG.endFontSize, CONFIG.startFontSize, p)+'rem');
+        $('#moveMe img').css('width', lerp(CONFIG.startImageWidth, CONFIG.endImageWidth, p));
         $('#navBrand').css('width', lerp(75, 60, p));
 
         $('.update-profileimage').css('transform', 'scale('+ (lerp(1, 0, p) > .35 ? 1 : 0) +')');

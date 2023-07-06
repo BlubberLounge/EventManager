@@ -24,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         // doesn't work
-        $this->app->bind('QRCode', function (Application $app) {
+        // $this->app->bind('QRCode', function (Application $app) {
 
-            $qrcode = new QRCode();
-            return $qrcode;
-        });
+        //     $qrcode = new QRCode();
+        //     return $qrcode;
+        // });
     }
 
     /**
@@ -43,8 +43,8 @@ class AppServiceProvider extends ServiceProvider
         // }
     }
 
-    public function provides()
-    {
-        return ['QRCode'];
-    }
+    // public function provides()
+    // {
+    //     return ['QRCode'];
+    // }
 }

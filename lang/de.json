@@ -1,7 +1,58 @@
 {
-    "English": "Englisch",
-    "German": "Deutsch",
-    "Spanish": "Spanisch",
-    "French": "Französisch",
-    "italian": "Italienisch"
+    "help": "Hilfe",
+    "message": "Nachricht",
+    "close": "Schließen",
+    "submit": "Abschicken",
+    "save": "Speichern",
+    "acquaintance": "Bekanntschaft",
+    "acquaintances": "Bekanntschaften",
+    "pending": "Ausstehend",
+    "accepted": "Akzeptiert",
+    "denied": "Abgelehnt",
+    "blocked": "Gesperrt",
+    "events nearby": "Events in der nähe",
+
+    "english": "Englisch",
+    "german": "Deutsch",
+    "spanish": "Spanisch",
+    "french": "Französisch",
+    "italian": "Italienisch",
+
+    "home": "Home",
+    "tickets": "Tickets",
+    "events": "Events",
+    "calendar": "Kalender",
+    "profile": "Profile",
+
+    "reliability": "Zuverlässigkeit",
+    "account": "Account",
+    "settings": "Einstellungen",
+    "development": "Development",
+
+    "on time": "pünktlich",
+    "late": "verspätet",
+    "not appeared": "nicht erschienen",
+
+    "privacy and security": "Privatsphäre und Sicherheit",
+    "notifications": "Benachrichtigungen",
+    "devices": "Geräte",
+    "presets": "Voreinstellungen",
+    "language": "Sprache",
+    "eventManager FAQ": "EventManager FAQ",
+    "feedback": "Feedback",
+
+    "user feedback": "User Feedback",
+    "default components": "Standardkomponenten",
+    "api documentation": "Api Dokumentation",
+    "audit log": "Audit-log",
+    "system information": "System informationen",
+
+    "reliability indicator": "Zuverlässigkeitsanzeige",
+    "the reliability indicator": "Die Zuverlässigkeitsanzeige",
+    "helpful?": "Hilfreich?",
+    "help display": "Hilfsanzeige",
+    "shows if you are an absolute wixxer or not :)": "Zeigt an ob du ein absoluter Wixxer bist oder eben nicht :)",
+    "no pending acquaintances requests": "keine ausstehenden Bekanntschaftsanfragen",
+    "here you can see everything time / date related.": "Hier können Sie alles sehen, was mit Zeit und Datum zu tun hat.",
+    "for now only the timetable is shown here.": "Hier wird vorerst nur der Timetable angezeigt."
 }

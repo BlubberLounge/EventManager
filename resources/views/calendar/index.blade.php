@@ -8,8 +8,8 @@
 <div class="container-fluid" id="container-calendar">
     <section id="section-page-description">
         <i class="fa-regular fa-calendar page-description-icon"></i>
-        <h1> Calendar </h1>
-        <p> Here you can see everything time / date related. <br /> For now only the timetable is shown here. </p>
+        <h1> {{ __('calendar') }} </h1>
+        <p> {{ __('here you can see everything time / date related.') }} <br /> {{ __('for now only the timetable is shown here.') }} </p>
     </section>
     <section id="section-timetable" class="container-timetable" style="max-width: 100vw; overflow-x: scroll;">
         <table id="timetable" class="timetable pt-2">
@@ -17,14 +17,14 @@
                 <tr>
                     <th></th>
                     <th></th>
-                    <th class="border-end border-0 border-3" colspan="{{ $timeTable['monthCut'] }}"> {{ now()->format('F') }} </th>
-                    <th colspan="{{ 30-$timeTable['monthCut'] }}"> {{ now()->addMonth()->format('F') }} </th>
+                    <th class="border-end border-0 border-3" colspan="{{ $timeTable['monthCut'] }}"> {{ now()->translatedFormat('F') }} </th>
+                    <th colspan="{{ 30-$timeTable['monthCut'] }}"> {{ now()->addMonth()->translatedFormat('F') }} </th>
                 </tr>
                 <tr>
                     <th></th>
                     <th></th>
                     @foreach ($timeTable['head'] as $date)
-                        <th> <span class="day">{{ $date->format('d') }}</span> {{ $date->format('D') }} </th>
+                        <th> <span class="day">{{ $date->format('d') }}</span> {{ $date->translatedFormat('D') }} </th>
                     @endforeach
                 </tr>
             </thead>
@@ -66,7 +66,7 @@
     </section>
 
     <section id="acquaintances-accepted">
-        <h3 class="section-title">Acquaintances</h3>
+        <h3 class="section-title">{{ __('acquaintances') }}</h3>
         <div class="section-content">
             @foreach ($acquaintances['accepted'] as $acquaintancesAccepted)
                 <div class="row mt-2 pe-2 align-items-center">

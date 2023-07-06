@@ -8,7 +8,7 @@
 <div class="container-fluid" id="container-home">
 
     <section id="section-next-event">
-        <h3 class="section-title">Event in 2 Days</h3>
+        <h3 class="section-title">{{ __('home.eventIn', ['days' => 79]) }}</h3>
         <div class="section-content">
             <img src="{{ asset('img/ticketRender_04.png') }}" class="w-100">
         </div>
@@ -22,7 +22,7 @@
     </section> --}}
 
     <section id="acquaintances-pending">
-        <h3 class="section-title">Acquaintances (pending)</h3>
+        <h3 class="section-title">{{ __('acquaintances') }} ({{ __('pending') }})</h3>
         <div class="section-content">
             @forelse ($acquaintances['pending'] as $acquaintancesPending)
                 <div class="row mt-2 pe-2 align-items-center" data-bl-acquaintance-id="{{ $acquaintancesPending->id }}">
@@ -45,39 +45,41 @@
                 </div>
             @empty
                 <div style="padding: 1rem 0;padding-left: .5em;color:var(--bl-clr-background-light);text-align:center;">
-                    no pending acquaintances requests
+                    {{ __('no pending acquaintances requests') }}
                 </div>
             @endforelse
         </div>
     </section>
 
     <section id="section-next-event">
-        <h3 class="section-title"> Events nearby </h3>
+        <h3 class="section-title"> {{ __('events nearby') }} </h3>
         <div class="section-content">
             <img src="{{ asset('img/ticketRender_06.png') }}" class="w-100">
         </div>
     </section>
 
-    <section>
-        <h1> Ignore this </h1>
-        <div class="row mb-3">
-            <img src="{{ asset('img/ticketRender_01.png') }}" width="84%">
-        </div>
-        <div class="row mb-3">
-            <img src="{{ asset('img/ticketRender_05.png') }}" width="84%">
-        </div>
-        <div class="row mb-3">
-            <img src="{{ asset('img/ticketRender_02.png') }}" width="84%">
-        </div>
-        <div class="row mb-3">
-            <img src="{{ asset('img/ticketRender_03.png') }}" width="84%">
-        </div>
-        <div class="row mb-3">
-            <img src="{{ asset('img/ticketRender_06.png') }}" width="84%">
-        </div>
-        <div class="row mb-3">
-            <img src="{{ asset('img/ticketRender_04.png') }}" width="84%">
-        </div>
-    </section>
+    @if(App::environment(['local', 'development']))
+        <section>
+            <h1 class="section-title"> Ignor this </h3>
+            <div class="row mb-3">
+                <img src="{{ asset('img/ticketRender_01.png') }}" width="84%">
+            </div>
+            <div class="row mb-3">
+                <img src="{{ asset('img/ticketRender_05.png') }}" width="84%">
+            </div>
+            <div class="row mb-3">
+                <img src="{{ asset('img/ticketRender_02.png') }}" width="84%">
+            </div>
+            <div class="row mb-3">
+                <img src="{{ asset('img/ticketRender_03.png') }}" width="84%">
+            </div>
+            <div class="row mb-3">
+                <img src="{{ asset('img/ticketRender_06.png') }}" width="84%">
+            </div>
+            <div class="row mb-3">
+                <img src="{{ asset('img/ticketRender_04.png') }}" width="84%">
+            </div>
+        </section>
+    @endif
 </div>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class Localization
 {
@@ -17,8 +18,10 @@ class Localization
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Session::has('locale'))
+        if (Session::has('locale')) {
             App::setLocale(Session::get('locale'));
+            Carbon::setLocale(Session::get('locale'));
+        }
 
         return $next($request);
     }

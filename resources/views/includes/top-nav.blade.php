@@ -22,14 +22,14 @@
             <div id="moveMe" class="col d-flex align-items-center ps-2" style="font-size:.8rem;">
                 <div class="me-2">
                     @if(Auth::user()->img)
-                        <img src="{{ Auth::user()->img }}" width="45px" style="border-radius:50%">
+                        <img src="{{ Auth::user()->img }}" width="35px" style="border-radius:50%">
                     @else
                         {!! Avatar::create(Auth::user()->name)->setDimension(45)->setFontSize(28)->toSvg() !!} {{-- https://github.com/laravolt/avatar --}}
                     @endif
                 </div>
-                <div style="line-height: 1">
-                    <span class="h4 m-0"> {{ Auth::user()->firstname .' '. Auth::user()->lastname }} </span>
-                    <span class="d-block m-0 p-0" style="color: var(--bl-clr-gray-50);"> {{ '@'.Auth::user()->name }} </span>
+                <div style="line-height: 1;">
+                    <span class="ms-1 m-0"> {{ Auth::user()->firstname .' '. Auth::user()->lastname }} </span>
+                    <span class="d-block m-0 p-0" style="color: var(--bl-clr-gray-50);font-size:.8em;"> {{ '@'.Auth::user()->name }} </span>
                 </div>
             </div>
             <div class="col-1">

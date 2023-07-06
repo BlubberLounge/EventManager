@@ -4,13 +4,13 @@
             <div class="col">
                 <a href="{{ route('home') }}" @class(['active' => request()->routeIs('home') || request()->routeIs('home.*')])>
                     <i class="fa-solid fa-house"></i>
-                    Home
+                    {{ __('home') }}
                 </a>
             </div>
             <div class="col">
                 <a href="{{ route('tickets') }}" @class(['active' => request()->routeIs('tickets') || request()->routeIs('tickets.*')])>
                     <i class="fa-solid fa-ticket hasNotification"></i>
-                    Tickets
+                    {{ __('tickets') }}
                 </a>
             </div>
             <div class="col-3" >
@@ -18,19 +18,19 @@
                     <i class="fa-solid fa-users-rectangle" style="font-size: 1.5rem"></i>
                     {{-- <i class="fa-solid fa-people-line" style="font-size: 1.75rem;"></i> --}}
                     {{-- <i class="fa-solid fa-users-between-lines" style="font-size: 1.75rem;"></i> --}}
-                    Events
+                    {{ __('events') }}
                 </a>
             </div>
             <div class="col">
                 <a href="{{ route('calendar.index') }}" @class(['active' => request()->routeIs('calendar') || request()->routeIs('calendar.*')])>
                     <i class="fa-solid fa-calendar-days"></i>
-                    Calendar
+                    {{ __('calendar') }}
                 </a>
             </div>
             <div class="col">
                 <a href="{{ route('user.show') }}" @class(['active' => request()->routeIs('user.*') && !request()->routeIs('user.qrCode') && !request()->routeIs('user.acquaintanceAdd') ])>
                     <i class="fa-solid fa-user"></i>
-                    Profile
+                    {{ __('profile') }}
                 </a>
             </div>
         </div>
