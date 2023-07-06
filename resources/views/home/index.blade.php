@@ -10,7 +10,6 @@
     <section id="section-next-event">
         <h3 class="section-title">Event in 2 Days</h3>
         <div class="section-content">
-            <button id="notifications"> asd </button>
             <img src="{{ asset('img/ticketRender_04.png') }}" class="w-100">
         </div>
     </section>

@@ -1933,7 +1933,6 @@ progress {
   --bs-table-active-bg: #bfcddf;
   --bs-table-active-color: #000;
   --bs-table-hover-bg: #c4d3e5;
-
   --bs-table-hover-color: #000;
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
@@ -1948,7 +1947,6 @@ progress {
   --bs-table-active-bg: #c8d6da;
   --bs-table-active-color: #000;
   --bs-table-hover-bg: #cddce0;
-
   --bs-table-hover-color: #000;
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
@@ -12322,6 +12320,7 @@ td[data-bl-timetable-status=noTime]::before {
   font-size: 1.2rem;
   margin-right: 0.25rem;
 }
+
 .btn-profileimage {
   --bs-btn-color: var(--bs-white);
   position: absolute;
@@ -12333,6 +12332,7 @@ td[data-bl-timetable-status=noTime]::before {
   transform: scale(1);
   transition: all 280ms ease-in-out;
 }
+
 #container-home,
 #container-calendar {
   padding: 0;

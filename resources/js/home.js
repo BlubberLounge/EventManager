@@ -29,24 +29,24 @@ $(function()
 });
 
 
-const button = document.getElementById("notifications");
-button.addEventListener("click", () => {
-  Notification.requestPermission().then((result) => {
-    if (result === "granted") {
-      randomNotification();
-    }
-  });
-});
+// const button = document.getElementById("notifications");
+// button.addEventListener("click", () => {
+//   Notification.requestPermission().then((result) => {
+//     if (result === "granted") {
+//       randomNotification();
+//     }
+//   });
+// });
 
-function randomNotification() {
-    const notifTitle = "asdasdsad";
-    const notifBody = `Created by me.`;
-    const options = {
-      body: notifBody,
-    };
-    new Notification(notifTitle, options);
-    setTimeout(randomNotification, 30000);
-  }
+// function randomNotification() {
+//     const notifTitle = "asdasdsad";
+//     const notifBody = `Created by me.`;
+//     const options = {
+//       body: notifBody,
+//     };
+//     new Notification(notifTitle, options);
+//     setTimeout(randomNotification, 30000);
+//   }
 
 
 

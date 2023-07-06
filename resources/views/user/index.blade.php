@@ -213,7 +213,7 @@
             </a>
             <hr />
 
-            <a href="#">
+            <a href="{{ route('user.language.edit') }}">
                 <div class="row">
                     <div class="col-1">
                         <i class="fa-solid fa-globe"></i>

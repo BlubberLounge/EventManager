@@ -22,7 +22,6 @@ use App\Http\Controllers\FeedbackController;
 |
 */
 
-
 Route::get('/', function () {
     //return view('index');
     return redirect()->route('home');
@@ -80,7 +79,13 @@ Route::middleware(['auth', 'verified'])->group(function ()
         Route::name('user.')->group(function ()
         {
             Route::get('/image/edit', [UserController::class, 'imageEdit'])->name('image.edit');
+            Route::get('/language', [UserController::class, 'languageEdit'])->name('language.edit');
+            Route::put('/language/update', [UserController::class, 'languageUpdate'])->name('language.update');
             Route::get('/device', [DeviceController::class, 'index'])->name('device.index');
+            Route::resource('faq', FAQController::class)
+                ->except('destroy');
+            Route::resource('feedback', FeedbackController::class)
+                ->except('destroy');
             Route::get('/QRCode', [UserController::class, 'qrCode'])->name('qrCode');
             Route::get('/acquaintanceAdd', [UserController::class, 'acquaintanceAdd'])
                 ->name('acquaintanceAdd')
@@ -88,10 +93,6 @@ Route::middleware(['auth', 'verified'])->group(function ()
             Route::put('/updateAcquaintances', [UserController::class, 'updateAcquaintances'])
                 ->name('updateAcquaintances')
                 ->middleware('signed');
-            Route::resource('faq', FAQController::class)
-                ->except('destroy');
-            Route::resource('feedback', FeedbackController::class)
-                ->except('destroy');
         });
     });
 

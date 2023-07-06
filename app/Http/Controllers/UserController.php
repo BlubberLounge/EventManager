@@ -150,4 +150,26 @@ class UserController extends Controller
         $data['image'] = Auth::user()->img ?? 'img/dummyAvatar.png';
         return view('user.image-edit', $data);
     }
+
+    /**
+     *  Show the language selection view
+     */
+    public function languageEdit()
+    {
+        $data['availableLanguages'] = config('app.available_locales');
+
+        return view('user.settings.language.index', $data);
+    }
+
+    /**
+     *  Update Language setting
+     */
+    public function languageUpdate(Request $request)
+    {
+        app()->setLocale($request->locale);
+        session()->put('locale', $request->locale);
+
+        return redirect()->route('user.show')
+            ->with('success','Language has been updated successfully');
+    }
 }
