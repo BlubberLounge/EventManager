@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+use ImageOptimizer;
 use chillerlan\QRCode\{QRCode, QROptions};
 
 use App\Helpers\FileHelper;
@@ -69,6 +70,9 @@ class UserController extends Controller
             $croppedImagePath = FileHelper::fromBase64($request->croppedImage)->storePublicly($storagePathCropped);
             $croppedImagePath = Str::replace('public', 'storage', $croppedImagePath);
         }
+
+        // optimize the image for web
+        ImageOptimizer::optimize($croppedImagePath, $croppedImagePath.'-----');
 
         $u = Auth::user();
         $u->name = $request->name ?? $u->name;
