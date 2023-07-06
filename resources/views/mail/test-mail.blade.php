@@ -1,12 +1,14 @@
 <x-mail::message>
-# Introduction
+## Guten Tag {{ Auth::user()->full_name }},
 
-The body of your message.
+This is a test E-mail. it is used to test the design as well as Laravels email features.
+
+Feel free to play around with this 'template'
 
 <x-mail::button :url="''">
 Button Text
 </x-mail::button>
 
-Thanks,<br>
-{{ config('app.name') }}
+Thank you,<br>
+The BlubberLounge Team
 </x-mail::message>

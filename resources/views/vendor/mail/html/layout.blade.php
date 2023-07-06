@@ -37,8 +37,26 @@ width: 100% !important;
 <td class="body" width="100%" cellpadding="0" cellspacing="0" style="border: hidden !important;">
 <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
 <!-- Body content -->
+{{-- <tr>
+    <td width="100%">
+        <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+            <tr class="header-row" >
+                <td class="header-cell" width="200px">
+                    <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try.svg">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </td>
+</tr> --}}
+<tr>
+    <td class="header-cell">
+        <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white_optimized.svg" width="100px">
+    </td>
+</tr>
 <tr>
 <td class="content-cell">
+
 {{ Illuminate\Mail\Markdown::parse($slot) }}
 
 {{ $subcopy ?? '' }}
