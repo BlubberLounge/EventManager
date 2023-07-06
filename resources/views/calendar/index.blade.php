@@ -66,31 +66,33 @@
     </section>
 
     <section id="acquaintances-accepted">
-        <h3>Acquaintances</h3>
-        @foreach ($acquaintances['accepted'] as $acquaintancesAccepted)
-            <div class="row mt-2 pe-2 align-items-center">
-                <div class="col">
-                    @if(!$acquaintancesAccepted->img)
-                        <img src="{{ Avatar::create($acquaintancesAccepted->firstname)->toBase64() }}" width="40px" />
-                    @else
-                        <img src="{{ $acquaintancesAccepted->img }}" width="40px" style="border-radius: 50%;"/>
-                    @endif
-                    <span class="ms-3" style="font-size:1.05rem;">
-                        {{ $acquaintancesAccepted->full_name }}
-                    </span>
+        <h3 class="section-title">Acquaintances</h3>
+        <div class="section-content">
+            @foreach ($acquaintances['accepted'] as $acquaintancesAccepted)
+                <div class="row mt-2 pe-2 align-items-center">
+                    <div class="col">
+                        @if(!$acquaintancesAccepted->img)
+                            <img src="{{ Avatar::create($acquaintancesAccepted->firstname)->toBase64() }}" width="40px" />
+                        @else
+                            <img src="{{ $acquaintancesAccepted->img }}" width="40px" style="border-radius: 50%;"/>
+                        @endif
+                        <span class="ms-3" style="font-size:1.05rem;">
+                            {{ $acquaintancesAccepted->full_name }}
+                        </span>
+                    </div>
+                    <div class="col-1 d-flex justify-center">
+                        <button type="button" class="btn-bl-icon btn-add-to-timetable" data-bl-acquaintance-id="{{ $acquaintancesAccepted->id }}" data-bl-acquaintance-active="{{ $acquaintancesAccepted->pivot->showOnHomeView }}">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 d-flex justify-center">
+                        <button type="button" class="btn btn-bl-icon">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="col-1 d-flex justify-center">
-                    <button type="button" class="btn-bl-icon btn-add-to-timetable" data-bl-acquaintance-id="{{ $acquaintancesAccepted->id }}" data-bl-acquaintance-active="{{ $acquaintancesAccepted->pivot->showOnHomeView }}">
-                        <i class="fa-regular fa-calendar-check"></i>
-                    </button>
-                </div>
-                <div class="col-2 d-flex justify-center">
-                    <button type="button" class="btn btn-bl-icon">
-                        <i class="fa-solid fa-circle-info"></i>
-                    </button>
-                </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </section>
 </div>
 @endsection

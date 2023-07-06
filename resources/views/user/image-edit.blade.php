@@ -16,19 +16,15 @@
 
         <div class="row justify-center mt-4 step-1">
             <div class="col-auto">
-                <div class="card px-4 pt-4 pb-2">
-                    <div class="card-body">
-                        <div class="row justify-center mb-4">
-                            <div class="col-auto">
-                                <img src="{{ asset($image) }}" width="200px">
-                            </div>
-                        </div>
-                        <div class="row justify-center">
-                            <div class="col-auto mb-3">
-                                <label for="originalImage" class="btn btn-secondary btn-upload btn-lg"> Upload Image </label>
-                                <input type="file" name="originalImage" id="originalImage" accept="image/*" class="form-file">
-                            </div>
-                        </div>
+                <div class="row justify-center mb-4">
+                    <div class="col-auto">
+                        <img src="{{ asset($image) }}" width="200px">
+                    </div>
+                </div>
+                <div class="row justify-center">
+                    <div class="col-auto mb-3">
+                        <label for="originalImage" class="btn btn-secondary btn-upload btn-lg"> Upload Image </label>
+                        <input type="file" name="originalImage" id="originalImage" accept="image/*" class="form-file">
                     </div>
                 </div>
             </div>

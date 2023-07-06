@@ -74,20 +74,6 @@ a {
 main #container-account {
     padding: 0;
 }
-section {
-    padding: 2rem 1rem;
-}
-
-section ~ section {
-    border-top: 10px solid var(--bl-clr-background-dark);
-}
-
-section h3 {
-    color: var(--bl-clr-section-h3);
-    font-weight: 600;
-    font-size: .9rem;
-    font-family: var(--font-primary);
-}
 
 Button[data-bl-acquaintance-active="1"] {
     color: var(--bl-clr-green);

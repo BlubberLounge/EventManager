@@ -9,7 +9,7 @@
             @else
                 <a class="navbar-brand m-0 placeholder-glow" href="{{ url('/') }}">
                     {{-- <span class="placeholder col-3"></span> --}}
-                    <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white_optimized.svg" id="navBrand" alt="Dart a Web-App Logo" width="75px">
+                    <img src="https://media.maximilian-mewes.de/project/bl/blubber_lounge_rebrand_try_white_optimized.svg" id="navBrand" alt="BlubberLounge Logo" width="75px">
                 </a>
             @endif
         </div>
@@ -106,7 +106,7 @@
 @if(request()->routeIs('user.show'))
     <div class="scrollBox position-relative">
         <div class="col-1 d-flex justify-content-center">
-            <a href="{{ route('user.image.edit') }}" class="btn btn-primary update-profileimage">
+            <a href="{{ route('user.image.edit') }}" class="btn btn-primary btn-profileimage">
                 <i class="fa-solid fa-camera"></i>
             </a>
         </div>
