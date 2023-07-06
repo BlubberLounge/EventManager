@@ -22,19 +22,6 @@
     font-size: 1.45em;
 }
 
-.update-profileimage {
-    position: absolute;
-    padding: .2rem 1rem;
-    font-size: 1.45rem;
-    /* color: var(--bl-clr-white); */
-    border-radius: 4px;
-    right: 40px;
-    bottom: -20px;
-    transform: scale(1);
-    transition: all 280ms ease-in-out;
-    z-index: 1001;
-}
-
 .fa-qrcode {
     transition: all 150ms ease-in-out;
 }

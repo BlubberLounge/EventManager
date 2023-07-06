@@ -11,9 +11,3 @@ $custom-colors: (
 
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
-
-$primary: #1e2f34;
-$secondary: #287ada;
-$success: #67ab24;
-$danger: #bc1a1a;
-$warning: #f1bf61;

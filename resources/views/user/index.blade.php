@@ -7,30 +7,32 @@
 @section('content')
 <div class="container-fluid" id="container-account">
     <section id="reliability">
-        <h3 style="font-size: 1rem"> Zuverlässigkeit </h3>
-        <div class="row justify-content-center align-items-center">
-            <div class="col">
-                <div class="reliability-meter">
-                    <div class="reliability-meter-progress"></div>
+        <h3 class="section-title" style="font-size: 1rem"> Zuverlässigkeit </h3>
+        <div class="section-content">
+            <div class="row justify-content-center align-items-center">
+                <div class="col">
+                    <div class="reliability-meter">
+                        <div class="reliability-meter-progress"></div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <i class="fa-regular fa-circle-question" data-bs-toggle="modal" data-bs-target="#help-modal-reliability"></i>
                 </div>
             </div>
-            <div class="col-1">
-                <i class="fa-regular fa-circle-question" data-bs-toggle="modal" data-bs-target="#help-modal-reliability"></i>
-            </div>
-        </div>
 
-        <div class="row reliability-stats justify-content-around">
-            <div class="col">
-                <span> pünktlich </span>
-                <span class="d-"> 000007 </span>
-            </div>
-            <div class="col">
-                <span> zu spät </span>
-                <span> 000007 </span>
-            </div>
-            <div class="col">
-                <span> nicht erschienen </span>
-                <span> 000007 </span>
+            <div class="row reliability-stats justify-content-around">
+                <div class="col">
+                    <span> pünktlich </span>
+                    <span class="d-"> 000007 </span>
+                </div>
+                <div class="col">
+                    <span> zu spät </span>
+                    <span> 000007 </span>
+                </div>
+                <div class="col">
+                    <span> nicht erschienen </span>
+                    <span> 000007 </span>
+                </div>
             </div>
         </div>
 
@@ -80,225 +82,238 @@
 
     {{--
     <section id="profile-badge">
-        <h3> Errungenschaften </h3>
+        <h3 class="section-title"> Errungenschaften </h3>
     </section>
     --}}
 
     <section id="account">
-        <h3> Account </h3>
-        <div class="row">
-            <div class="col-1 d-flex justiy-content-center">
-                <i class="fa-solid fa-phone"></i>
-            </div>
-            <div class="col">
-                <span>{{ $user->telefon_mobil }}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 d-flex justiy-content-center">
-                <i class="fa-solid fa-cake-candles"></i>
-            </div>
-            <div class="col">
-                <span>{{ date('d. F Y', strtotime($user->dob)) }}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 d-flex justiy-content-center">
-                <i class="fa-regular fa-id-card"></i>
-            </div>
-            <div class="col">
-                <span>Alter: {{ \Illuminate\Support\Carbon::parse($user->dob)->age }} </span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 d-flex justiy-content-center">
-                <i class="fa-solid fa-at"></i>
-            </div>
-            <div class="col">
-                <span>{{ $user->email }}</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-1 d-flex justiy-content-center">
-                <i class="fa-solid fa-location-dot"></i>
-            </div>
-            <div class="col">
-                <span>{{ $user->telefon_mobil }}</span>
-            </div>
-        </div>
-        @level(5)
+        <h3 class="section-title"> Account </h3>
+        <div class="section-content">
             <div class="row">
                 <div class="col-1 d-flex justiy-content-center">
-                    <i class="fa-solid fa-code"></i>
+                    <i class="fa-solid fa-phone"></i>
                 </div>
                 <div class="col">
-                    @role('root')
-                        <span class="badge rounded-pill text-bg-danger"> Root </span>
-                    @endrole
-                    @role('Developer')
-                        <span class="badge rounded-pill text-bg-success"> Developer </span>
-                    @endrole
-                    @role('Admin')
-                        <span class="badge rounded-pill text-bg-info"> Admin </span>
-                    @endrole
-                    @role('EventManager')
-                        <span class="badge rounded-pill text-bg-warning"> EventManager </span>
-                    @endrole
-                    @role('Trusted')
-                        <span class="badge rounded-pill text-bg-light"> Trusted </span>
-                    @endrole
-                    @role('User')
-                        <span class="badge rounded-pill text-bg-secondary"> User </span>
-                    @endrole
-                    @role('Unverified')
-                        <span class="badge rounded-pill text-bg-secondary"> Unverified </span>
-                    @endrole
+                    <span>{{ $user->telefon_mobil }}</span>
                 </div>
             </div>
-        @endlevel
+            <div class="row">
+                <div class="col-1 d-flex justiy-content-center">
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="col">
+                    <span>{{ date('d. F Y', strtotime($user->dob)) }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 d-flex justiy-content-center">
+                    <i class="fa-regular fa-id-card"></i>
+                </div>
+                <div class="col">
+                    <span>Alter: {{ \Illuminate\Support\Carbon::parse($user->dob)->age }} </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 d-flex justiy-content-center">
+                    <i class="fa-solid fa-at"></i>
+                </div>
+                <div class="col">
+                    <span>{{ $user->email }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1 d-flex justiy-content-center">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="col">
+                    <span>{{ $user->telefon_mobil }}</span>
+                </div>
+            </div>
+            @level(5)
+                <div class="row">
+                    <div class="col-1 d-flex justiy-content-center">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="col">
+                        @role('root')
+                            <span class="badge rounded-pill text-bg-danger"> Root </span>
+                        @endrole
+                        @role('Developer')
+                            <span class="badge rounded-pill text-bg-success"> Developer </span>
+                        @endrole
+                        @role('Admin')
+                            <span class="badge rounded-pill text-bg-info"> Admin </span>
+                        @endrole
+                        @role('EventManager')
+                            <span class="badge rounded-pill text-bg-warning"> EventManager </span>
+                        @endrole
+                        @role('Trusted')
+                            <span class="badge rounded-pill text-bg-light"> Trusted </span>
+                        @endrole
+                        @role('User')
+                            <span class="badge rounded-pill text-bg-secondary"> User </span>
+                        @endrole
+                        @role('Unverified')
+                            <span class="badge rounded-pill text-bg-secondary"> Unverified </span>
+                        @endrole
+                    </div>
+                </div>
+            @endlevel
+        </div>
     </section>
 
     <section id="account-settings">
-        <h3> Settings </h3>
-        <a href="#">
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <div class="col">
-                    <span> Privatsphäre und Sicherheit </span>
-                </div>
-            </div>
-        </a>
-        <hr />
-        <a href="#">
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa-solid fa-bell"></i>
-                </div>
-                <div class="col">
-                    <span> Benachrichtigungen </span>
-                </div>
-            </div>
-        </a>
-        <hr />
-        <a href="{{ route('user.device.index') }}" id="settingsDevice">
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa-solid fa-desktop"></i>
-                </div>
-                <div class="col">
-                    <span> Geräte </span>
-                </div>
-            </div>
-        </a>
-        <hr />
-        <a href="#">
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa-solid fa-sliders"></i>
-                </div>
-                <div class="col">
-                    <span> Presets </span>
-                </div>
-            </div>
-        </a>
-        <hr />
-        <a href="#">
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <div class="col">
-                    <span> Sprache </span>
-                </div>
-            </div>
-        </a>
-        <hr />
-        <a href="{{ route('user.faq.index') }}">
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa-solid fa-comment-dots"></i>
-                </div>
-                <div class="col">
-                    <span> EventManager FAQ </span>
-                </div>
-            </div>
-        </a>
-        <hr />
-        <a href="{{ route('user.feedback.create') }}">
-            <div class="row">
-                <div class="col-1">
-                    <i class="fa-solid fa-circle-question"></i>
-                </div>
-                <div class="col">
-                    <span> Feedback </span>
-                </div>
-            </div>
-        </a>
-    </section>
-    {{-- @if(App::environment(['local', 'development'])) --}}
-    @level(5)
-        <section id="account-debug">
-            <h3 class="text-center">
-                <i class="fa-solid fa-bugs fa-flip-horizontal"></i>
-                    Development
-                <i class="fa-solid fa-bugs"></i>
-            </h3>
-            <a href="{{ route('user.feedback.index') }}">
-                <div class="row">
-                    <div class="col-1">
-                        <i class="fa-solid fa-list"></i>
-                    </div>
-                    <div class="col">
-                        <span> User Feedback </span>
-                    </div>
-                </div>
-            </a>
-            <hr />
-            <a href="{{ route('defaultComponents') }}" target="_blank" rel="noopener noreferrer">
-                <div class="row">
-                    <div class="col-1">
-                        <i class="fa-solid fa-puzzle-piece"></i>
-                    </div>
-                    <div class="col">
-                        <span> Default Components </span>
-                    </div>
-                </div>
-            </a>
-            <hr />
-            <a href="{{ route('l5-swagger.default.api') }}" target="_blank" rel="noopener noreferrer">
-                <div class="row">
-                    <div class="col-1">
-                        <i class="fa-solid fa-book"></i>
-                    </div>
-                    <div class="col">
-                        <span> Api Documentation </span>
-                    </div>
-                </div>
-            </a>
-            <hr />
-            <a href="{{ route('debug.AuditLog') }}" target="_blank" rel="noopener noreferrer">
-                <div class="row">
-                    <div class="col-1">
-                        <i class="fa-solid fa-table-list"></i>
-                    </div>
-                    <div class="col">
-                        <span> Audit-log </span>
-                    </div>
-                </div>
-            </a>
-            <hr />
+        <h3 class="section-title"> Settings </h3>
+        <div class="section-content">
             <a href="#">
                 <div class="row">
                     <div class="col-1">
-                        <i class="fa-solid fa-circle-info"></i>
+                        <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="col">
-                        <span> System Information </span>
+                        <span> Privatsphäre und Sicherheit </span>
                     </div>
                 </div>
             </a>
+            <hr />
+
+            <a href="#">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div class="col">
+                        <span> Benachrichtigungen </span>
+                    </div>
+                </div>
+            </a>
+            <hr />
+
+            <a href="{{ route('user.device.index') }}" id="settingsDevice">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+                    <div class="col">
+                        <span> Geräte </span>
+                    </div>
+                </div>
+            </a>
+            <hr />
+
+            <a href="#">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div class="col">
+                        <span> Presets </span>
+                    </div>
+                </div>
+            </a>
+            <hr />
+
+            <a href="#">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="col">
+                        <span> Sprache </span>
+                    </div>
+                </div>
+            </a>
+            <hr />
+
+            <a href="{{ route('user.faq.index') }}">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa-solid fa-comment-dots"></i>
+                    </div>
+                    <div class="col">
+                        <span> EventManager FAQ </span>
+                    </div>
+                </div>
+            </a>
+            <hr />
+
+            <a href="{{ route('user.feedback.create') }}">
+                <div class="row">
+                    <div class="col-1">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+                    <div class="col">
+                        <span> Feedback </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    {{-- @if(App::environment(['local', 'development'])) --}}
+    @level(5)
+        <section id="account-debug">
+            <h3 class="section-title"> Development </h3>
+            <div class="section-content">
+                <a href="{{ route('user.feedback.index') }}">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-list"></i>
+                        </div>
+                        <div class="col">
+                            <span> User Feedback </span>
+                        </div>
+                    </div>
+                </a>
+                <hr />
+
+                <a href="{{ route('defaultComponents') }}" target="_blank" rel="noopener noreferrer">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                        </div>
+                        <div class="col">
+                            <span> Default Components </span>
+                        </div>
+                    </div>
+                </a>
+                <hr />
+
+                <a href="{{ route('l5-swagger.default.api') }}" target="_blank" rel="noopener noreferrer">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <div class="col">
+                            <span> Api Documentation </span>
+                        </div>
+                    </div>
+                </a>
+                <hr />
+
+                <a href="{{ route('debug.AuditLog') }}" target="_blank" rel="noopener noreferrer">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-table-list"></i>
+                        </div>
+                        <div class="col">
+                            <span> Audit-log </span>
+                        </div>
+                    </div>
+                </a>
+                <hr />
+
+                <a href="#">
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <div class="col">
+                            <span> System Information </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </section>
     @endlevel
     {{-- @endif --}}
