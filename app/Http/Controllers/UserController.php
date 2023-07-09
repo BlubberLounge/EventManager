@@ -168,10 +168,13 @@ class UserController extends Controller
     /**
      *  Update Language setting
      */
-    public function languageUpdate(Request $request)
+    public function languageUpdate(UpdateUserRequest $request)
     {
-        app()->setLocale($request->locale);
-        session()->put('locale', $request->locale);
+        $locale = $request->locale;
+
+        app()->setLocale($locale);
+        session()->put('locale', $locale);
+        Auth::user()->settings->set('language', $locale);
 
         return redirect()->route('user.show')
             ->with('success','Language has been updated successfully');

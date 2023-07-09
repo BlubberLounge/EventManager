@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -33,7 +34,9 @@ class UpdateUserRequest extends FormRequest
             'croppedImage' => 'nullable|string',
             'qrcode' => 'nullable|url',
             'password' => 'nullable|min:5|string',
-            'locked' => 'boolean'
+            'locked' => 'boolean',
+
+            'locale' => Rule::in(config('app.available_locales')),
         ];
     }
 }
